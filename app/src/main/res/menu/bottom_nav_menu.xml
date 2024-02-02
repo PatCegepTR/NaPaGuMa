@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_infoSanté"
+        android:icon="@drawable/ic_info_sante"
+        android:title="Info" />
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/ic_stats_global"
+        android:title="Statistiques" />
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_prise_donnees"
+        android:title="Prise" />
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/ic_donnees_perso"
+        android:title="Histo" />
+
+    <item
+        android:icon="@drawable/ic_profil"
+        android:title="Profil" />
+
+</menu>
