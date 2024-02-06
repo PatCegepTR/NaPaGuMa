@@ -8,6 +8,7 @@
     tools:context=".InfoSanteFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvInfoSante"
         android:layout_width="409dp"
         android:layout_height="729dp"
         app:layout_constraintBottom_toBottomOf="parent"
