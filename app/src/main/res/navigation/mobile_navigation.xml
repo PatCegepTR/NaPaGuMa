@@ -6,12 +6,12 @@
     app:startDestination="@id/priseDeDonneesFragment2">
     <fragment
         android:id="@+id/profilFragment"
-        android:name="com.example.test.ui.ProfilFragment"
+        android:name="com.example.test.ui.Profil.ProfilFragment"
         android:label="fragment_profil"
         tools:layout="@layout/fragment_profil" />
     <fragment
         android:id="@+id/statistiquesFragment"
-        android:name="com.example.test.ui.StatistiquesFragment"
+        android:name="com.example.test.ui.Statistique.StatistiquesFragment"
         android:label="fragment_statistiques"
         tools:layout="@layout/fragment_statistiques" >
         <action
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/infoSanteFragment2"
-        android:name="com.example.test.ui.InfoSanteFragment"
+        android:name="com.example.test.ui.InfoSante.InfoSanteFragment"
         android:label="fragment_info_sante"
         tools:layout="@layout/fragment_info_sante" >
         <action
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/priseDeDonneesFragment2"
-        android:name="com.example.test.ui.PriseDeDonneesFragment"
+        android:name="com.example.test.ui.PriseDeDonnee.PriseDeDonneesFragment"
         android:label="fragment_prise_de_donnees"
         tools:layout="@layout/fragment_prise_de_donnees" >
         <action
@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/donneesPersoFragment"
-        android:name="com.example.test.ui.DonneesPersoFragment"
+        android:name="com.example.test.ui.DonneesPerso.DonneesPersoFragment"
         android:label="fragment_donnees_perso"
         tools:layout="@layout/fragment_donnees_perso" >
         <action

@@ -1,4 +1,4 @@
-package com.example.test.ui;
+package com.example.test.ui.PriseDeDonnee;
 
 import android.os.Bundle;
 

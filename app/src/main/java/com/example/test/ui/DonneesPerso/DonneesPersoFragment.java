@@ -1,4 +1,4 @@
-package com.example.test.ui;
+package com.example.test.ui.DonneesPerso;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.example.test.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link StatistiquesFragment#newInstance} factory method to
+ * Use the {@link DonneesPersoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StatistiquesFragment extends Fragment {
+public class DonneesPersoFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class StatistiquesFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public StatistiquesFragment() {
+    public DonneesPersoFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class StatistiquesFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment StatistiquesFragment.
+     * @return A new instance of fragment DonneesPersoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static StatistiquesFragment newInstance(String param1, String param2) {
-        StatistiquesFragment fragment = new StatistiquesFragment();
+    public static DonneesPersoFragment newInstance(String param1, String param2) {
+        DonneesPersoFragment fragment = new DonneesPersoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class StatistiquesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_statistiques, container, false);
+        return inflater.inflate(R.layout.fragment_donnees_perso, container, false);
     }
 }
