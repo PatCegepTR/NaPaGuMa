@@ -6,9 +6,9 @@
         android:icon="@drawable/ic_info_sante"
         android:title="Info" />
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_donnee_perso"
         android:icon="@drawable/ic_stats_global"
-        android:title="@string/title_notifications" />
+        android:title="donnee perso" />
     <item
         android:id="@+id/navigation_prise_de_donnee"
         android:icon="@drawable/ic_prise_donnees"
