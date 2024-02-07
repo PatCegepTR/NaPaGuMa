@@ -3,31 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigation_prise_de_donnee">
-
+    app:startDestination="@id/priseDeDonneesFragment">
     <fragment
-        android:id="@+id/navigation_prise_de_donnee"
-        android:name="com.example.test.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/priseDeDonneesFragment"
+        android:name="com.example.test.ui.prisededonnees.PriseDeDonneesFragment"
+        android:label="fragment_prise_de_donnees"
+        tools:layout="@layout/fragment_prise_de_donnees" />
     <fragment
-        android:id="@+id/navigation_statistique"
-        android:name="com.example.test.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/fragment_donnees_perso2"
+        android:name="com.example.test.ui.donnees_perso.DonneesPersoFragment"
+        android:label="fragment_donnees_perso" />
     <fragment
-        android:id="@+id/navigation_infoSanté"
-        android:name="com.example.test.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/profilFragment"
+        android:name="com.example.test.ProfilFragment"
+        android:label="fragment_profil"
+        tools:layout="@layout/fragment_profil" />
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.test.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/statistiquesFragment"
+        android:name="com.example.test.ui.statistiques.StatistiquesFragment"
+        android:label="fragment_statistiques"
+        tools:layout="@layout/fragment_statistiques" />
     <fragment
-        android:id="@+id/navigation_profil"
-        android:name="com.example.test.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/infoSanteFragment2"
+        android:name="com.example.test.InfoSanteFragment"
+        android:label="fragment_info_sante"
+        tools:layout="@layout/fragment_info_sante" />
 </navigation>
