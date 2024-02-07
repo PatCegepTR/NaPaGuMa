@@ -3,16 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/priseDeDonneesFragment">
-    <fragment
-        android:id="@+id/priseDeDonneesFragment"
-        android:name="com.example.test.ui.prisededonnees.PriseDeDonneesFragment"
-        android:label="fragment_prise_de_donnees"
-        tools:layout="@layout/fragment_prise_de_donnees" />
-    <fragment
-        android:id="@+id/fragment_donnees_perso2"
-        android:name="com.example.test.ui.donnees_perso.DonneesPersoFragment"
-        android:label="fragment_donnees_perso" />
+    app:startDestination="@id/priseDeDonneesFragment2">
     <fragment
         android:id="@+id/profilFragment"
         android:name="com.example.test.ProfilFragment"
@@ -20,7 +11,7 @@
         tools:layout="@layout/fragment_profil" />
     <fragment
         android:id="@+id/statistiquesFragment"
-        android:name="com.example.test.ui.statistiques.StatistiquesFragment"
+        android:name="com.example.test.StatistiquesFragment"
         android:label="fragment_statistiques"
         tools:layout="@layout/fragment_statistiques" />
     <fragment
@@ -28,4 +19,14 @@
         android:name="com.example.test.InfoSanteFragment"
         android:label="fragment_info_sante"
         tools:layout="@layout/fragment_info_sante" />
+    <fragment
+        android:id="@+id/priseDeDonneesFragment2"
+        android:name="com.example.test.PriseDeDonneesFragment"
+        android:label="fragment_prise_de_donnees"
+        tools:layout="@layout/fragment_prise_de_donnees" />
+    <fragment
+        android:id="@+id/donneesPersoFragment"
+        android:name="com.example.test.DonneesPersoFragment"
+        android:label="fragment_donnees_perso"
+        tools:layout="@layout/fragment_donnees_perso" />
 </navigation>
