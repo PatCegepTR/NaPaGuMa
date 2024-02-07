@@ -13,20 +13,72 @@
         android:id="@+id/statistiquesFragment"
         android:name="com.example.test.ui.StatistiquesFragment"
         android:label="fragment_statistiques"
-        tools:layout="@layout/fragment_statistiques" />
+        tools:layout="@layout/fragment_statistiques" >
+        <action
+            android:id="@+id/action_statistiquesFragment_to_priseDeDonneesFragment2"
+            app:destination="@id/priseDeDonneesFragment2" />
+        <action
+            android:id="@+id/action_statistiquesFragment_to_infoSanteFragment2"
+            app:destination="@id/infoSanteFragment2" />
+        <action
+            android:id="@+id/action_statistiquesFragment_to_donneesPersoFragment"
+            app:destination="@id/donneesPersoFragment" />
+        <action
+            android:id="@+id/action_statistiquesFragment_to_profilFragment"
+            app:destination="@id/profilFragment" />
+    </fragment>
     <fragment
         android:id="@+id/infoSanteFragment2"
         android:name="com.example.test.ui.InfoSanteFragment"
         android:label="fragment_info_sante"
-        tools:layout="@layout/fragment_info_sante" />
+        tools:layout="@layout/fragment_info_sante" >
+        <action
+            android:id="@+id/action_infoSanteFragment2_to_profilFragment"
+            app:destination="@id/profilFragment" />
+        <action
+            android:id="@+id/action_infoSanteFragment2_to_donneesPersoFragment"
+            app:destination="@id/donneesPersoFragment" />
+        <action
+            android:id="@+id/action_infoSanteFragment2_to_priseDeDonneesFragment2"
+            app:destination="@id/priseDeDonneesFragment2" />
+        <action
+            android:id="@+id/action_infoSanteFragment2_to_statistiquesFragment"
+            app:destination="@id/statistiquesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/priseDeDonneesFragment2"
         android:name="com.example.test.ui.PriseDeDonneesFragment"
         android:label="fragment_prise_de_donnees"
-        tools:layout="@layout/fragment_prise_de_donnees" />
+        tools:layout="@layout/fragment_prise_de_donnees" >
+        <action
+            android:id="@+id/action_priseDeDonneesFragment2_to_statistiquesFragment3"
+            app:destination="@id/statistiquesFragment" />
+        <action
+            android:id="@+id/action_priseDeDonneesFragment2_to_infoSanteFragment23"
+            app:destination="@id/infoSanteFragment2" />
+        <action
+            android:id="@+id/action_priseDeDonneesFragment2_to_profilFragment3"
+            app:destination="@id/profilFragment" />
+        <action
+            android:id="@+id/action_priseDeDonneesFragment2_to_donneesPersoFragment3"
+            app:destination="@id/donneesPersoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/donneesPersoFragment"
         android:name="com.example.test.ui.DonneesPersoFragment"
         android:label="fragment_donnees_perso"
-        tools:layout="@layout/fragment_donnees_perso" />
+        tools:layout="@layout/fragment_donnees_perso" >
+        <action
+            android:id="@+id/action_donneesPersoFragment_to_profilFragment"
+            app:destination="@id/profilFragment" />
+        <action
+            android:id="@+id/action_donneesPersoFragment_to_priseDeDonneesFragment22"
+            app:destination="@id/priseDeDonneesFragment2" />
+        <action
+            android:id="@+id/action_donneesPersoFragment_to_statistiquesFragment"
+            app:destination="@id/statistiquesFragment" />
+        <action
+            android:id="@+id/action_donneesPersoFragment_to_infoSanteFragment2"
+            app:destination="@id/infoSanteFragment2" />
+    </fragment>
 </navigation>
