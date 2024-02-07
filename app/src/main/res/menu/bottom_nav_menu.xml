@@ -8,16 +8,16 @@
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_stats_global"
-        android:title="Statistiques" />
+        android:title="@string/title_notifications" />
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_prise_de_donnee"
         android:icon="@drawable/ic_prise_donnees"
         android:title="Prise" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_statistique"
         android:icon="@drawable/ic_donnees_perso"
-        android:title="Histo" />
+        android:title="Statistique" />
 
     <item
         android:id="@+id/navigation_profil"
