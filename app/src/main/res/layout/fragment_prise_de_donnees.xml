@@ -8,7 +8,7 @@
     tools:context=".ui.PriseDeDonnee.PriseDeDonneesFragment" >
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvOxygene"
         android:layout_width="261dp"
         android:layout_height="46dp"
         android:layout_marginTop="64dp"
@@ -20,10 +20,10 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/tvRythmeCardiaque" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tvInstructionPriseDonnee"
         android:layout_width="296dp"
         android:layout_height="168dp"
         android:layout_marginTop="52dp"
@@ -34,22 +34,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/tvOxygene" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/ivRythmeCardiaque"
         android:layout_width="85dp"
         android:layout_height="83dp"
         android:layout_marginStart="112dp"
         android:layout_marginBottom="32dp"
         android:src="@drawable/ic_coeur"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintBottom_toTopOf="@+id/tvOxygene"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.714" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvRythmeCardiaque"
         android:layout_width="77dp"
         android:layout_height="67dp"
         android:layout_marginTop="96dp"
@@ -61,11 +61,11 @@
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.307"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/ivRythmeCardiaque"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/fbCommencerPrise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -74,6 +74,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/tvInstructionPriseDonnee"
         app:layout_constraintVertical_bias="0.862" />
 </androidx.constraintlayout.widget.ConstraintLayout>

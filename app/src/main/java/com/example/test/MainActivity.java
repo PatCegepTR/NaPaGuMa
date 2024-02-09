@@ -2,6 +2,7 @@ package com.example.test;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.example.test.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -35,5 +36,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.monmenu, menu);
+        return true;
+    }
 }
