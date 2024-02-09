@@ -3,30 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/priseDeDonneesFragment2">
+    app:startDestination="@id/navigation_prise_de_donnee">
     <fragment
-        android:id="@+id/profilFragment"
+        android:id="@+id/navigation_profil"
         android:name="com.example.test.ui.Profil.ProfilFragment"
-        android:label="fragment_profil"
+        android:label="@string/profil"
         tools:layout="@layout/fragment_profil" />
     <fragment
-        android:id="@+id/statistiquesFragment"
+        android:id="@+id/navigation_statistique"
         android:name="com.example.test.ui.Statistique.StatistiquesFragment"
-        android:label="fragment_statistiques"
+        android:label="@string/statistique"
         tools:layout="@layout/fragment_statistiques" />
     <fragment
-        android:id="@+id/infoSanteFragment2"
+        android:id="@+id/navigation_infoSante"
         android:name="com.example.test.ui.InfoSante.InfoSanteFragment"
-        android:label="fragment_info_sante"
+        android:label="@string/info"
         tools:layout="@layout/fragment_info_sante" />
     <fragment
-        android:id="@+id/priseDeDonneesFragment2"
+        android:id="@+id/navigation_prise_de_donnee"
         android:name="com.example.test.ui.PriseDeDonnee.PriseDeDonneesFragment"
-        android:label="fragment_prise_de_donnees"
+        android:label="@string/prise"
         tools:layout="@layout/fragment_prise_de_donnees" />
     <fragment
-        android:id="@+id/donneesPersoFragment"
+        android:id="@+id/navigation_donnee_perso"
         android:name="com.example.test.ui.DonneesPerso.DonneesPersoFragment"
-        android:label="fragment_donnees_perso"
+        android:label="@string/donnee_perso"
         tools:layout="@layout/fragment_donnees_perso" />
 </navigation>
