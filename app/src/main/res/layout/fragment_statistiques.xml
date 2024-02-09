@@ -28,6 +28,8 @@
         app:layout_constraintTop_toBottomOf="@+id/tvStatistqiueGlobal"
         tools:src="@tools:sample/backgrounds/scenic" />
 
+
+
     <TextView
         android:id="@+id/tvDernierModif"
         android:layout_width="152dp"
