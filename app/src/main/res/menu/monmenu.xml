@@ -5,4 +5,8 @@
         android:id="@+id/it"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="Item" />
+    <item
+        android:id="@+id/it2"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Item 2" />
 </menu>
