@@ -1,37 +1,61 @@
 package com.example.test.donneesperso;
 
-public class Donnee {
-    double rythmeCardiaque;
-    double saturationOxygene;
-    String date;
+import com.google.gson.annotations.SerializedName;
 
-    public Donnee(double rythmeCardiaque, double saturationOxygene, String date) {
+import java.util.Date;
+
+public class Donnee {
+
+    @SerializedName("id")
+    int id;
+
+    @SerializedName("rythmeCardiaque")
+    int rythmeCardiaque;
+
+    @SerializedName("saturationO2")
+    int saturationO2;
+
+    @SerializedName("date")
+    Date date;
+
+    public Donnee(int id, int rythmeCardiaque, int saturationO2, Date date) {
+        this.id = id;
         this.rythmeCardiaque = rythmeCardiaque;
-        this.saturationOxygene = saturationOxygene;
+        this.saturationO2 = saturationO2;
         this.date = date;
     }
 
-    public double getRythmeCardiaque() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getRythmeCardiaque() {
         return rythmeCardiaque;
     }
 
-    public void setRythmeCardiaque(double rythmeCardiaque) {
+    public void setRythmeCardiaque(int rythmeCardiaque) {
         this.rythmeCardiaque = rythmeCardiaque;
     }
 
-    public double getSaturationOxygene() {
-        return saturationOxygene;
+    public int getSaturationO2() {
+        return saturationO2;
     }
 
-    public void setSaturationOxygene(double saturationOxygene) {
-        this.saturationOxygene = saturationOxygene;
+    public void setSaturationO2(int saturationO2) {
+        this.saturationO2 = saturationO2;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
+
+
 }
