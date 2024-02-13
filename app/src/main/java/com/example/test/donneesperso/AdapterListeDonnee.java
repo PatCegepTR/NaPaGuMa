@@ -17,7 +17,19 @@ import java.util.List;
 
 public class AdapterListeDonnee extends RecyclerView.Adapter {
 
+    public interface MonInterface{
+        public void gestionClic(int position, Donnee donnee);
+    }
+
     List<Donnee> listeDonnees;
+    MonInterface monInterface;
+
+    public AdapterListeDonnee(List<Donnee> liste, MonInterface unInterface )
+    {
+        listeDonnees = liste;
+        monInterface = unInterface;
+    }
+
 
     @NonNull
     @Override

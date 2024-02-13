@@ -8,7 +8,7 @@
     tools:context=".ui.DonneesPerso.DonneesPersoFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvDonnePerso"
+        android:id="@+id/rvDonnesPerso"
         android:layout_width="411dp"
         android:layout_height="302dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,5 +26,17 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:src="@tools:sample/backgrounds/scenic" />
+
+    <Button
+        android:id="@+id/btnDonnees"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rvDonnesPerso"
+        app:layout_constraintVertical_bias="0.901" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
