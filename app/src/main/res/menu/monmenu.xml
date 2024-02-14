@@ -4,9 +4,11 @@
     <item
         android:id="@+id/itModifier"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="modifier" />
+        android:title="modifier"
+        android:visible="false"/>
     <item
         android:id="@+id/itDeconnexion"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="deconnexion" />
+        android:title="deconnexion"
+        android:visible="false"/>
 </menu>
