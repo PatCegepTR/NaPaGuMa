@@ -18,6 +18,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.test.databinding.ActivityMainBinding;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
@@ -47,6 +49,20 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        NavController navaController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+
+        if (Objects.requireNonNull(navaController.getCurrentDestination()).getId() == R.id.navigation_profil){
+            menu.findItem(R.id.itModifier).setVisible(true);
+            menu.findItem(R.id.itDeconnexion).setVisible(true);
+        } else {
+            menu.findItem(R.id.itModifier).setVisible(false);
+            menu.findItem(R.id.itDeconnexion).setVisible(false);
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
