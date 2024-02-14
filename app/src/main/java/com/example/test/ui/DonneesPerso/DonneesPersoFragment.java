@@ -80,7 +80,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(getContext(),"YIPPEEEEEEEEEEEE", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"Bonjours bug", Toast.LENGTH_SHORT).show();
             }
         });
 
