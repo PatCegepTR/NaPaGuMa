@@ -71,8 +71,8 @@ public class ProfilFragment extends Fragment {
         ImageView imageView = view.findViewById(R.id.ivProfil);
         TextView textView = view.findViewById(R.id.tvInfoPersoProfil);
 
-        imageView.setImageResource(R.drawable.ic_launcher_foreground);
-        textView.setText("Nom: \nPrénom: \nAge: \nTaille: \nPoids: \nSexe: \n");
+        imageView.setImageResource(R.drawable.ic_profil);
+        textView.setText("Nom: \nPrénom: \nAge:");
 
         
 

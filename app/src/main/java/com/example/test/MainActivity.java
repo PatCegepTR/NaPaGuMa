@@ -47,4 +47,14 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.itModifier){
+            Toast.makeText(this, "Modification", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == R.id.itDeconnexion){
+            Toast.makeText(this, "Deconnexion", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
