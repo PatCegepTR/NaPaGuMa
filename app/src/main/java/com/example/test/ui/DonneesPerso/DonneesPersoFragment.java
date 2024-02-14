@@ -20,9 +20,11 @@ import com.example.test.LesDonnees;
 import com.example.test.R;
 import com.example.test.RetrofitInstance;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -62,8 +64,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         rvDonneesPerso.setLayoutManager(new LinearLayoutManager(getContext()));
 
         liste = new ArrayList<LesDonnees>();
-        //remplirDonnees();
-        getBonjour();
+        remplirDonnees();
+        //getBonjour();
     }
 
     public void getBonjour()
@@ -90,15 +92,21 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     {
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
 
-        Call<List<LesDonnees>> call = serveur.getDonnees2();
+        Call<ResponseBody> call = serveur.getDonnees2();
 
         InterfaceAdapter monInterface = this;
 
-        call.enqueue(new Callback<List<LesDonnees>>() {
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<List<LesDonnees>> call, Response<List<LesDonnees>> response) {
-                liste = response.body();
-                Toast.makeText(getContext(),"YIPPEEEEEEEEEEEE", Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    String texte = response.body().string();
+                    Toast.makeText(getContext(),texte, Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                    Toast.makeText(getContext(),"Ceci est dans le catch", Toast.LENGTH_SHORT).show();
+                    throw new RuntimeException(e);
+                }
+                //liste = response.body();
 
                 adapter = new AdapterListeDonnee(liste, monInterface);
                 rvDonneesPerso.setAdapter(adapter);
@@ -106,7 +114,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
             }
 
             @Override
-            public void onFailure(Call<List<LesDonnees>> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toast.makeText(getContext(),"OUUULAAAA", Toast.LENGTH_SHORT).show();
             }
         });
