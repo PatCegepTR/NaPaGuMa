@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInstance {
 
-    public static final String Base_URL = "file:///P:/FTP/Cours/H2024/420616RI/GR01/p_anctil";
+    public static final String Base_URL = "http://cours.cegep3r.info";
     private static Retrofit retrofit;
 
     public static Retrofit getInstance()
