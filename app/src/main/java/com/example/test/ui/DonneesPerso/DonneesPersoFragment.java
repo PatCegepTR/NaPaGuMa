@@ -92,20 +92,16 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     {
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
 
-        Call<ResponseBody> call = serveur.getDonnees2();
+        Call<List<LesDonnees>> call = serveur.getDonnees2();
 
         InterfaceAdapter monInterface = this;
 
-        call.enqueue(new Callback<ResponseBody>() {
+        call.enqueue(new Callback<List<LesDonnees>>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    String texte = response.body().string();
-                    Toast.makeText(getContext(),texte, Toast.LENGTH_SHORT).show();
-                } catch (IOException e) {
-                    Toast.makeText(getContext(),"Ceci est dans le catch", Toast.LENGTH_SHORT).show();
-                    throw new RuntimeException(e);
-                }
+            public void onResponse(Call<List<LesDonnees>> call, Response<List<LesDonnees>> response) {
+
+                Toast.makeText(getContext(),"Ça marche", Toast.LENGTH_SHORT).show();
+
                 //liste = response.body();
 
                 adapter = new AdapterListeDonnee(liste, monInterface);
@@ -114,7 +110,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<List<LesDonnees>> call, Throwable t) {
                 Toast.makeText(getContext(),"OUUULAAAA", Toast.LENGTH_SHORT).show();
             }
         });

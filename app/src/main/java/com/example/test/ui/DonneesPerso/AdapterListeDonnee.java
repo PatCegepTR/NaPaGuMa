@@ -18,10 +18,6 @@ import java.util.List;
 
 public class AdapterListeDonnee extends RecyclerView.Adapter {
 
-   /* public interface MonInterface{
-        public void gestionClic(int position, LesDonnees donnee);
-    }*/
-
     List<LesDonnees> listeDonnees;
     InterfaceAdapter monInterface;
 
@@ -30,7 +26,6 @@ public class AdapterListeDonnee extends RecyclerView.Adapter {
         listeDonnees = liste;
         monInterface = unInterface;
     }
-
 
     @NonNull
     @Override
@@ -52,7 +47,6 @@ public class AdapterListeDonnee extends RecyclerView.Adapter {
 
     public class MonViewHolder extends RecyclerView.ViewHolder
     {
-
         ImageView ivImage;
         public MonViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -13,5 +13,5 @@ public interface InterfaceServeur {
 
 
     @GET("/H2024/420616RI/GR01/p_anctil/getDonnees2.php")
-    Call<ResponseBody> getDonnees2();
+    Call<List<LesDonnees>> getDonnees2();
 }
