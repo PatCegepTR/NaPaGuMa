@@ -8,7 +8,7 @@
     tools:context=".ui.Statistique.StatistiquesFragment">
 
     <TextView
-        android:id="@+id/tvStatistqiueGlobal"
+        android:id="@+id/tvStatistiqueGlobal"
         android:layout_width="313dp"
         android:layout_height="86dp"
         android:layout_marginTop="128dp"
@@ -19,13 +19,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/tvStatistiqueGlobal"
+        android:id="@+id/imvStatistiqueGlobal"
         android:layout_width="342dp"
         android:layout_height="294dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvStatistqiueGlobal"
+        app:layout_constraintTop_toBottomOf="@+id/tvStatistiqueGlobal"
         tools:src="@tools:sample/backgrounds/scenic" />
 
 
@@ -40,6 +40,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvStatistiqueGlobal" />
+        app:layout_constraintTop_toBottomOf="@+id/imvStatistiqueGlobal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

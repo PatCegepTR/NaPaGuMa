@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.test.R;
 
@@ -61,6 +63,17 @@ public class StatistiquesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_statistiques, container, false);
+        //return inflater.inflate(R.layout.fragment_statistiques, container, false);
+        final View view = inflater.inflate(R.layout.fragment_statistiques, container, false);
+
+        TextView tvStatistique = (TextView) view.findViewById(R.id.tvStatistiqueGlobal);
+        TextView tvDerniereMaj = (TextView) view.findViewById(R.id.tvDernierModif);
+        ImageView ivStatistique = (ImageView) view.findViewById(R.id.imvStatistiqueGlobal);
+
+        tvStatistique.setText("Statistiques : 12345");
+        tvDerniereMaj.setText("Dernière mise à jour : 12/12/2021");
+        ivStatistique.setImageResource(R.drawable.ic_dashboard_black_24dp);
+
+        return view;
     }
 }
