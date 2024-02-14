@@ -1,11 +1,10 @@
-package com.example.test.donneesperso;
+package com.example.test;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
-public class Donnee {
-
+public class LesDonnees {
     @SerializedName("id")
     int id;
 
@@ -18,12 +17,25 @@ public class Donnee {
     @SerializedName("date")
     Date date;
 
-    public Donnee(int id, int rythmeCardiaque, int saturationO2, Date date) {
+    @SerializedName("idUtilisateur")
+    int idUtilisateur;
+
+    public LesDonnees(int id, int rythmeCardiaque, int saturationO2, Date date, int idUtilisateur) {
         this.id = id;
         this.rythmeCardiaque = rythmeCardiaque;
         this.saturationO2 = saturationO2;
         this.date = date;
+        this.idUtilisateur = idUtilisateur;
     }
+
+
+
+   /* public LesDonnees(int id, int rythmeCardiaque, int saturationO2, Date date) {
+        this.id = id;
+        this.rythmeCardiaque = rythmeCardiaque;
+        this.saturationO2 = saturationO2;
+        this.date = date;
+    }*/
 
     public int getId() {
         return id;
@@ -56,6 +68,4 @@ public class Donnee {
     public void setDate(Date date) {
         this.date = date;
     }
-
-
 }

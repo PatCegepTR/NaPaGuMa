@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.test.R;
-import com.example.test.donneesperso.DonneesPersoFragment;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,8 +37,8 @@ public class ProfilFragment extends Fragment {
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DonneesPersoFragment newInstance(String param1, String param2) {
-        DonneesPersoFragment fragment = new DonneesPersoFragment();
+    public static ProfilFragment newInstance(String param1, String param2) {
+        ProfilFragment fragment = new ProfilFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

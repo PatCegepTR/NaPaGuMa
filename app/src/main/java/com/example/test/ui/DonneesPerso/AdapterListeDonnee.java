@@ -1,15 +1,16 @@
-package com.example.test.donneesperso;
+package com.example.test.ui.DonneesPerso;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.test.InterfaceAdapter;
+import com.example.test.LesDonnees;
 import com.example.test.R;
 import com.example.test.infoSante.AdapterListeArticle;
 
@@ -17,14 +18,14 @@ import java.util.List;
 
 public class AdapterListeDonnee extends RecyclerView.Adapter {
 
-    public interface MonInterface{
-        public void gestionClic(int position, Donnee donnee);
-    }
+   /* public interface MonInterface{
+        public void gestionClic(int position, LesDonnees donnee);
+    }*/
 
-    List<Donnee> listeDonnees;
-    MonInterface monInterface;
+    List<LesDonnees> listeDonnees;
+    InterfaceAdapter monInterface;
 
-    public AdapterListeDonnee(List<Donnee> liste, MonInterface unInterface )
+    public AdapterListeDonnee(List<LesDonnees> liste, InterfaceAdapter unInterface )
     {
         listeDonnees = liste;
         monInterface = unInterface;
