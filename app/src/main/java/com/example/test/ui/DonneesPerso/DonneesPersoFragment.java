@@ -33,7 +33,6 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     private List<LesDonnees> liste;
 
     RecyclerView rvDonneesPerso;
-    Button btnDonnees;
     AdapterListeDonnee adapter;
 
     public DonneesPersoFragment() {
@@ -58,7 +57,6 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnDonnees = view.findViewById(R.id.btnDonnees);
         rvDonneesPerso = view.findViewById(R.id.rvDonnesPerso);
 
         rvDonneesPerso.setLayoutManager(new LinearLayoutManager(getContext()));
