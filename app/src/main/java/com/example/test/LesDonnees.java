@@ -15,12 +15,12 @@ public class LesDonnees {
     int saturationO2;
 
     @SerializedName("date")
-    Date date;
+    String date;
 
     @SerializedName("idUtilisateur")
     int idUtilisateur;
 
-    public LesDonnees(int id, int rythmeCardiaque, int saturationO2, Date date, int idUtilisateur) {
+    public LesDonnees(int id, int rythmeCardiaque, int saturationO2, String date, int idUtilisateur) {
         this.id = id;
         this.rythmeCardiaque = rythmeCardiaque;
         this.saturationO2 = saturationO2;
@@ -61,11 +61,11 @@ public class LesDonnees {
         this.saturationO2 = saturationO2;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
