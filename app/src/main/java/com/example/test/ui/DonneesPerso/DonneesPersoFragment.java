@@ -65,28 +65,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
 
         liste = new ArrayList<LesDonnees>();
         remplirDonnees();
-        //getBonjour();
     }
 
-    public void getBonjour()
-    {
-        InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
-
-        Call<String> call = serveur.getBonjour();
-
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                String text = response.body();
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(getContext(),"Bonjours bug", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
 
     public void remplirDonnees()
     {
