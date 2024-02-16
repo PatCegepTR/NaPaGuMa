@@ -52,8 +52,8 @@ public class AdapterListeDonnee extends RecyclerView.Adapter {
         public MonViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvCardiaque = itemView.findViewById(R.id.tvO2);
-            tvO2 = itemView.findViewById(R.id.tvCardiaque);
+            tvCardiaque = itemView.findViewById(R.id.tvCardiaque);
+            tvO2 = itemView.findViewById(R.id.tvO2);
         }
     }
 }
