@@ -1,6 +1,8 @@
 package com.example.test;
 
 
+import com.example.test.ui.Profil.Profil;
+
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -13,6 +15,6 @@ public interface InterfaceServeur {
     Call<List<LesDonnees>> getDonnees2();
 
     @GET("/H2024/420616RI/GR01/p_anctil/getProfil.php")
-    Call<List<LesDonnees>> getProfil();
+    Call<Profil> getProfil();
 
 }
