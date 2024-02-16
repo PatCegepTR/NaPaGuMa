@@ -19,7 +19,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/ivArticleImageCarte"
+                android:id="@+id/ivInfoSante"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -30,14 +30,14 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvArticleTitreCarte"
+                    android:id="@+id/tvTitreInfoSante"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/titre_card"
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/tvArticleDateCarte"
+                    android:id="@+id/tvDateInfoSante"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="01/01/24" />

@@ -19,14 +19,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvArticleTitreCarte"
+                android:id="@+id/tvTitreInfoSante"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Dimanche"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/tvArticleDateCarte"
+                android:id="@+id/tvDateInfoSante"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Fréquence moyenne: " />
