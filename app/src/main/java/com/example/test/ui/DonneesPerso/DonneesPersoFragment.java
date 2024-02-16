@@ -82,7 +82,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
 
                 Toast.makeText(getContext(),"Ça marche", Toast.LENGTH_SHORT).show();
 
-                //liste = response.body();
+                liste = response.body();
 
                 adapter = new AdapterListeDonnee(liste, monInterface);
                 rvDonneesPerso.setAdapter(adapter);

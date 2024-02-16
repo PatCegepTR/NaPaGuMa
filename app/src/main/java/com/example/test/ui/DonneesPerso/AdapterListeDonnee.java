@@ -3,7 +3,7 @@ package com.example.test.ui.DonneesPerso;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,13 +30,15 @@ public class AdapterListeDonnee extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.layout_journee_donnees_perso,parent,false);
-        return new AdapterListeDonnee.MonViewHolder(view);
+        View view = inflater.inflate(R.layout.layout_donnees_perso,parent,false);
+        return new MonViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        AdapterListeDonnee.MonViewHolder monViewHolder = (AdapterListeDonnee.MonViewHolder) holder;
+        MonViewHolder monViewHolder = (MonViewHolder) holder;
+        monViewHolder.tvCardiaque.setText(listeDonnees.get(position).getRythmeCardiaqueString());
+        monViewHolder.tvO2.setText(listeDonnees.get(position).getSaturationO2String());
     }
 
     @Override
@@ -46,10 +48,12 @@ public class AdapterListeDonnee extends RecyclerView.Adapter {
 
     public class MonViewHolder extends RecyclerView.ViewHolder
     {
-        ImageView ivImage;
+        TextView tvCardiaque, tvO2;
         public MonViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            tvCardiaque = itemView.findViewById(R.id.tvO2);
+            tvO2 = itemView.findViewById(R.id.tvCardiaque);
         }
     }
 }

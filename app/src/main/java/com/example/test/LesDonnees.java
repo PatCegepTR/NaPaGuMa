@@ -61,6 +61,14 @@ public class LesDonnees {
         this.saturationO2 = saturationO2;
     }
 
+    public String getRythmeCardiaqueString(){
+        return String.valueOf(rythmeCardiaque);
+    }
+
+    public String getSaturationO2String(){
+        return String.valueOf(saturationO2);
+    }
+
     public String getDate() {
         return date;
     }
