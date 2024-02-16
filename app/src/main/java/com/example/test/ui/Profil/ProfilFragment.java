@@ -74,6 +74,6 @@ public class ProfilFragment extends Fragment implements InterfaceProfil {
 
     @Override
     public void afficherProfil(Profil profil) {
-        tvInfoProfils.setText(profil.getNom() + "\n" + profil.getPrenom() + "\n" + profil.getCourriel() + "\n" + profil.getDateNaissance());
+        //tvInfoProfils.setText(profil.getNom() + "\n" + profil.getPrenom() + "\n" + profil.getCourriel() + "\n" + profil.getDateNaissance());
     }
 }
