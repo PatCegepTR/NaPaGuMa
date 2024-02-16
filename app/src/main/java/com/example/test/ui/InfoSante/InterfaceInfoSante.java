@@ -1,4 +1,4 @@
-package com.example.test.infoSante;
+package com.example.test.ui.InfoSante;
 
 public interface InterfaceInfoSante {
 }
