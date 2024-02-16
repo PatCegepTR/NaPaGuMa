@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.test.InterfaceAdapter;
 import com.example.test.LesDonnees;
 import com.example.test.R;
-import com.example.test.infoSante.AdapterListeArticle;
 
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class AdapterListeDonnee extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        AdapterListeArticle.MonViewHolder monViewHolder = (AdapterListeArticle.MonViewHolder) holder;
+        AdapterListeDonnee.MonViewHolder monViewHolder = (AdapterListeDonnee.MonViewHolder) holder;
     }
 
     @Override
