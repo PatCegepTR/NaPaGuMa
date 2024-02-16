@@ -2,6 +2,7 @@ package com.example.test.ui.Profil;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -9,8 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.test.InterfaceServeur;
 import com.example.test.R;
+import com.example.test.RetrofitInstance;
+
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -18,11 +25,13 @@ import com.example.test.R;
  * Use the {@link ProfilFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfilFragment extends Fragment {
+public class ProfilFragment extends Fragment implements InterfaceProfil {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
+
+    TextView tvInfoProfils;
 
     public ProfilFragment() {
         // Required empty public constructor
@@ -64,11 +73,34 @@ public class ProfilFragment extends Fragment {
         TextView infoProfil = view.findViewById(R.id.tvInfoPersoProfil);
         ImageView imgProfil = view.findViewById(R.id.ivProfil);
 
-        infoProfil.setText("Nom : " + "Dupont" + "\n" + "Prénom : " + "Jean" + "\n" + "Date de naissance : " + "01/01/2000" + "\n" + "Adresse mail : ");
+        //infoProfil.setText("Nom : " + "Dupont" + "\n" + "Prénom : " + "Jean" + "\n" + "Date de naissance : " + "01/01/2000" + "\n" + "Adresse mail : ");
         imgProfil.setImageResource(R.drawable.ic_launcher_foreground);
 
         return view;
     }
 
+    public void getProfilById(){
+        InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
+        retrofit2.Call<Profil> appel = serveur.getProfil();
 
+        appel.enqueue(new Callback<Profil>() {
+            @Override
+            public void onResponse(retrofit2.Call<Profil> call, Response<Profil> response) {
+                Profil profil = response.body();
+
+                tvInfoProfils.setText(profil.getNom() + "\n" + profil.getPrenom() + "\n" + profil.getCourriel() + "\n" + profil.getDateNaissance());
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<Profil> call, Throwable t) {
+                Toast.makeText(getContext(), "Erreur", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    @Override
+    public void afficherProfil(Profil profil) {
+        tvInfoProfils.setText(profil.getNom() + "\n" + profil.getPrenom() + "\n" + profil.getCourriel() + "\n" + profil.getDateNaissance());
+    }
 }
