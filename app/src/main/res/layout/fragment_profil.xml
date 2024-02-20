@@ -7,40 +7,29 @@
     android:layout_height="match_parent"
     tools:context=".ui.Profil.ProfilFragment">
 
-    <TextView
-        android:id="@+id/tvInfoPersoProfil"
-        android:layout_width="219dp"
-        android:layout_height="257dp"
-        android:background="#12000000"
-        android:text="TextView"
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="321dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toEndOf="@+id/ivProfil"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
-
-    <ImageView
-        android:id="@+id/ivProfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.263"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fbModifProfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:clickable="true"
-        android:src="@drawable/ic_home_black_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/ivProfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvInfoPersoProfil"
+            android:layout_width="235dp"
+            android:layout_height="match_parent"
+            android:background="#12000000"
+            android:text="TextView" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
