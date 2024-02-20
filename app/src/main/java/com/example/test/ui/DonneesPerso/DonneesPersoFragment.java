@@ -44,6 +44,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     RecyclerView rvDonneesPerso;
     AdapterListeDonnee adapter;
 
+    String[] datesDonnees = new String[7];
+
     /* ----------------------------------
         VARIABLES GRAPHIQUES
        ----------------------------------  */
@@ -53,8 +55,6 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
 
     BarDataSet _dataSetRythmeCardiaque;
     BarData _barDataRythmeCardiaque;
-
-    String[] xAxisLabels = new String[]{"Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"};
 
     public DonneesPersoFragment() {
         // Required empty public constructor
@@ -79,7 +79,6 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
 
         // RECHERCHE DU GRAPHIQUE AVEC L'ID ET CRÉATION DU GRAPHIQUE.
         chartHistoriqueDonnees = view.findViewById(R.id.barChart);
-        makeGraph();
 
         rvDonneesPerso = view.findViewById(R.id.rvDonnesPerso);
 
@@ -89,8 +88,38 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         remplirDonnees();
     }
 
+    public void remplirDonnees()
+    {
+        InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
+
+        Call<List<LesDonnees>> call = serveur.getDonnees2();
+
+        InterfaceAdapter monInterface = this;
+
+        call.enqueue(new Callback<List<LesDonnees>>() {
+            @Override
+            public void onResponse(Call<List<LesDonnees>> call, Response<List<LesDonnees>> response) {
+
+                Toast.makeText(getContext(),"Ça marche", Toast.LENGTH_SHORT).show();
+
+                liste = response.body();
+
+                adapter = new AdapterListeDonnee(liste, monInterface);
+                rvDonneesPerso.setAdapter(adapter);
+
+                createData(liste);
+                makeGraph();
+
+            }
+
+            @Override
+            public void onFailure(Call<List<LesDonnees>> call, Throwable t) {
+                Toast.makeText(getContext(),"OUUULAAAA", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void makeGraph(){
-        createMockData();
         createDataSets();
         createBarDatas();
 
@@ -100,14 +129,14 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         chartHistoriqueDonnees.invalidate();
     }
 
-    private void createMockData(){
-        historiqueDonneesRythmeCardiaque.add(new BarEntry(0,1));
-        historiqueDonneesRythmeCardiaque.add(new BarEntry(1,4));
-        historiqueDonneesRythmeCardiaque.add(new BarEntry(2,2));
-        historiqueDonneesRythmeCardiaque.add(new BarEntry(3,0));
-        historiqueDonneesRythmeCardiaque.add(new BarEntry(4,1));
-        historiqueDonneesRythmeCardiaque.add(new BarEntry(5,50));
-        historiqueDonneesRythmeCardiaque.add(new BarEntry(6,0));
+    private void createData(List<LesDonnees> listeDonnees){
+        for (int i = 0; i<7; i++) {
+            historiqueDonneesRythmeCardiaque.add(new BarEntry(i, listeDonnees.get(i).getRythmeCardiaque()));
+            datesDonnees[i] = listeDonnees.get(i).getDateYMD();
+        }
+
+
+
     }
 
     private void createDataSets(){
@@ -156,42 +185,15 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         legend.setForm(Legend.LegendForm.CIRCLE); // Set legend form to circle
 
         // Set fixed X-axis labels
-        String[] labels = {"Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"};
         XAxis xAxis = chartHistoriqueDonnees.getXAxis();
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(datesDonnees));
     }
 
     private void setChartDatas(){
         chartHistoriqueDonnees.setData(_barDataRythmeCardiaque);
     }
 
-    public void remplirDonnees()
-    {
-        InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
 
-        Call<List<LesDonnees>> call = serveur.getDonnees2();
-
-        InterfaceAdapter monInterface = this;
-
-        call.enqueue(new Callback<List<LesDonnees>>() {
-            @Override
-            public void onResponse(Call<List<LesDonnees>> call, Response<List<LesDonnees>> response) {
-
-                Toast.makeText(getContext(),"Ça marche", Toast.LENGTH_SHORT).show();
-
-                liste = response.body();
-
-                adapter = new AdapterListeDonnee(liste, monInterface);
-                rvDonneesPerso.setAdapter(adapter);
-
-            }
-
-            @Override
-            public void onFailure(Call<List<LesDonnees>> call, Throwable t) {
-                Toast.makeText(getContext(),"OUUULAAAA", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     @Override
     public void gestionClic(int position, LesDonnees donnee) {

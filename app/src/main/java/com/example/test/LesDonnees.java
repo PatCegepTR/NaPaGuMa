@@ -2,6 +2,11 @@ package com.example.test;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class LesDonnees {
@@ -71,6 +76,10 @@ public class LesDonnees {
 
     public String getDate() {
         return date;
+    }
+
+    public String getDateYMD() {
+            return date.substring(2, 10);
     }
 
     public void setDate(String date) {
