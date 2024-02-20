@@ -55,6 +55,7 @@ public class ProfilFragment extends Fragment implements InterfaceProfil {
         super.onViewCreated(view, savedInstanceState);
 
         ImageView imgProfil = view.findViewById(R.id.ivProfil);
+        tvInfoProfils = view.findViewById(R.id.tvInfoPersoProfil);
 
         imgProfil.setImageResource(R.drawable.ic_launcher_foreground);
 
@@ -72,7 +73,7 @@ public class ProfilFragment extends Fragment implements InterfaceProfil {
             public void onResponse(retrofit2.Call<Profil> call, Response<Profil> response) {
                 Profil profil = response.body();
 
-                tvInfoProfils.setText(profil.getNom() + "\n" + profil.getPrenom() + "\n"
+                tvInfoProfils.setText(profil.getPrenom() + " " + profil.getNom() + "\n"
                         + profil.getCourriel() + "\n" + profil.getDateNaissance());
             }
 
