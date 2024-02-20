@@ -79,7 +79,7 @@ public class ProfilFragment extends Fragment implements InterfaceProfil {
 
             @Override
             public void onFailure(retrofit2.Call<Profil> call, Throwable t) {
-                Toast.makeText(getContext(), "Erreur", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Une erreur s'est produite", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -87,7 +87,6 @@ public class ProfilFragment extends Fragment implements InterfaceProfil {
 
     @Override
     public void gestionClic(Profil profil) {
-        Toast.makeText(getContext(),"YIPPEEEEEEEEEEEE", Toast.LENGTH_SHORT).show();
 
     }
 }
