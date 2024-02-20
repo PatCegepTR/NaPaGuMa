@@ -1,6 +1,5 @@
 package com.example.test.ui.Profil;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -32,10 +31,11 @@ import retrofit2.Response;
 public class ProfilFragment extends Fragment implements InterfaceProfil {
     TextView tvInfoProfils;
 
-
     public ProfilFragment() {
         // Required empty public constructor
     }
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -38,20 +38,11 @@ public class MainActivity extends AppCompatActivity {
         NavController navaController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
 
         if (Objects.requireNonNull(navaController.getCurrentDestination()).getId() == R.id.navigation_profil){
-            menu.clear();
-            MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.monmenu, menu);
-            invalidateOptionsMenu();
-        }
-        else if (Objects.requireNonNull(navaController.getCurrentDestination()).getId() == R.id.navigation_donnee_perso){
-            menu.clear();
-            MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.menu_donnees_perso, menu);
-            invalidateOptionsMenu();
-        }
-        else{
-            menu.clear();
-            invalidateOptionsMenu();
+            menu.findItem(R.id.itModifier).setVisible(true);
+            menu.findItem(R.id.itDeconnexion).setVisible(true);
+        } else {
+            menu.findItem(R.id.itModifier).setVisible(false);
+            menu.findItem(R.id.itDeconnexion).setVisible(false);
         }
         return super.onPrepareOptionsMenu(menu);
     }

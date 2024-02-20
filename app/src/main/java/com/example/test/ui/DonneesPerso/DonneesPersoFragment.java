@@ -193,6 +193,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         });
     }
 
+
     @Override
     public void gestionClic(int position, LesDonnees donnee) {
         Toast.makeText(getContext(),"YIPPEEEEEEEEEEEE", Toast.LENGTH_SHORT).show();
