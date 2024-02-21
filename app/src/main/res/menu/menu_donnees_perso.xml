@@ -2,11 +2,13 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/swDonneePerso"
-        android:checkable="true"
-        android:checked="false"
-        android:enabled="true"
-        android:title="Switch"
-        app:actionLayout="@layout/switch_item"
-        app:showAsAction="always" />
+        android:id="@+id/itGraphDonnee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Item" />
+    <item
+        android:id="@+id/itListeDonnee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Item" />
 </menu>

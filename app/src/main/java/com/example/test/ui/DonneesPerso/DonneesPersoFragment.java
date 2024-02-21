@@ -191,6 +191,13 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     }
 
 
+    public void afficherRvDonnees(int visibility){
+        rvDonneesPerso.setVisibility(visibility);
+    }
+
+    public void afficherGraphique(int visibility){
+        chartHistoriqueDonnees.setVisibility(visibility);
+    }
 
     @Override
     public void gestionClic(int position, LesDonnees donnee) {
