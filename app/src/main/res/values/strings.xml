@@ -5,8 +5,15 @@
     <string name="statistique">Statistique</string>
     <string name="profil">Profil</string>
     <string name="donnee_perso">Données perso</string>
-    <string name="titre_card">Qu\'est-ce que le pouls</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- Cartes info-santé -->
+    <string name="titre_card_article1">Que représente le pouls?</string>
+    <string name="titre_card_article2">Que représente la saturation d\'oxygène?</string>
+    <string name="titre_card_article3">Que faire en cas d\'urgence?</string>
+    <string name="date_card_article1">21 février 2024</string>
+    <string name="date_card_article2">21 février 2024</string>
+    <string name="date_card_article3">21 février 2024</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

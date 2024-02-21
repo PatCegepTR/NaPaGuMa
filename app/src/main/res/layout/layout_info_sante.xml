@@ -33,14 +33,15 @@
                     android:id="@+id/tvTitreInfoSante"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/titre_card"
-                    android:textSize="20sp" />
+                    android:text="@string/titre_card_article1"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvDateInfoSante"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="01/01/24" />
+                    android:text="@string/date_card_article1" />
 
             </LinearLayout>
 
