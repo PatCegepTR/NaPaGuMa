@@ -99,9 +99,6 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         call.enqueue(new Callback<List<LesDonnees>>() {
             @Override
             public void onResponse(Call<List<LesDonnees>> call, Response<List<LesDonnees>> response) {
-
-                Toast.makeText(getContext(),"Ça marche", Toast.LENGTH_SHORT).show();
-
                 liste = response.body();
 
                 adapter = new AdapterListeDonnee(liste, monInterface);
@@ -114,7 +111,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
 
             @Override
             public void onFailure(Call<List<LesDonnees>> call, Throwable t) {
-                Toast.makeText(getContext(),"OUUULAAAA", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"Une erreur s'est produite", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -197,6 +194,5 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
 
     @Override
     public void gestionClic(int position, LesDonnees donnee) {
-        Toast.makeText(getContext(),"YIPPEEEEEEEEEEEE", Toast.LENGTH_SHORT).show();
     }
 }
