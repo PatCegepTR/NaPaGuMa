@@ -1,47 +1,58 @@
 package com.example.test.ui.InfoSante;
 
-import com.google.gson.annotations.SerializedName;
 
 public class InfoSante {
+    String articleInfoSanteTitre;
+    String articleInfoSanteDate;
+    String articleInfoSanteLienImage;
+    String articleLien;
+    String articleDescription;
 
-    @SerializedName("id")
-    private int id;
-
-    @SerializedName("InfoSanteTitre")
-    private String InfoSanteTitre;
-
-    @SerializedName("InfoSanteDate")
-    private String InfoSanteDate;
-
-
-    public InfoSante(int id, String InfoSanteTitre, String InfoSanteDate) {
-        this.id = id;
-        this.InfoSanteTitre = InfoSanteTitre;
-        this.InfoSanteDate = InfoSanteDate;
+    public InfoSante(String articleInfoSanteTitre, String articleInfoSanteDate, String articleInfoSanteLienImage, String articleLien, String articleDescription) {
+        this.articleInfoSanteTitre = articleInfoSanteTitre;
+        this.articleInfoSanteDate = articleInfoSanteDate;
+        this.articleInfoSanteLienImage = articleInfoSanteLienImage;
+        this.articleLien = articleLien;
+        this.articleDescription = articleDescription;
     }
 
-    public int getId() {
-        return id;
+    public String getArticleInfoSanteTitre() {
+        return articleInfoSanteTitre;
     }
 
-    public String getInfoSanteTitre() {
-        return InfoSanteTitre;
+    public void setArticleInfoSanteTitre(String articleInfoSanteTitre) {
+        this.articleInfoSanteTitre = articleInfoSanteTitre;
     }
 
-    public String getInfoSanteDate() {
-        return InfoSanteDate;
+    public String getArticleInfoSanteDate() {
+        return articleInfoSanteDate;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setArticleInfoSanteDate(String articleInfoSanteDate) {
+        this.articleInfoSanteDate = articleInfoSanteDate;
     }
 
-    public void setInfoSanteTitre(String InfoSanteTitre) {
-        this.InfoSanteTitre = InfoSanteTitre;
+    public String getArticleInfoSanteLienImage() {
+        return articleInfoSanteLienImage;
     }
 
-    public void setInfoSanteDate(String InfoSanteDate) {
-        this.InfoSanteDate = InfoSanteDate;
+    public void setArticleInfoSanteLienImage(String articleInfoSanteLienImage) {
+        this.articleInfoSanteLienImage = articleInfoSanteLienImage;
     }
 
+    public String getArticleLien() {
+        return articleLien;
+    }
+
+    public void setArticleLien(String articleLien) {
+        this.articleLien = articleLien;
+    }
+
+    public String getArticleDescription() {
+        return articleDescription;
+    }
+
+    public void setArticleDescription(String articleDescription) {
+        this.articleDescription = articleDescription;
+    }
 }
