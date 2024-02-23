@@ -1,5 +1,6 @@
 package com.example.test;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -26,6 +28,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+
     DonneesPersoFragment donneesPersoFragment = new DonneesPersoFragment();
 
     @Override
@@ -45,17 +48,19 @@ public class MainActivity extends AppCompatActivity {
             MenuInflater inflater = getMenuInflater();
             inflater.inflate(R.menu.monmenu, menu);
 
+
         }
-        else if (Objects.requireNonNull(navaController.getCurrentDestination()).getId() == R.id.navigation_donnee_perso){
+        else if (Objects.requireNonNull(navaController.getCurrentDestination()).getId() == R.id.navigation_donnee_perso) {
             menu.clear();
             MenuInflater inflater = getMenuInflater();
             inflater.inflate(R.menu.menu_donnees_perso, menu);
 
+
         }
         else{
             menu.clear();
-
         }
+
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -67,15 +72,23 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Deconnexion", Toast.LENGTH_SHORT).show();
         }
 
-        if(item.getItemId() == R.id.itGraphDonnee){
-            donneesPersoFragment.afficherRvDonnees(2);
-            donneesPersoFragment.afficherGraphique(1);
-            Toast.makeText(this, "Graphique", Toast.LENGTH_SHORT).show();
-        } else if (item.getItemId() == R.id.itListeDonnee){
-            donneesPersoFragment.afficherGraphique(2);
-            donneesPersoFragment.afficherRvDonnees(1);
-            Toast.makeText(this, "Liste", Toast.LENGTH_SHORT).show();
+        if (item.getItemId() == R.id.itListeDonnee){
+            Toast.makeText(this, "liste", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent();
+            intent.setAction("com.info.test.AffichageDonnee");
+            intent.putExtra("modeAffichage","listeDonnee");
+            sendBroadcast(intent);
+
         }
+        else if (item.getItemId() == R.id.itGraphDonnee){
+            Toast.makeText(this, "Graphique", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent();
+            intent.setAction("com.info.test.AffichageDonnee");
+            intent.putExtra("modeAffichage","graphDonnee");
+            sendBroadcast(intent);
+        }
+
+
         return super.onOptionsItemSelected(item);
     }
 

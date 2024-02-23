@@ -5,10 +5,10 @@
         android:id="@+id/itGraphDonnee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Item" />
+        android:title="graph" />
     <item
         android:id="@+id/itListeDonnee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Item" />
+        android:title="liste" />
 </menu>
