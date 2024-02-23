@@ -88,9 +88,9 @@ public class InfoSanteFragment extends Fragment implements InterfaceInfoSante{
         recyclerViewInfoSante.setHasFixedSize(true);
         recyclerViewInfoSante.setLayoutManager(new LinearLayoutManager(context));
 
-        listeArticlesInfoSante.add(new InfoSante("titre", "02-02-23", "https://media.istockphoto.com/id/1383851086/fr/vectoriel/ic%C3%B4ne-de-ligne-de-battement-de-c%C5%93ur-rouge-moniteur-de-fr%C3%A9quence-du-pouls-sur-fond-blanc.jpg?s=612x612&w=0&k=20&c=s8Nm82KXvUYf4P-yJcHzIbWeuC2-mYgqAacZT_K9Ih4=", "www.google.ca", "Je parle du poul."));
-        listeArticlesInfoSante.add(new InfoSante("titre", "02-02-23", "https://media.istockphoto.com/id/1383851086/fr/vectoriel/ic%C3%B4ne-de-ligne-de-battement-de-c%C5%93ur-rouge-moniteur-de-fr%C3%A9quence-du-pouls-sur-fond-blanc.jpg?s=612x612&w=0&k=20&c=s8Nm82KXvUYf4P-yJcHzIbWeuC2-mYgqAacZT_K9Ih4=", "www.google.ca", "Je parle du poul."));
-        listeArticlesInfoSante.add(new InfoSante("titre", "02-02-23", "https://media.istockphoto.com/id/1383851086/fr/vectoriel/ic%C3%B4ne-de-ligne-de-battement-de-c%C5%93ur-rouge-moniteur-de-fr%C3%A9quence-du-pouls-sur-fond-blanc.jpg?s=612x612&w=0&k=20&c=s8Nm82KXvUYf4P-yJcHzIbWeuC2-mYgqAacZT_K9Ih4=", "www.google.ca", "Je parle du poul."));
+        listeArticlesInfoSante.add(new InfoSante(getString(R.string.titre_card_article1), getString(R.string.date_card_article1), "https://www.docteurclic.com/galerie-photos/image_3191_400.jpg", "www.google.ca", "Je parle du poul."));
+        listeArticlesInfoSante.add(new InfoSante(getString(R.string.titre_card_article2), getString(R.string.date_card_article1), "https://static.tuasaude.com/media/article/hr/yh/saturacao-de-oxigenio_54743_l.webp", "www.google.ca", "Je parle du poul."));
+        listeArticlesInfoSante.add(new InfoSante(getString(R.string.titre_card_article3), getString(R.string.date_card_article1), "https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Information.svg/1024px-Information.svg.png", "www.google.ca", "Je parle du poul."));
 
         adapterInfoSante = new AdapterInfoSante(listeArticlesInfoSante, this);
 

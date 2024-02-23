@@ -7,12 +7,19 @@
     <string name="donnee_perso">Données perso</string>
 
     <!-- Cartes info-santé -->
-    <string name="titre_card_article1">Que représente le pouls?</string>
+    <string name="titre_info_sante">Que voulez-vous savoir?</string>
+    <string name="titre_card_article1">Que représente le poul?</string>
     <string name="titre_card_article2">Que représente la saturation d\'oxygène?</string>
     <string name="titre_card_article3">Que faire en cas d\'urgence?</string>
     <string name="date_card_article1">21 février 2024</string>
     <string name="date_card_article2">21 février 2024</string>
     <string name="date_card_article3">21 février 2024</string>
+    <string name="description_card_article1">21 février 2024</string>
+    <string name="description_card_article2">21 février 2024</string>
+    <string name="description_card_article3">21 février 2024</string>
+    <string name="lien_card_article1">https://fr.wikipedia.org/wiki/Fr%C3%A9quence_cardiaque</string>
+    <string name="lien_card_article2">https://fr.wikipedia.org/wiki/Oxym%C3%A9trie_colorim%C3%A9trique</string>
+    <string name="lien_card_article3">https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Que_faire_en_cas_d%27urgence_%3F</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
