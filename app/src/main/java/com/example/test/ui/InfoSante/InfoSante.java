@@ -2,57 +2,37 @@ package com.example.test.ui.InfoSante;
 
 
 public class InfoSante {
+
+    // Variables.
     String articleInfoSanteTitre;
     String articleInfoSanteDate;
     String articleInfoSanteLienImage;
-    String articleLien;
-    String articleDescription;
+    String articleInfoSanteLien;
+    String articleInfoSanteDescription;
 
-    public InfoSante(String articleInfoSanteTitre, String articleInfoSanteDate, String articleInfoSanteLienImage, String articleLien, String articleDescription) {
+    // Constructeur d'un article Info Santé.
+    public InfoSante(String articleInfoSanteTitre, String articleInfoSanteDate, String articleInfoSanteLienImage, String articleInfoSanteLien, String articleInfoSanteDescription) {
         this.articleInfoSanteTitre = articleInfoSanteTitre;
         this.articleInfoSanteDate = articleInfoSanteDate;
         this.articleInfoSanteLienImage = articleInfoSanteLienImage;
-        this.articleLien = articleLien;
-        this.articleDescription = articleDescription;
+        this.articleInfoSanteLien = articleInfoSanteLien;
+        this.articleInfoSanteDescription = articleInfoSanteDescription;
     }
 
+    // Getters.
     public String getArticleInfoSanteTitre() {
         return articleInfoSanteTitre;
     }
-
-    public void setArticleInfoSanteTitre(String articleInfoSanteTitre) {
-        this.articleInfoSanteTitre = articleInfoSanteTitre;
-    }
-
     public String getArticleInfoSanteDate() {
         return articleInfoSanteDate;
     }
-
-    public void setArticleInfoSanteDate(String articleInfoSanteDate) {
-        this.articleInfoSanteDate = articleInfoSanteDate;
-    }
-
     public String getArticleInfoSanteLienImage() {
         return articleInfoSanteLienImage;
     }
-
-    public void setArticleInfoSanteLienImage(String articleInfoSanteLienImage) {
-        this.articleInfoSanteLienImage = articleInfoSanteLienImage;
+    public String getArticleInfoSanteLien() {
+        return articleInfoSanteLien;
     }
-
-    public String getArticleLien() {
-        return articleLien;
-    }
-
-    public void setArticleLien(String articleLien) {
-        this.articleLien = articleLien;
-    }
-
-    public String getArticleDescription() {
-        return articleDescription;
-    }
-
-    public void setArticleDescription(String articleDescription) {
-        this.articleDescription = articleDescription;
+    public String getArticleInfoSanteDescription() {
+        return articleInfoSanteDescription;
     }
 }

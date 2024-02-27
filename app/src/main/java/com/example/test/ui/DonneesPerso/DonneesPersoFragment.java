@@ -26,6 +26,7 @@ import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
@@ -49,15 +50,20 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     /* ----------------------------------
         VARIABLES GRAPHIQUES
        ----------------------------------  */
-    BarChart chartHistoriqueDonnees;
+    BarChart chartHistoriqueRythmeCardiaque;
+    BarChart chartHistoriqueSaturationOxygene;
 
     ArrayList<BarEntry> historiqueDonneesRythmeCardiaque = new ArrayList<>();
+    ArrayList<BarEntry> historiqueDonneesSaturationOxygene = new ArrayList<>();
 
-    BarDataSet _dataSetRythmeCardiaque;
-    BarData _barDataRythmeCardiaque;
+    BarDataSet dataSetRythmeCardiaque;
+    BarDataSet dataSetSaturationOxygene;
+
+    BarData barDataRythmeCardiaque;
+    BarData barDataSaturationOxygene;
 
     public DonneesPersoFragment() {
-        // Required empty public constructor
+        // Constructeur vide requis.
     }
 
     @Override
@@ -78,7 +84,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         super.onViewCreated(view, savedInstanceState);
 
         // RECHERCHE DU GRAPHIQUE AVEC L'ID ET CRÉATION DU GRAPHIQUE.
-        chartHistoriqueDonnees = view.findViewById(R.id.barChart);
+        chartHistoriqueRythmeCardiaque = view.findViewById(R.id.barChartRythmeCardiaque);
+        chartHistoriqueSaturationOxygene = view.findViewById(R.id.barChartSaturationOxygene);
 
         rvDonneesPerso = view.findViewById(R.id.rvDonnesPerso);
 
@@ -120,15 +127,17 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         createDataSets();
         createBarDatas();
 
-        chartCustomizations();
+        chartCustomizations(chartHistoriqueRythmeCardiaque);
+        chartCustomizations(chartHistoriqueSaturationOxygene);
         setChartDatas();
 
-        chartHistoriqueDonnees.invalidate();
+        chartHistoriqueRythmeCardiaque.invalidate();
     }
 
     private void createData(List<LesDonnees> listeDonnees){
         for (int i = 0; i<7; i++) {
             historiqueDonneesRythmeCardiaque.add(new BarEntry(i, listeDonnees.get(i).getRythmeCardiaque()));
+            historiqueDonneesSaturationOxygene.add(new BarEntry(i, listeDonnees.get(i).getSaturationO2()));
             datesDonnees[i] = listeDonnees.get(i).getDateYMD();
         }
 
@@ -137,13 +146,20 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     }
 
     private void createDataSets(){
-        _dataSetRythmeCardiaque = new BarDataSet(historiqueDonneesRythmeCardiaque, "Rythme Cardiaque");
+        dataSetRythmeCardiaque = new BarDataSet(historiqueDonneesRythmeCardiaque, "Rythme Cardiaque");
+        dataSetSaturationOxygene = new BarDataSet(historiqueDonneesSaturationOxygene, "Saturation d'Oxygène");
 
         // Customize the data sets.
-        _dataSetRythmeCardiaque.setColor(Color.BLUE);
+        dataSetRythmeCardiaque.setColor(Color.RED);
+        dataSetSaturationOxygene.setColor(Color.BLUE);
 
         // Set a custom value formatter to hide the value for the third entry
-        _dataSetRythmeCardiaque.setValueFormatter(new ValueFormatter() {
+        dataSetFormatting(dataSetRythmeCardiaque);
+        dataSetFormatting(dataSetSaturationOxygene);
+    }
+
+    private void dataSetFormatting(DataSet dataSet){
+        dataSet.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
                 // Check if the value is for the third entry
@@ -159,35 +175,37 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     }
 
     private void createBarDatas(){
-        _barDataRythmeCardiaque = new BarData(_dataSetRythmeCardiaque);
+        barDataRythmeCardiaque = new BarData(dataSetRythmeCardiaque);
+        barDataSaturationOxygene = new BarData(dataSetSaturationOxygene);
     }
 
-    private void chartCustomizations(){
+    private void chartCustomizations(BarChart chart){
         // Customize the appearance of the chart.
-        chartHistoriqueDonnees.setDrawGridBackground(false); // Disable grid background
-        chartHistoriqueDonnees.getXAxis().setDrawGridLines(false);
-        chartHistoriqueDonnees.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-        chartHistoriqueDonnees.getAxisLeft().setDrawGridLines(false);
-        chartHistoriqueDonnees.getDescription().setEnabled(false); // Disable description text
-        chartHistoriqueDonnees.getXAxis().setEnabled(true); // Enable x-axis
-        chartHistoriqueDonnees.getAxisLeft().setEnabled(true); // Enable left y-axis
-        chartHistoriqueDonnees.getAxisRight().setEnabled(false); // Disable right y-axis
-        chartHistoriqueDonnees.setTouchEnabled(false);
-        chartHistoriqueDonnees.getAxisLeft().setAxisMinimum(0f);
+        chart.setDrawGridBackground(false); // Disable grid background
+        chart.getXAxis().setDrawGridLines(false);
+        chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        chart.getAxisLeft().setDrawGridLines(false);
+        chart.getDescription().setEnabled(false); // Disable description text
+        chart.getXAxis().setEnabled(true); // Enable x-axis
+        chart.getAxisLeft().setEnabled(true); // Enable left y-axis
+        chart.getAxisRight().setEnabled(false); // Disable right y-axis
+        chart.setTouchEnabled(false);
+        chart.getAxisLeft().setAxisMinimum(0f);
 
         // Modify legend.
-        Legend legend = chartHistoriqueDonnees.getLegend();
+        Legend legend = chart.getLegend();
         legend.setTextColor(Color.BLUE); // Set legend text color
         legend.setTextSize(12f); // Set legend text size
         legend.setForm(Legend.LegendForm.CIRCLE); // Set legend form to circle
 
         // Set fixed X-axis labels
-        XAxis xAxis = chartHistoriqueDonnees.getXAxis();
+        XAxis xAxis = chart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(datesDonnees));
     }
 
     private void setChartDatas(){
-        chartHistoriqueDonnees.setData(_barDataRythmeCardiaque);
+        chartHistoriqueRythmeCardiaque.setData(barDataRythmeCardiaque);
+        chartHistoriqueSaturationOxygene.setData(barDataSaturationOxygene);
     }
 
 
@@ -196,7 +214,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     }
 
     public void afficherGraphique(int visibility){
-        chartHistoriqueDonnees.setVisibility(visibility);
+        chartHistoriqueRythmeCardiaque.setVisibility(visibility);
+        chartHistoriqueSaturationOxygene.setVisibility(visibility);
     }
 
     @Override

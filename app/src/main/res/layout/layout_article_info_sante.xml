@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -17,7 +18,10 @@
             android:id="@+id/tvZoomArticleTitre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/titre_card_article1" />
+            android:padding="25sp"
+            android:text="@string/titre_card_article1"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/ivZoomArticleImage"
@@ -29,12 +33,14 @@
             android:id="@+id/tvZoomArticleDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5sp"
             android:text="Le pouls représente quelque chose de bien utile dans la vie. Par example, le pouls permet de savoir si une personne est en vie ou non. De plus, selon le docteur Patrice Anctil, il est primordiale d'avoir un poul entre 70 et 120. Trop bas ou trop haut peut endommager le corps humain de façon très négative. Pour plus d'informations sur le poul, cliquez sur le lien plus bas." />
 
         <TextView
             android:id="@+id/tvZoomArticleLien"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5sp"
             android:text="www.articlesurlepoul.com" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

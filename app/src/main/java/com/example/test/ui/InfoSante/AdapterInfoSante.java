@@ -19,9 +19,11 @@ import java.util.List;
 
 public class AdapterInfoSante extends RecyclerView.Adapter{
 
+    // Variables.
     List<InfoSante> listeArticlesInfoSante;
     InterfaceInfoSante monInterfaceInfoSante;
 
+    // Constructeur de l'adaptateur sur les Articles.
     public AdapterInfoSante(List<InfoSante> listeArticlesInfoSante, InterfaceInfoSante monInterfaceInfoSante) {
         this.listeArticlesInfoSante = listeArticlesInfoSante;
         this.monInterfaceInfoSante = monInterfaceInfoSante;
@@ -49,17 +51,28 @@ public class AdapterInfoSante extends RecyclerView.Adapter{
         return listeArticlesInfoSante.size();
     }
 
+    // ViewHolder pour la section InfoSanté de notre application.
     public class ViewHolderInfoSante extends RecyclerView.ViewHolder
     {
+        // Variables.
         TextView tvArticleTitre, tvArticleDate;
         ImageView ivArticleImage;
 
+        // Constructeur du ViewHolder.
         public ViewHolderInfoSante(@NonNull View itemView) {
             super(itemView);
 
             tvArticleTitre = itemView.findViewById(R.id.tvTitreInfoSante);
             tvArticleDate = itemView.findViewById(R.id.tvDateInfoSante);
             ivArticleImage = itemView.findViewById(R.id.ivInfoSante);
+
+            // Gestion du clic vers le Zoom de l'article.
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    monInterfaceInfoSante.GestionClicArticle(getLayoutPosition(), listeArticlesInfoSante.get(getLayoutPosition()));
+                }
+            });
         }
     }
 }

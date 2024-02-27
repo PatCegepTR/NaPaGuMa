@@ -14,9 +14,9 @@
     <string name="date_card_article1">21 février 2024</string>
     <string name="date_card_article2">21 février 2024</string>
     <string name="date_card_article3">21 février 2024</string>
-    <string name="description_card_article1">21 février 2024</string>
-    <string name="description_card_article2">21 février 2024</string>
-    <string name="description_card_article3">21 février 2024</string>
+    <string name="description_card_article1">La fréquence cardiaque est le nombre de battements cardiaques à la minute. Ne pas confondre avec le rythme cardiaque ou le pouls. La fréquence cardiaque au repos varie selon l’âge. Un adulte en bonne santé verra sa fréquence se situer entre 50 et 80 pulsations par minute. Théoriquement, la fréquence cardiaque maximale chez une personne est de 220 moins son âge (exemple : 220 – 40 ans = 180). La fréquence cardiaque est aussi a son maximum vers midi. La digestion, la chaleur ou le froid entrainent une augmentation de cette fréquence. De plus, les facteurs de stress influencent la donnée par le biais de trois mécanismes : les mécanismes nerveux, chimique et physique. Pour en savoir plus sur la fréquence cardiaque, cliquez sur le lien ci-dessous.</string>
+    <string name="description_card_article2">L’oxymétrie colorimétrique ou saturation pulsée en oxygène permet de quantifier la saturation en oxygène de l’hémoglobine au niveau des capillaires sanguins. Pour une personne en santé, ce taux est situé entre 95 et 100%. Ce taux diminue chez un fumeur. Si la valeur est a 93% veuillez consulter un médecin immédiatement. Si elle est à 92%, il faut une intervention des urgences médicales. Pour plus d’informations, veuillez consulter le site ci-dessous.</string>
+    <string name="description_card_article3">Si jamais vous avez besoin d’urgence, veuillez faire le 911. Toujours consulter un professionnel pour expliquer vos données, en cas de valeurs suspicieuses. Pour en savoir plus sur quoi faire en situation d’urgence, veuillez consulter le site suivant.</string>
     <string name="lien_card_article1">https://fr.wikipedia.org/wiki/Fr%C3%A9quence_cardiaque</string>
     <string name="lien_card_article2">https://fr.wikipedia.org/wiki/Oxym%C3%A9trie_colorim%C3%A9trique</string>
     <string name="lien_card_article3">https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Que_faire_en_cas_d%27urgence_%3F</string>
