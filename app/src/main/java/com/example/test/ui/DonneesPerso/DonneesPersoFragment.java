@@ -250,13 +250,15 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
 
 
     public void afficherRvDonnees(){
-        chartHistoriqueDonnees.setVisibility(View.GONE);
+        chartHistoriqueRythmeCardiaque.setVisibility(View.GONE);
+        chartHistoriqueSaturationOxygene.setVisibility(View.GONE);
         rvDonneesPerso.setVisibility(View.VISIBLE);
     }
 
     public void afficherGraphique(){
         rvDonneesPerso.setVisibility(View.GONE);
-        chartHistoriqueDonnees.setVisibility(View.VISIBLE);
+        chartHistoriqueRythmeCardiaque.setVisibility(View.VISIBLE);
+        chartHistoriqueSaturationOxygene.setVisibility(View.VISIBLE);
     }
 
     @Override
