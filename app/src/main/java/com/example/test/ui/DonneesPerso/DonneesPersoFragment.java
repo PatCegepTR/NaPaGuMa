@@ -1,8 +1,15 @@
 package com.example.test.ui.DonneesPerso;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -10,7 +17,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.MenuHost;
+import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,6 +44,7 @@ import com.github.mikephil.charting.formatter.ValueFormatter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -40,6 +52,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
+
+
+    ModeAffichageReceiver modeAffichageReceiver;
     private List<LesDonnees> liste;
 
     RecyclerView rvDonneesPerso;
@@ -62,6 +77,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     BarData barDataRythmeCardiaque;
     BarData barDataSaturationOxygene;
 
+
+
     public DonneesPersoFragment() {
         // Constructeur vide requis.
     }
@@ -69,6 +86,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -83,6 +101,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+
         // RECHERCHE DU GRAPHIQUE AVEC L'ID ET CRÉATION DU GRAPHIQUE.
         chartHistoriqueRythmeCardiaque = view.findViewById(R.id.barChartRythmeCardiaque);
         chartHistoriqueSaturationOxygene = view.findViewById(R.id.barChartSaturationOxygene);
@@ -93,6 +113,25 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
 
         liste = new ArrayList<LesDonnees>();
         remplirDonnees();
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        modeAffichageReceiver = new ModeAffichageReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("com.info.test.AffichageDonnee");
+        getActivity().registerReceiver(modeAffichageReceiver, filter);
+
+    }
+
+    @Override
+    public void onStop() {
+        getActivity().unregisterReceiver(modeAffichageReceiver);
+        super.onStop();
+
     }
 
     public void remplirDonnees()
@@ -209,16 +248,43 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     }
 
 
-    public void afficherRvDonnees(int visibility){
-        rvDonneesPerso.setVisibility(visibility);
+
+    public void afficherRvDonnees(){
+        chartHistoriqueDonnees.setVisibility(View.GONE);
+        rvDonneesPerso.setVisibility(View.VISIBLE);
     }
 
-    public void afficherGraphique(int visibility){
-        chartHistoriqueRythmeCardiaque.setVisibility(visibility);
-        chartHistoriqueSaturationOxygene.setVisibility(visibility);
+    public void afficherGraphique(){
+        rvDonneesPerso.setVisibility(View.GONE);
+        chartHistoriqueDonnees.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void gestionClic(int position, LesDonnees donnee) {
+
     }
+
+
+
+    public class ModeAffichageReceiver extends BroadcastReceiver
+    {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String mode = intent.getStringExtra("modeAffichage");
+
+            if (mode.equals("listeDonnee")){
+                afficherRvDonnees();
+            }
+            else if (mode.equals("graphDonnee")){
+                afficherGraphique();
+            }
+            else
+            Toast.makeText(context, "Mode d'affichage", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+
+
 }
