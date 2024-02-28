@@ -14,6 +14,9 @@ public interface InterfaceServeur {
     @GET("/H2024/420616RI/GR01/p_anctil/getDonnees2.php")
     Call<List<LesDonnees>> getDonnees2();
 
+    @GET("/H2024/420616RI/GR01/p_anctil/getDonnees7Jours.php")
+    Call<List<LesDonnees>> getDonneesSeptDerniersJours();
+
     @GET("/H2024/420616RI/GR01/p_anctil/getProfil.php")
     Call<Profil> getProfil();
 

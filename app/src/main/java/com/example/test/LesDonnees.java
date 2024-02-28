@@ -79,7 +79,7 @@ public class LesDonnees {
     }
 
     public String getDateYMD() {
-            return date.substring(2, 10);
+            return date.substring(0, 10);
     }
 
     public void setDate(String date) {

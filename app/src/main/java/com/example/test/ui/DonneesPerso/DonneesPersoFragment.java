@@ -42,8 +42,12 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.zip.Inflater;
 
 import okhttp3.ResponseBody;
@@ -138,7 +142,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     {
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
 
-        Call<List<LesDonnees>> call = serveur.getDonnees2();
+        Call<List<LesDonnees>> call = serveur.getDonneesSeptDerniersJours();
 
         InterfaceAdapter monInterface = this;
 
@@ -171,17 +175,42 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         setChartDatas();
 
         chartHistoriqueRythmeCardiaque.invalidate();
+        chartHistoriqueSaturationOxygene.invalidate();
     }
 
     private void createData(List<LesDonnees> listeDonnees){
-        for (int i = 0; i<7; i++) {
-            historiqueDonneesRythmeCardiaque.add(new BarEntry(i, listeDonnees.get(i).getRythmeCardiaque()));
-            historiqueDonneesSaturationOxygene.add(new BarEntry(i, listeDonnees.get(i).getSaturationO2()));
-            datesDonnees[i] = listeDonnees.get(i).getDateYMD();
+        createDates();
+        List<Integer> indexUtilise = new ArrayList<>();
+        for (int i = 0; i < listeDonnees.size(); i++) {
+           for(int j = 0; j < 7; j++){
+               if(datesDonnees[j] == listeDonnees.get(i).getDateYMD()){
+                   historiqueDonneesRythmeCardiaque.add(new BarEntry(j, listeDonnees.get(i).getRythmeCardiaque()));
+                   historiqueDonneesSaturationOxygene.add(new BarEntry(j, listeDonnees.get(i).getSaturationO2()));
+                   indexUtilise.add(j);
+               }
+               else{
+                   for(int k = 0; k<indexUtilise.size(); k++){
+                       if(indexUtilise.get(k) != j){
+                           historiqueDonneesRythmeCardiaque.add(new BarEntry(i, 0));
+                           historiqueDonneesSaturationOxygene.add(new BarEntry(i, 0));
+                       }
+                   }
+               }
+           }
         }
 
 
 
+    }
+
+    private void createDates(){
+        for(int j = 0; j < 7; j++){
+            Calendar calendrier = Calendar.getInstance();
+            SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            calendrier.add(Calendar.DAY_OF_YEAR, -j);
+
+            datesDonnees[j] = formatDate.format(calendrier.getTime());
+        }
     }
 
     private void createDataSets(){

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ import com.example.test.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -65,7 +68,7 @@ public class InfoSanteFragment extends Fragment implements InterfaceInfoSante{
 
         listeArticlesInfoSante.add(new InfoSante(getString(R.string.titre_card_article1), getString(R.string.date_card_article1), "https://www.docteurclic.com/galerie-photos/image_3191_400.jpg", getString(R.string.lien_card_article1), getString(R.string.description_card_article1)));
         listeArticlesInfoSante.add(new InfoSante(getString(R.string.titre_card_article2), getString(R.string.date_card_article1), "https://static.tuasaude.com/media/article/hr/yh/saturacao-de-oxigenio_54743_l.webp", getString(R.string.lien_card_article2), getString(R.string.description_card_article2)));
-        listeArticlesInfoSante.add(new InfoSante(getString(R.string.titre_card_article3), getString(R.string.date_card_article1), "https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Information.svg/1024px-Information.svg.png", getString(R.string.lien_card_article3), getString(R.string.description_card_article3)));
+        listeArticlesInfoSante.add(new InfoSante(getString(R.string.titre_card_article3), getString(R.string.date_card_article1), "https://www.mobcall.com/images/clicktocall.png", getString(R.string.lien_card_article3), getString(R.string.description_card_article3)));
 
         adapterInfoSante = new AdapterInfoSante(listeArticlesInfoSante, this);
 
@@ -88,6 +91,7 @@ public class InfoSanteFragment extends Fragment implements InterfaceInfoSante{
         tvArticleZoomTitre.setText(article.getArticleInfoSanteTitre());
         tvArticleZoomDescription.setText(article.getArticleInfoSanteDescription());
         tvArticleZoomLien.setText(article.getArticleInfoSanteLien());
+        tvArticleZoomLien.setAutoLinkMask(Linkify.WEB_URLS);
 
         Picasso.get().load(article.getArticleInfoSanteLienImage()).into(ivArticleZoomImageLien);
 

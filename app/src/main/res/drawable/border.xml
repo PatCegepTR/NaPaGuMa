@@ -1,0 +1,10 @@
+<!-- border.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- Border Color -->
+    <stroke
+        android:width="15dp"
+        android:color="#FF0000" /> <!-- Specify the border color here -->
+    <!-- Background Color -->
+    <solid android:color="#FFFFFF" /> <!-- Specify the background color here -->
+</shape>

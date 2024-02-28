@@ -28,9 +28,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="01ffe1" />
-                            <entry key="outputName" value="ic_test_o2" />
-                            <entry key="sourceFile" value="D:\GitHubPatMarNatGui" />
+                            <entry key="outputName" value="ic_saturation_oxygen" />
+                            <entry key="sourceFile" value="C:\Users\1579632\Downloads\oxygen-svgrepo-com.svg" />
                           </map>
                         </option>
                       </PersistentState>
