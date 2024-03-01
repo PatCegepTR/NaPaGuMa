@@ -62,7 +62,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
 
 
     ModeAffichageReceiver modeAffichageReceiver;
-    private List<LesDonnees> liste;
+    private List<LesDonnees> liste = new ArrayList<LesDonnees>();;
 
     RecyclerView rvDonneesPerso;
     AdapterListeDonnee adapter;
@@ -131,8 +131,6 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
 
         liste = new ArrayList<LesDonnees>();
         remplirDonnees();
-
-
     }
 
     @Override
@@ -197,7 +195,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         List<Integer> indexUtilise = new ArrayList<>();
         for (int i = 0; i < listeDonnees.size(); i++) {
            for(int j = 0; j < 7; j++){
-               String dateDonnee = (listeDonnees.get(i).getDateYMD()).substring(0,10);
+               String dateDonnee = listeDonnees.get(i).getDate();
                String date = datesDonnees[j];
                if(date.equals(dateDonnee)){
                    historiqueDonneesRythmeCardiaque.add(new BarEntry(j, listeDonnees.get(i).getRythmeCardiaque()));

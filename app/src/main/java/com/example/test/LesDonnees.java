@@ -19,7 +19,7 @@ public class LesDonnees {
     @SerializedName("saturationO2")
     int saturationO2;
 
-    @SerializedName("date")
+    @SerializedName("datePrise")
     String date;
 
     @SerializedName("idUtilisateur")
@@ -76,10 +76,6 @@ public class LesDonnees {
 
     public String getDate() {
         return date;
-    }
-
-    public String getDateYMD() {
-            return date.substring(0, 10);
     }
 
     public void setDate(String date) {
