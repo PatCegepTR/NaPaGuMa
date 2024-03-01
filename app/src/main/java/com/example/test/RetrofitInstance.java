@@ -15,7 +15,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInstance {
 
-    public static final String Base_URL = "http://cours.cegep3r.info";
+    //public static final String Base_URL = "http://cours.cegep3r.info";
+    public static final String Base_URL = "172.16.87.71";
+
     private static Retrofit retrofit;
 
     public static Retrofit getInstance()
