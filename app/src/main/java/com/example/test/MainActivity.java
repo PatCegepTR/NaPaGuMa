@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (item.getItemId() == R.id.itListeDonnee){
-            Toast.makeText(this, "liste", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent();
             intent.setAction("com.info.test.AffichageDonnee");
             intent.putExtra("modeAffichage","listeDonnee");
@@ -81,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
         else if (item.getItemId() == R.id.itGraphDonnee){
-            Toast.makeText(this, "Graphique", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent();
             intent.setAction("com.info.test.AffichageDonnee");
             intent.putExtra("modeAffichage","graphDonnee");

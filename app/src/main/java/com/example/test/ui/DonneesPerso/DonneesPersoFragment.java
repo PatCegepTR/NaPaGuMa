@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -81,6 +84,9 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     BarData barDataRythmeCardiaque;
     BarData barDataSaturationOxygene;
 
+    TextView tvGraphRCTitre, tvGraphSOTitre, tvGraphRCTemps, tvGraphSOTemps;
+    ImageView ivGraphique, ivListe;
+
 
 
     public DonneesPersoFragment() {
@@ -110,6 +116,14 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         // RECHERCHE DU GRAPHIQUE AVEC L'ID ET CRÉATION DU GRAPHIQUE.
         chartHistoriqueRythmeCardiaque = view.findViewById(R.id.barChartRythmeCardiaque);
         chartHistoriqueSaturationOxygene = view.findViewById(R.id.barChartSaturationOxygene);
+
+        tvGraphRCTitre = view.findViewById(R.id.tvGraphiqueRC);
+        tvGraphSOTitre = view.findViewById(R.id.tvGraphiqueSO);
+        tvGraphRCTemps = view.findViewById(R.id.tvTempsRC);
+        tvGraphSOTemps = view.findViewById(R.id.tvTempsSO);
+
+        ivGraphique = view.findViewById(R.id.ivGraphique);
+        ivListe = view.findViewById(R.id.ivListe);
 
         rvDonneesPerso = view.findViewById(R.id.rvDonnesPerso);
 
@@ -183,33 +197,30 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         List<Integer> indexUtilise = new ArrayList<>();
         for (int i = 0; i < listeDonnees.size(); i++) {
            for(int j = 0; j < 7; j++){
-               if(datesDonnees[j] == listeDonnees.get(i).getDateYMD()){
+               String dateDonnee = (listeDonnees.get(i).getDateYMD()).substring(0,10);
+               String date = datesDonnees[j];
+               if(date.equals(dateDonnee)){
                    historiqueDonneesRythmeCardiaque.add(new BarEntry(j, listeDonnees.get(i).getRythmeCardiaque()));
                    historiqueDonneesSaturationOxygene.add(new BarEntry(j, listeDonnees.get(i).getSaturationO2()));
                    indexUtilise.add(j);
                }
-               else{
-                   for(int k = 0; k<indexUtilise.size(); k++){
-                       if(indexUtilise.get(k) != j){
-                           historiqueDonneesRythmeCardiaque.add(new BarEntry(i, 0));
-                           historiqueDonneesSaturationOxygene.add(new BarEntry(i, 0));
-                       }
-                   }
-               }
            }
         }
-
-
-
     }
 
     private void createDates(){
-        for(int j = 0; j < 7; j++){
+        int index = 0;
+        for(int j = 6; j >= 0; j--){
             Calendar calendrier = Calendar.getInstance();
             SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
             calendrier.add(Calendar.DAY_OF_YEAR, -j);
 
-            datesDonnees[j] = formatDate.format(calendrier.getTime());
+            datesDonnees[index] = formatDate.format(calendrier.getTime());
+
+            historiqueDonneesRythmeCardiaque.add(new BarEntry(index, 0));
+            historiqueDonneesSaturationOxygene.add(new BarEntry(index, 0));
+
+            index++;
         }
     }
 
@@ -218,8 +229,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         dataSetSaturationOxygene = new BarDataSet(historiqueDonneesSaturationOxygene, "Saturation d'Oxygène");
 
         // Customize the data sets.
-        dataSetRythmeCardiaque.setColor(Color.RED);
-        dataSetSaturationOxygene.setColor(Color.BLUE);
+        dataSetRythmeCardiaque.setColor(Color.rgb(169, 33, 33));
+        dataSetSaturationOxygene.setColor(Color.rgb(33, 169, 169));
 
         // Set a custom value formatter to hide the value for the third entry
         dataSetFormatting(dataSetRythmeCardiaque);
@@ -260,11 +271,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         chart.setTouchEnabled(false);
         chart.getAxisLeft().setAxisMinimum(0f);
 
-        // Modify legend.
-        Legend legend = chart.getLegend();
-        legend.setTextColor(Color.BLUE); // Set legend text color
-        legend.setTextSize(12f); // Set legend text size
-        legend.setForm(Legend.LegendForm.CIRCLE); // Set legend form to circle
+        chart.getLegend().setEnabled(false);
 
         // Set fixed X-axis labels
         XAxis xAxis = chart.getXAxis();
@@ -281,6 +288,12 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     public void afficherRvDonnees(){
         chartHistoriqueRythmeCardiaque.setVisibility(View.GONE);
         chartHistoriqueSaturationOxygene.setVisibility(View.GONE);
+        tvGraphRCTitre.setVisibility(View.GONE);
+        tvGraphSOTitre.setVisibility(View.GONE);
+        tvGraphRCTemps.setVisibility(View.GONE);
+        tvGraphSOTemps.setVisibility(View.GONE);
+        ivGraphique.setVisibility(View.GONE);
+        ivListe.setVisibility(View.VISIBLE);
         rvDonneesPerso.setVisibility(View.VISIBLE);
     }
 
@@ -288,6 +301,12 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
         rvDonneesPerso.setVisibility(View.GONE);
         chartHistoriqueRythmeCardiaque.setVisibility(View.VISIBLE);
         chartHistoriqueSaturationOxygene.setVisibility(View.VISIBLE);
+        tvGraphRCTitre.setVisibility(View.VISIBLE);
+        tvGraphSOTitre.setVisibility(View.VISIBLE);
+        tvGraphRCTemps.setVisibility(View.VISIBLE);
+        tvGraphSOTemps.setVisibility(View.VISIBLE);
+        ivGraphique.setVisibility(View.VISIBLE);
+        ivListe.setVisibility(View.GONE);
     }
 
     @Override
@@ -310,8 +329,6 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
             else if (mode.equals("graphDonnee")){
                 afficherGraphique();
             }
-            else
-            Toast.makeText(context, "Mode d'affichage", Toast.LENGTH_SHORT).show();
         }
     }
 

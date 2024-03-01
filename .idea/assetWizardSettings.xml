@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../../../ProgramData/AndroidStudioSDK/icons/material/materialicons/water_drop/baseline_water_drop_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../../../ProgramData/AndroidStudioSDK/icons/material/materialicons/list_alt/baseline_list_alt_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,9 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="assetSourceType" value="FILE" />
-                            <entry key="color" value="01ffe1" />
-                            <entry key="outputName" value="ic_saturation_oxygen" />
+                            <entry key="color" value="a92121" />
+                            <entry key="outputName" value="ic_liste" />
                             <entry key="sourceFile" value="C:\Users\1579632\Downloads\oxygen-svgrepo-com.svg" />
                           </map>
                         </option>
