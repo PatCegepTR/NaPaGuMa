@@ -9,10 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.test.InterfaceAdapter;
-import com.example.test.LesDonnees;
 import com.example.test.R;
-import com.example.test.ui.DonneesPerso.AdapterListeDonnee;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

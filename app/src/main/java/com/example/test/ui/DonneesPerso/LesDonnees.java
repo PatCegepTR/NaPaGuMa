@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.ui.DonneesPerso;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -22,6 +22,9 @@ public class LesDonnees {
     @SerializedName("datePrise")
     String date;
 
+    @SerializedName("heurePrise")
+    String heure;
+
     @SerializedName("idUtilisateur")
     int idUtilisateur;
 
@@ -33,14 +36,14 @@ public class LesDonnees {
         this.idUtilisateur = idUtilisateur;
     }
 
-
-
-   /* public LesDonnees(int id, int rythmeCardiaque, int saturationO2, Date date) {
+    public LesDonnees(int id, int rythmeCardiaque, int saturationO2, String date, int idUtilisateur, String heure) {
         this.id = id;
         this.rythmeCardiaque = rythmeCardiaque;
         this.saturationO2 = saturationO2;
         this.date = date;
-    }*/
+        this.idUtilisateur = idUtilisateur;
+        this.heure = heure;
+    }
 
     public int getId() {
         return id;
@@ -81,4 +84,13 @@ public class LesDonnees {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public String getHeure() {
+        return heure;
+    }
+
+    public void setHeure(String heure) {
+        this.heure = heure;
+    }
 }
+

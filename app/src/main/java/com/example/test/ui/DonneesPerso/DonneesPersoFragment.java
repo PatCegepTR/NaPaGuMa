@@ -1,41 +1,29 @@
 package com.example.test.ui.DonneesPerso;
 
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.MenuHost;
-import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.test.InterfaceAdapter;
 import com.example.test.InterfaceServeur;
-import com.example.test.ui.DonneesPerso.AdapterListeDonnee;
-import com.example.test.LesDonnees;
 import com.example.test.R;
 import com.example.test.RetrofitInstance;
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -44,21 +32,17 @@ import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.zip.Inflater;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
+public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPerso {
 
 
     ModeAffichageReceiver modeAffichageReceiver;
@@ -68,6 +52,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     AdapterListeDonnee adapter;
 
     String[] datesDonnees = new String[7];
+
+    AlertDialog adZoomJourneeDonneesPerso;
 
     /* ----------------------------------
         VARIABLES GRAPHIQUES
@@ -87,7 +73,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     TextView tvGraphRCTitre, tvGraphSOTitre, tvGraphRCTemps, tvGraphSOTemps;
     ImageView ivGraphique, ivListe;
 
-
+    AdapterZoomDonneesPerso adapterZoomDonneesPerso;
 
     public DonneesPersoFragment() {
         // Constructeur vide requis.
@@ -110,8 +96,6 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
 
         // RECHERCHE DU GRAPHIQUE AVEC L'ID ET CRÉATION DU GRAPHIQUE.
         chartHistoriqueRythmeCardiaque = view.findViewById(R.id.barChartRythmeCardiaque);
@@ -156,14 +140,12 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
 
         Call<List<LesDonnees>> call = serveur.getDonneesSeptDerniersJours();
 
-        InterfaceAdapter monInterface = this;
-
         call.enqueue(new Callback<List<LesDonnees>>() {
             @Override
             public void onResponse(Call<List<LesDonnees>> call, Response<List<LesDonnees>> response) {
                 liste = response.body();
 
-                adapter = new AdapterListeDonnee(liste, monInterface);
+                adapter = new AdapterListeDonnee(liste, DonneesPersoFragment.this);
                 rvDonneesPerso.setAdapter(adapter);
 
                 createData(liste);
@@ -308,15 +290,42 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
     }
 
     @Override
-    public void gestionClic(int position, LesDonnees donnee) {
+    public void gestionClicZoom(int position, LesDonnees donnee) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
+        View zoomDonneesPersoView = getLayoutInflater().inflate(R.layout.layout_zoom_donnees_perso, null);
+        builder.setView(zoomDonneesPersoView);
+
+        RecyclerView rvZoomDonneesPerso = zoomDonneesPersoView.findViewById(R.id.rvZoomDonneesPerso);
+        rvZoomDonneesPerso.setHasFixedSize(true);
+        rvZoomDonneesPerso.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+        InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
+
+        Call<List<LesDonnees>> call = serveur.getDonneesDuJour();
+
+        call.enqueue(new Callback<List<LesDonnees>>() {
+            @Override
+            public void onResponse(Call<List<LesDonnees>> call, Response<List<LesDonnees>> response) {
+                List<LesDonnees> listeDonneesDuJour = response.body();
+
+                adapterZoomDonneesPerso = new AdapterZoomDonneesPerso(listeDonneesDuJour);
+                rvZoomDonneesPerso.setAdapter(adapterZoomDonneesPerso);
+            }
+
+            @Override
+            public void onFailure(Call<List<LesDonnees>> call, Throwable t) {
+                Toast.makeText(getContext(),"Une erreur s'est produite", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        adZoomJourneeDonneesPerso = builder.create();
+        adZoomJourneeDonneesPerso.show();
     }
-
-
 
     public class ModeAffichageReceiver extends BroadcastReceiver
     {
-
         @Override
         public void onReceive(Context context, Intent intent) {
             String mode = intent.getStringExtra("modeAffichage");
@@ -329,8 +338,4 @@ public class DonneesPersoFragment extends Fragment implements InterfaceAdapter {
             }
         }
     }
-
-
-
-
 }

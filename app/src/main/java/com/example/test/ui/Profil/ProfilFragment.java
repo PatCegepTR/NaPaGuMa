@@ -1,13 +1,10 @@
 package com.example.test.ui.Profil;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.test.InterfaceServeur;
-import com.example.test.LesDonnees;
 import com.example.test.R;
 import com.example.test.RetrofitInstance;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;

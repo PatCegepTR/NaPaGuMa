@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.test.InterfaceAdapter;
-import com.example.test.LesDonnees;
 import com.example.test.R;
 
 import java.util.List;
@@ -18,12 +17,12 @@ import java.util.List;
 public class AdapterListeDonnee extends RecyclerView.Adapter {
 
     List<LesDonnees> listeDonnees;
-    InterfaceAdapter monInterface;
+    InterfaceDonneesPerso monInterfaceDonneesPerso;
 
-    public AdapterListeDonnee(List<LesDonnees> liste, InterfaceAdapter unInterface )
+    public AdapterListeDonnee(List<LesDonnees> liste, InterfaceDonneesPerso monInterfaceDonneesPerso )
     {
         listeDonnees = liste;
-        monInterface = unInterface;
+        this.monInterfaceDonneesPerso = monInterfaceDonneesPerso;
     }
 
     @NonNull
@@ -54,6 +53,13 @@ public class AdapterListeDonnee extends RecyclerView.Adapter {
 
             tvCardiaque = itemView.findViewById(R.id.tvCardiaque);
             tvO2 = itemView.findViewById(R.id.tvO2);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    monInterfaceDonneesPerso.gestionClicZoom(getLayoutPosition(), listeDonnees.get(getLayoutPosition()));
+                }
+            });
         }
     }
 }
