@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">
+        oxycardio
+    </string>
+    <string name="info">
+        Information
+    </string>
+    <string name="prise">
+        Datansammlung
+    </string>
+    <string name="statistique">
+        Statistik
+    </string>
+    <string name="profil">
+        Profil
+    </string>
+    <string name="donnee_perso">
+        Meine Daten
+    </string>
+
+    <!-- Section historique de données -->
+    <string name="titre_graphique_rc">
+        Herzfrequenz
+    </string>
+    <string name="titre_graphique_so">
+        Sauerstoffsättigung
+    </string>
+    <string name="graphique_temps">
+        7 letzten Tage
+    </string>
+    <string name="menu_donnees_graphique">
+        Grafikmodus
+    </string>
+    <string name="menu_donnees_liste">
+        Listenmodus
+    </string>
+
+    <!-- Section info-santé -->
+    <string name="titre_info_sante">
+        Was möchten Sie wissen?
+    </string>
+    <string name="titre_card_article1">
+        Was ist der Puls?
+    </string>
+    <string name="titre_card_article2">
+        Was ist die Sauerstoffsättigung?
+    </string>
+    <string name="titre_card_article3">
+        Was tun im Notfall?
+    </string>
+    <string name="date_card_article1">
+        21. Februar 2024
+    </string>
+    <string name="date_card_article2">
+        21. Februar 2024
+    </string>
+    <string name="date_card_article3">
+        21. Februar 2024
+    </string>
+    <string name="description_card_article1">
+        Die Herzfrequenz ist die Anzahl der Herzschläge pro Minute. Nicht zu verwechseln mit dem Herzrhythmus oder dem Puls. Die Ruheherzfrequenz variiert je nach Alter. Ein gesunder Erwachsener hat eine Frequenz von 50 bis 80 Schlägen pro Minute. Theoretisch beträgt die maximale Herzfrequenz einer Person 220 minus ihr Alter (Beispiel: 220 - 40 Jahre = 180). Die Herzfrequenz ist auch um die Mittagszeit am höchsten. Verdauung, Hitze oder Kälte führen zu einem Anstieg dieser Frequenz. Darüber hinaus beeinflussen Stressfaktoren die Daten über drei Mechanismen: Nerven-, chemische und physikalische Mechanismen. Weitere Informationen zur Herzfrequenz finden Sie unter dem folgenden Link.
+    </string>
+    <string name="description_card_article2">
+        Die farbmetrische Oxymetrie oder die pulsoximetrische Sauerstoffsättigung ermöglicht die Quantifizierung der Sauerstoffsättigung des Hämoglobins in den Blutkapillaren. Bei einer gesunden Person liegt dieser Wert zwischen 95 und 100%. Dieser Wert sinkt bei Rauchern. Wenn der Wert 93% beträgt, konsultieren Sie sofort einen Arzt. Wenn es 92% beträgt, ist ein Eingriff der Notfallmedizin erforderlich. Weitere Informationen finden Sie auf der folgenden Website.
+    </string>
+    <string name="description_card_article3">
+        Wenn Sie jemals in Not sind, rufen Sie bitte 911 an. Konsultieren Sie immer einen Fachmann, um Ihre Daten zu erklären, wenn verdächtige Werte auftreten. Weitere Informationen zu Notfallsituationen finden Sie auf der folgenden Website.
+    </string>
+    <string name="lien_card_article1">
+        https://fr.wikipedia.org/wiki/Fr%C3%A9quence_cardiaque
+    </string>
+    <string name="lien_card_article2">
+        https://fr.wikipedia.org/wiki/Oxym%C3%A9trie_colorim%C3%A9trique
+    </string>
+    <string name="lien_card_article3">
+        https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Que_faire_en_cas_d%27urgence_%3F
+    </string>
+
+    <string name="hello_blank_fragment">
+        Hello weiß Fragment
+    </string>
+</resources>
