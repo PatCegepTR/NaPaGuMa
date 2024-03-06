@@ -15,7 +15,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class AdapterInfoSante extends RecyclerView.Adapter{
-
     // Variables.
     List<InfoSante> listeArticlesInfoSante;
     InterfaceInfoSante monInterfaceInfoSante;

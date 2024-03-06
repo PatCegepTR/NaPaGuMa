@@ -43,21 +43,19 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPerso {
-
-
+    // Variables.
     ModeAffichageReceiver modeAffichageReceiver;
-    private List<LesDonnees> liste = new ArrayList<LesDonnees>();;
 
     RecyclerView rvDonneesPerso;
-    AdapterListeDonnee adapter;
+    AdapterListeDonnee adapterListeDonnee;
+    AdapterZoomDonneesPerso adapterZoomDonneesPerso;
 
+    private List<LesDonnees> listeDonneesPerso = new ArrayList<LesDonnees>();
     String[] datesDonnees = new String[7];
 
-    AlertDialog adZoomJourneeDonneesPerso;
+    TextView tvGraphRCTitre, tvGraphSOTitre, tvGraphRCTemps, tvGraphSOTemps;
+    ImageView ivGraphique, ivListe;
 
-    /* ----------------------------------
-        VARIABLES GRAPHIQUES
-       ----------------------------------  */
     BarChart chartHistoriqueRythmeCardiaque;
     BarChart chartHistoriqueSaturationOxygene;
 
@@ -70,13 +68,11 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
     BarData barDataRythmeCardiaque;
     BarData barDataSaturationOxygene;
 
-    TextView tvGraphRCTitre, tvGraphSOTitre, tvGraphRCTemps, tvGraphSOTemps;
-    ImageView ivGraphique, ivListe;
+    AlertDialog adZoomJourneeDonneesPerso;
 
-    AdapterZoomDonneesPerso adapterZoomDonneesPerso;
-
+    // Constructeur du fragment de notre section Données Personnelles. (Il doit être vide)
     public DonneesPersoFragment() {
-        // Constructeur vide requis.
+
     }
 
     @Override
@@ -88,16 +84,37 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_donnees_perso, container, false);
-
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // RECHERCHE DU GRAPHIQUE AVEC L'ID ET CRÉATION DU GRAPHIQUE.
+        getViews(view);
+        remplirDonnees();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        modeAffichageReceiver = new ModeAffichageReceiver();
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("com.info.test.AffichageDonnee");
+
+        getActivity().registerReceiver(modeAffichageReceiver, filter);
+    }
+
+    @Override
+    public void onStop() {
+        getActivity().unregisterReceiver(modeAffichageReceiver);
+        super.onStop();
+    }
+
+    // Va chercher les éléments du Layout à l'aide de l'ID et les implémentes dans les variables.
+    public void getViews(View view){
         chartHistoriqueRythmeCardiaque = view.findViewById(R.id.barChartRythmeCardiaque);
         chartHistoriqueSaturationOxygene = view.findViewById(R.id.barChartSaturationOxygene);
 
@@ -110,47 +127,26 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         ivListe = view.findViewById(R.id.ivListe);
 
         rvDonneesPerso = view.findViewById(R.id.rvDonnesPerso);
-
+        rvDonneesPerso.setHasFixedSize(true);
         rvDonneesPerso.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        liste = new ArrayList<LesDonnees>();
-        remplirDonnees();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        modeAffichageReceiver = new ModeAffichageReceiver();
-        IntentFilter filter = new IntentFilter();
-        filter.addAction("com.info.test.AffichageDonnee");
-        getActivity().registerReceiver(modeAffichageReceiver, filter);
-
-    }
-
-    @Override
-    public void onStop() {
-        getActivity().unregisterReceiver(modeAffichageReceiver);
-        super.onStop();
-
-    }
-
+    // Va chercher les données et les envoit dans une liste.
     public void remplirDonnees()
     {
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
 
         Call<List<LesDonnees>> call = serveur.getDonneesSeptDerniersJours();
-
         call.enqueue(new Callback<List<LesDonnees>>() {
             @Override
             public void onResponse(Call<List<LesDonnees>> call, Response<List<LesDonnees>> response) {
-                liste = response.body();
+                listeDonneesPerso = response.body();
 
-                adapter = new AdapterListeDonnee(liste, DonneesPersoFragment.this);
-                rvDonneesPerso.setAdapter(adapter);
+                adapterListeDonnee = new AdapterListeDonnee(listeDonneesPerso, DonneesPersoFragment.this);
+                rvDonneesPerso.setAdapter(adapterListeDonnee);
 
-                createData(liste);
+                createData(listeDonneesPerso);
                 makeGraph();
-
             }
 
             @Override
@@ -160,6 +156,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         });
     }
 
+    // Création du graphique et appelle la fonction de modification pour les deux graphiques.
     private void makeGraph(){
         createDataSets();
         createBarDatas();
@@ -168,28 +165,38 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         chartCustomizations(chartHistoriqueSaturationOxygene);
         setChartDatas();
 
+        // On doit invalidate pour que les données soient présente.
         chartHistoriqueRythmeCardiaque.invalidate();
         chartHistoriqueSaturationOxygene.invalidate();
     }
 
+    // Création des données de la liste dans les graphiques appropriés.
     private void createData(List<LesDonnees> listeDonnees){
         createDates();
+
         List<Integer> indexUtilise = new ArrayList<>();
+
         for (int i = 0; i < listeDonnees.size(); i++) {
-           for(int j = 0; j < 7; j++){
+            // On parcours les sept derniers jours et on regarde si les dates correspondent avec la donnée de la liste.
+            for(int j = 0; j < 7; j++){
                String dateDonnee = listeDonnees.get(i).getDate();
                String date = datesDonnees[j];
+
+               // On ajoute les données aux graphiques et on retire la date une fois la liste parcourus.
                if(date.equals(dateDonnee)){
                    historiqueDonneesRythmeCardiaque.add(new BarEntry(j, listeDonnees.get(i).getRythmeCardiaque()));
                    historiqueDonneesSaturationOxygene.add(new BarEntry(j, listeDonnees.get(i).getSaturationO2()));
                    indexUtilise.add(j);
                }
-           }
+            }
         }
     }
 
+    // Création de l'axe X avec les dates des sept derniers jours et on initie les données de la semaine à zéro.
     private void createDates(){
         int index = 0;
+
+        // On part du septième jour jusqu'a aujourd'hui.
         for(int j = 6; j >= 0; j--){
             Calendar calendrier = Calendar.getInstance();
             SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -204,67 +211,65 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         }
     }
 
+    // On créer les Datas Sets des graphiques et on les modifies.
     private void createDataSets(){
         dataSetRythmeCardiaque = new BarDataSet(historiqueDonneesRythmeCardiaque, "Rythme Cardiaque");
         dataSetSaturationOxygene = new BarDataSet(historiqueDonneesSaturationOxygene, "Saturation d'Oxygène");
 
-        // Customize the data sets.
         dataSetRythmeCardiaque.setColor(Color.rgb(169, 33, 33));
         dataSetSaturationOxygene.setColor(Color.rgb(33, 169, 169));
 
-        // Set a custom value formatter to hide the value for the third entry
         dataSetFormatting(dataSetRythmeCardiaque);
         dataSetFormatting(dataSetSaturationOxygene);
     }
 
+    // On formate les Data Sets pour que lorsqu'une valeur est égale à zéro, on n'écrit pas la valeur.
     private void dataSetFormatting(DataSet dataSet){
         dataSet.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
-                // Check if the value is for the third entry
-                if (value == 0) {
-                    // Return an empty string to hide the value
+
+                if (value == 0)
                     return "";
-                } else {
-                    // For other entries, return the default formatted value
+                else
                     return super.getFormattedValue(value);
-                }
             }
         });
     }
 
+    // Création des Bars en fonction des données reçues.
     private void createBarDatas(){
         barDataRythmeCardiaque = new BarData(dataSetRythmeCardiaque);
         barDataSaturationOxygene = new BarData(dataSetSaturationOxygene);
     }
 
+    // Modification des graphiques.
     private void chartCustomizations(BarChart chart){
         // Customize the appearance of the chart.
-        chart.setDrawGridBackground(false); // Disable grid background
+        chart.setDrawGridBackground(false);
         chart.getXAxis().setDrawGridLines(false);
         chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         chart.getAxisLeft().setDrawGridLines(false);
-        chart.getDescription().setEnabled(false); // Disable description text
-        chart.getXAxis().setEnabled(true); // Enable x-axis
-        chart.getAxisLeft().setEnabled(true); // Enable left y-axis
-        chart.getAxisRight().setEnabled(false); // Disable right y-axis
+        chart.getDescription().setEnabled(false);
+        chart.getXAxis().setEnabled(true);
+        chart.getAxisLeft().setEnabled(true);
+        chart.getAxisRight().setEnabled(false);
         chart.setTouchEnabled(false);
         chart.getAxisLeft().setAxisMinimum(0f);
 
         chart.getLegend().setEnabled(false);
 
-        // Set fixed X-axis labels
         XAxis xAxis = chart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(datesDonnees));
     }
 
+    // On insère les Bar de données dans leurs graphiques associés.
     private void setChartDatas(){
         chartHistoriqueRythmeCardiaque.setData(barDataRythmeCardiaque);
         chartHistoriqueSaturationOxygene.setData(barDataSaturationOxygene);
     }
 
-
-
+    // Affichage du fragment en mode Liste.
     public void afficherRvDonnees(){
         chartHistoriqueRythmeCardiaque.setVisibility(View.GONE);
         chartHistoriqueSaturationOxygene.setVisibility(View.GONE);
@@ -277,6 +282,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         rvDonneesPerso.setVisibility(View.VISIBLE);
     }
 
+    // Affichage du fragment en mode Graphique.
     public void afficherGraphique(){
         rvDonneesPerso.setVisibility(View.GONE);
         chartHistoriqueRythmeCardiaque.setVisibility(View.VISIBLE);
@@ -289,6 +295,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         ivListe.setVisibility(View.GONE);
     }
 
+    // Gestion du zoom sur une journée spécifique.
     @Override
     public void gestionClicZoom(int position, LesDonnees donnee) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -324,18 +331,17 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         adZoomJourneeDonneesPerso.show();
     }
 
+    // Gestion du mode d'affichage.
     public class ModeAffichageReceiver extends BroadcastReceiver
     {
         @Override
         public void onReceive(Context context, Intent intent) {
             String mode = intent.getStringExtra("modeAffichage");
 
-            if (mode.equals("listeDonnee")){
+            if (mode.equals("listeDonnee"))
                 afficherRvDonnees();
-            }
-            else if (mode.equals("graphDonnee")){
+            else if (mode.equals("graphDonnee"))
                 afficherGraphique();
-            }
         }
     }
 }

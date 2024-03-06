@@ -2,7 +2,6 @@ package com.example.test.ui.InfoSante;
 
 
 public class InfoSante {
-
     // Variables.
     String articleInfoSanteTitre;
     String articleInfoSanteDate;

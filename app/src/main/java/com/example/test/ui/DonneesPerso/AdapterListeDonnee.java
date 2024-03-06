@@ -15,10 +15,11 @@ import com.example.test.R;
 import java.util.List;
 
 public class AdapterListeDonnee extends RecyclerView.Adapter {
-
+    // Variables.
     List<LesDonnees> listeDonnees;
     InterfaceDonneesPerso monInterfaceDonneesPerso;
 
+    // Constructeur de l'adaptateur sur la liste de données personnelles.
     public AdapterListeDonnee(List<LesDonnees> liste, InterfaceDonneesPerso monInterfaceDonneesPerso )
     {
         listeDonnees = liste;
@@ -45,15 +46,20 @@ public class AdapterListeDonnee extends RecyclerView.Adapter {
         return listeDonnees.size();
     }
 
+    // ViewHolder pour les données personnelles par jour.
     public class MonViewHolder extends RecyclerView.ViewHolder
     {
+        // Variables.
         TextView tvCardiaque, tvO2;
+
+        // Constructeur du ViewHolder.
         public MonViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvCardiaque = itemView.findViewById(R.id.tvCardiaque);
             tvO2 = itemView.findViewById(R.id.tvO2);
 
+            // Gestion du clic qui zoom sur une journée spécifique.
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

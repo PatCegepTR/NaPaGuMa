@@ -13,8 +13,10 @@ import com.example.test.R;
 import java.util.List;
 
 public class AdapterZoomDonneesPerso extends RecyclerView.Adapter {
+    // Variables.
     List<LesDonnees> listeDonneesJour;
 
+    // Constructeur de l'adaptateur des données selon une journée spécifique.
     public AdapterZoomDonneesPerso(List<LesDonnees> listeDonneesJour)
     {
         this.listeDonneesJour = listeDonneesJour;
@@ -41,15 +43,19 @@ public class AdapterZoomDonneesPerso extends RecyclerView.Adapter {
         return listeDonneesJour.size();
     }
 
+    // Supprime une donnée spécifique d'un jour.
     public void supprimerDonnee(int position){
         listeDonneesJour.remove(listeDonneesJour.get(position));
         notifyItemRemoved(position);
     }
 
+    // ViewHolder des données prisent à des heures spécifiques.
     public class MonViewHolder extends RecyclerView.ViewHolder
     {
+        // Variables.
         TextView tvZoomRC, tvZoomSO, tvZoomHeure;
 
+        // Constructeur du ViewHolder.
         public MonViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -57,6 +63,7 @@ public class AdapterZoomDonneesPerso extends RecyclerView.Adapter {
             tvZoomSO = itemView.findViewById(R.id.tvZoomJourneeSO);
             tvZoomHeure = itemView.findViewById(R.id.tvZoomJourneeHeure);
 
+            // Gestion du long clic, qui supprime une donnée.
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {

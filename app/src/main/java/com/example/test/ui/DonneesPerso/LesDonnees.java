@@ -10,24 +10,21 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public class LesDonnees {
+    // Variables.
     @SerializedName("id")
     int id;
-
     @SerializedName("rythmeCardiaque")
     int rythmeCardiaque;
-
     @SerializedName("saturationO2")
     int saturationO2;
-
     @SerializedName("datePrise")
     String date;
-
     @SerializedName("heurePrise")
     String heure;
-
     @SerializedName("idUtilisateur")
     int idUtilisateur;
 
+    // Constructeur qui contient les données prisent à une certaine date.
     public LesDonnees(int id, int rythmeCardiaque, int saturationO2, String date, int idUtilisateur) {
         this.id = id;
         this.rythmeCardiaque = rythmeCardiaque;
@@ -36,6 +33,7 @@ public class LesDonnees {
         this.idUtilisateur = idUtilisateur;
     }
 
+    // Constructeur qui contient les données prisent par heure selon un journée spécifique.
     public LesDonnees(int id, int rythmeCardiaque, int saturationO2, String date, int idUtilisateur, String heure) {
         this.id = id;
         this.rythmeCardiaque = rythmeCardiaque;
@@ -45,28 +43,17 @@ public class LesDonnees {
         this.heure = heure;
     }
 
+    // Getters.
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getRythmeCardiaque() {
         return rythmeCardiaque;
     }
 
-    public void setRythmeCardiaque(int rythmeCardiaque) {
-        this.rythmeCardiaque = rythmeCardiaque;
-    }
-
     public int getSaturationO2() {
         return saturationO2;
-    }
-
-    public void setSaturationO2(int saturationO2) {
-        this.saturationO2 = saturationO2;
     }
 
     public String getRythmeCardiaqueString(){
@@ -81,16 +68,9 @@ public class LesDonnees {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getHeure() {
         return heure;
     }
 
-    public void setHeure(String heure) {
-        this.heure = heure;
-    }
 }
 

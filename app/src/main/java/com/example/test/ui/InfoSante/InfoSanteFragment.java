@@ -25,7 +25,6 @@ import java.util.List;
 
 
 public class InfoSanteFragment extends Fragment implements InterfaceInfoSante{
-
     // Variables.
     RecyclerView recyclerViewInfoSante;
     AdapterInfoSante adapterInfoSante;
@@ -33,9 +32,9 @@ public class InfoSanteFragment extends Fragment implements InterfaceInfoSante{
 
     AlertDialog adArticleZoom;
 
-    // Constructeur du fragment de notre section Info Santé.
+    // Constructeur du fragment de notre section Info Santé. (Il doit être vide)
     public InfoSanteFragment() {
-        // Constructeur vide requis.
+
     }
 
     @Override
@@ -46,7 +45,6 @@ public class InfoSanteFragment extends Fragment implements InterfaceInfoSante{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_info_sante, container, false);
     }
 
