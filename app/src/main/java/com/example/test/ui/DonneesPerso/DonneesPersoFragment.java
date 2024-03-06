@@ -307,10 +307,11 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         rvZoomDonneesPerso.setHasFixedSize(true);
         rvZoomDonneesPerso.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        TextView tvDateJour = zoomDonneesPersoView.findViewById(R.id.tvZoomJourneeTitre);
 
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
 
-        Call<List<LesDonnees>> call = serveur.getDonneesDuJour();
+        Call<List<LesDonnees>> call = serveur.getDonneesDuJour(donnee.getDate());
 
         call.enqueue(new Callback<List<LesDonnees>>() {
             @Override
@@ -319,6 +320,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
 
                 adapterZoomDonneesPerso = new AdapterZoomDonneesPerso(listeDonneesDuJour);
                 rvZoomDonneesPerso.setAdapter(adapterZoomDonneesPerso);
+
+                tvDateJour.setText(donnee.getDate());
             }
 
             @Override

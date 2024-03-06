@@ -6,19 +6,18 @@
         android:icon="@drawable/ic_info_sante"
         android:title="@string/info" />
     <item
-        android:id="@+id/navigation_donnee_perso"
-        android:icon="@drawable/ic_stats_global"
-        android:title="@string/donnee_perso" />
+        android:id="@+id/navigation_statistique"
+        android:icon="@drawable/ic_donnees_perso"
+        android:title="@string/statistique" />
     <item
         android:id="@+id/navigation_prise_de_donnee"
         android:icon="@drawable/ic_prise_donnees"
         android:title="@string/prise" />
 
     <item
-        android:id="@+id/navigation_statistique"
-        android:icon="@drawable/ic_donnees_perso"
-        android:title="@string/statistique" />
-
+        android:id="@+id/navigation_donnee_perso"
+        android:icon="@drawable/ic_stats_global"
+        android:title="@string/donnee_perso" />
     <item
         android:id="@+id/navigation_profil"
         android:icon="@drawable/ic_profil"

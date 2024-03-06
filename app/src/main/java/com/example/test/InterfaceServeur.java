@@ -8,6 +8,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface InterfaceServeur {
 
@@ -20,7 +21,7 @@ public interface InterfaceServeur {
     Call<List<LesDonnees>> getDonneesSeptDerniersJours();
 
     @GET("/getDonneesDuJour.php")
-    Call<List<LesDonnees>> getDonneesDuJour();
+    Call<List<LesDonnees>> getDonneesDuJour(@Query("datePrise") String date);
 
     //@GET("/H2024/420616RI/GR01/p_anctil/getProfil.php")
     @GET("/getProfil.php")

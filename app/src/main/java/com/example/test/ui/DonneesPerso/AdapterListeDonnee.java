@@ -39,6 +39,7 @@ public class AdapterListeDonnee extends RecyclerView.Adapter {
         MonViewHolder monViewHolder = (MonViewHolder) holder;
         monViewHolder.tvCardiaque.setText(listeDonnees.get(position).getRythmeCardiaqueString());
         monViewHolder.tvO2.setText(listeDonnees.get(position).getSaturationO2String());
+        monViewHolder.tvDate.setText(listeDonnees.get(position).getDate());
     }
 
     @Override
@@ -50,7 +51,7 @@ public class AdapterListeDonnee extends RecyclerView.Adapter {
     public class MonViewHolder extends RecyclerView.ViewHolder
     {
         // Variables.
-        TextView tvCardiaque, tvO2;
+        TextView tvCardiaque, tvO2, tvDate;
 
         // Constructeur du ViewHolder.
         public MonViewHolder(@NonNull View itemView) {
@@ -58,6 +59,7 @@ public class AdapterListeDonnee extends RecyclerView.Adapter {
 
             tvCardiaque = itemView.findViewById(R.id.tvCardiaque);
             tvO2 = itemView.findViewById(R.id.tvO2);
+            tvDate = itemView.findViewById(R.id.tvListeCardDate);
 
             // Gestion du clic qui zoom sur une journée spécifique.
             itemView.setOnClickListener(new View.OnClickListener() {
