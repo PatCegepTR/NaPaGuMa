@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.ui.Serveur;
 
 import java.security.cert.CertificateException;
 
