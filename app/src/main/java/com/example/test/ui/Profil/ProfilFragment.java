@@ -13,9 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.test.ui.Serveur.InterfaceServeur;
+import com.example.test.InterfaceServeur;
 import com.example.test.R;
-import com.example.test.ui.Serveur.RetrofitInstance;
+import com.example.test.RetrofitInstance;
 
 import retrofit2.Call;
 import retrofit2.Callback;

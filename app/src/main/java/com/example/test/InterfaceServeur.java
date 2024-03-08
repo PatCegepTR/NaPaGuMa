@@ -1,4 +1,4 @@
-package com.example.test.ui.Serveur;
+package com.example.test;
 
 
 import com.example.test.ui.DonneesPerso.LesDonnees;
