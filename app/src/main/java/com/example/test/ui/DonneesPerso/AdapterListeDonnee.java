@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.test.InterfaceAdapter;
 import com.example.test.R;
 
 import java.util.List;

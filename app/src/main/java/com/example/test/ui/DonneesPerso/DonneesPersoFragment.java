@@ -20,9 +20,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.test.InterfaceServeur;
+import com.example.test.ui.Serveur.InterfaceServeur;
 import com.example.test.R;
-import com.example.test.RetrofitInstance;
+import com.example.test.ui.Serveur.RetrofitInstance;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;

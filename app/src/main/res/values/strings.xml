@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">test</string>
+    <string name="app_name" translatable="false">test</string>
     <string name="info">Informations</string>
     <string name="prise">Prise de donnée</string>
-    <string name="statistique">Statistique</string>
+    <string name="statistique">Statistiques Globales</string>
     <string name="profil">Profil</string>
     <string name="donnee_perso">Mes Données</string>
 
@@ -12,6 +12,15 @@
     <string name="graphique_temps">7 derniers jours</string>
     <string name="menu_donnees_graphique">Mode Graphique</string>
     <string name="menu_donnees_liste">Mode Liste</string>
+
+    <!-- Section statistiques globales -->
+    <string name="derniere_modification">Mise à jour le 08 mars 2024</string>
+    <string name="age_stats">Âge</string>
+    <string name="cible_stats">Cible (BPM)</string>
+    <string name="max_stats">Max (BPM)</string>
+    <string name="so_stats_cible">Cible: 95-99%</string>
+    <string name="bpm">*BPM = Battement Par Minute</string>
+    <string name="description_stats">Vous retrouverez plus bas les mesures cibles en fonction de votre âge. Prendre en considération que la saturation d\'oxygène dans le sang est pour toutes les tranches d\'âge.</string>
 
     <!-- Section info-santé -->
     <string name="titre_info_sante">Que voulez-vous savoir?</string>
@@ -28,6 +37,6 @@
     <string name="lien_card_article2">https://fr.wikipedia.org/wiki/Oxym%C3%A9trie_colorim%C3%A9trique</string>
     <string name="lien_card_article3">https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Que_faire_en_cas_d%27urgence_%3F</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Bonjour fragment vide</string>
 
 </resources>
