@@ -5,10 +5,46 @@
     android:layout_height="match_parent"
     tools:context=".ui.Profil.fragment_login">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/tvConnexion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15sp"
+            android:text="Connexion"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etNomUtilisateur"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_margin="15sp"
+            android:ems="10"
+            android:hint="Nom d'utilisateur"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etMDP"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_margin="15sp"
+            android:ems="10"
+            android:hint="Mot de passe"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btConnexion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="15sp"
+            android:text="Se connecter" />
+
+    </LinearLayout>
 </FrameLayout>
