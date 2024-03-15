@@ -53,7 +53,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
     private List<LesDonnees> listeDonneesPerso = new ArrayList<LesDonnees>();
     String[] datesDonnees = new String[7];
 
-    TextView tvGraphRCTitre, tvGraphSOTitre, tvGraphRCTemps, tvGraphSOTemps;
+    TextView tvGraphRCTitre, tvGraphSOTitre, tvGraphRCTemps, tvGraphSOTemps, tvSeptDerniersJours;
     ImageView ivGraphique, ivListe;
 
     BarChart chartHistoriqueRythmeCardiaque;
@@ -122,6 +122,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         tvGraphSOTitre = view.findViewById(R.id.tvGraphiqueSO);
         tvGraphRCTemps = view.findViewById(R.id.tvTempsRC);
         tvGraphSOTemps = view.findViewById(R.id.tvTempsSO);
+        tvSeptDerniersJours = view.findViewById(R.id.tv7dernierJours);
 
         ivGraphique = view.findViewById(R.id.ivGraphique);
         ivListe = view.findViewById(R.id.ivListe);
@@ -278,6 +279,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         tvGraphRCTemps.setVisibility(View.GONE);
         tvGraphSOTemps.setVisibility(View.GONE);
         ivGraphique.setVisibility(View.GONE);
+        tvSeptDerniersJours.setVisibility(View.VISIBLE);
         ivListe.setVisibility(View.VISIBLE);
         rvDonneesPerso.setVisibility(View.VISIBLE);
     }
@@ -291,6 +293,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         tvGraphSOTitre.setVisibility(View.VISIBLE);
         tvGraphRCTemps.setVisibility(View.VISIBLE);
         tvGraphSOTemps.setVisibility(View.VISIBLE);
+        tvSeptDerniersJours.setVisibility(View.GONE);
         ivGraphique.setVisibility(View.VISIBLE);
         ivListe.setVisibility(View.GONE);
     }

@@ -36,6 +36,16 @@
                 android:visibility="gone" />
 
             <TextView
+                android:id="@+id/tv7dernierJours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15sp"
+                android:text="@string/graphique_temps"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:visibility="gone" />
+
+            <TextView
                 android:id="@+id/tvGraphiqueRC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
