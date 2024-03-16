@@ -8,27 +8,87 @@
     tools:context=".ui.Profil.ProfilFragment">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="321dp"
-        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#FDF6F6"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/ivProfil"
+        <TextView
+            android:id="@+id/tvNomUtilisateur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#A92121"
+            android:padding="10sp"
+            android:text="Dreamy"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivIconeProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10sp"
+                android:src="@tools:sample/avatars" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10sp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvPrenom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guillaume" />
+
+                    <TextView
+                        android:id="@+id/tvNom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5sp"
+                        android:text="Blier" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvCourriel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="guillaume@gmail.com" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btModifierProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            tools:src="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/tvInfoPersoProfil"
-            android:layout_width="235dp"
-            android:layout_height="match_parent"
-            android:background="#12000000"
-            android:text="TextView" />
+            android:layout_gravity="center"
+            android:layout_margin="25sp"
+            android:text="Modifier" />
 
     </LinearLayout>
 
