@@ -2,77 +2,132 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.PriseDeDonnee.PriseDeDonneesFragment" >
+    tools:context=".ui.PriseDeDonnee.PriseDeDonneesFragment">
 
-    <TextView
-        android:id="@+id/tvOxygene"
-        android:layout_width="77dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="125dp"
-        android:shadowColor="#FFFFFF"
-        android:text="000"
-        android:textAlignment="center"
-        android:textColor="#595959"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivSaturationOxygen"
-        app:layout_constraintTop_toBottomOf="@+id/tvRythmeCardiaque" />
-
-    <TextView
-        android:id="@+id/tvInstructionPriseDonnee"
-        android:layout_width="296dp"
-        android:layout_height="168dp"
-        android:layout_marginTop="52dp"
-        android:background="#12000000"
-        android:text="Instruction sur le fonctionnement"
-        android:textColor="#595959"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvOxygene" />
-
-    <ImageView
-        android:id="@+id/ivSaturationOxygen"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="150dp"
-        android:src="@drawable/ic_saturation_oxygen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivRythmeCardiaque" />
-
-    <ImageView
-        android:id="@+id/ivRythmeCardiaque"
-        android:layout_width="85dp"
-        android:layout_height="83dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="150dp"
-        android:src="@drawable/ic_coeur"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_frequence_cardiaque" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvRythmeCardiaque"
-        android:layout_width="77dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="110dp"
-        android:layout_marginEnd="125dp"
-        android:background="#12FFFFFF"
-        android:text="000"
-        android:textAlignment="center"
-        android:textColor="#595959"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivRythmeCardiaque"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivRythmeCardiaque"
+                    android:layout_width="85dp"
+                    android:layout_height="83dp"
+                    android:src="@drawable/ic_coeur"
+                    app:srcCompat="@drawable/ic_frequence_cardiaque" />
+
+                <TextView
+                    android:id="@+id/tvRythmeCardiaque"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15sp"
+                    android:background="#12FFFFFF"
+                    android:gravity="center"
+                    android:text="000"
+                    android:textColor="#595959"
+                    android:textSize="40sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivSaturationOxygen"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/ic_saturation_oxygen" />
+
+                <TextView
+                    android:id="@+id/tvOxygene"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15sp"
+                    android:gravity="center"
+                    android:shadowColor="#FFFFFF"
+                    android:text="000"
+                    android:textColor="#595959"
+                    android:textSize="40sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50sp"
+            android:background="#A92121"
+            android:padding="10sp"
+            android:text="Instructions"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvEtape1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:background="#FDF6F6"
+            android:text="1. Assurez-vous que l'appareil de mesure est connecté."
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvEtape2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:background="#FDF6F6"
+            android:text="2. Place votre doigt sur l'appareil de mesure."
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvEtape3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:background="#FDF6F6"
+            android:text="3. Veuillez attendre quelques secondes."
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvEtape4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:background="#FDF6F6"
+            android:text="4. Cliquez sur le bouton plus bas."
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fbCommencerPrise"
@@ -81,10 +136,10 @@
         android:layout_marginBottom="50dp"
         android:clickable="true"
         android:src="@drawable/ic_commencer"
+        app:backgroundTint="#A92121"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvInstructionPriseDonnee"
-        app:layout_constraintVertical_bias="0.862" />
+        app:tint="@android:color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>
