@@ -48,14 +48,7 @@ public class ProfilFragment extends Fragment implements InterfaceProfil {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ImageView imgProfil = view.findViewById(R.id.ivProfil);
-        tvInfoProfils = view.findViewById(R.id.tvInfoPersoProfil);
-
-        imgProfil.setImageResource(R.drawable.ic_launcher_foreground);
-
-        getProfilById();
-
-
+        //getProfilById();
     }
 
     public void getProfilById(){
