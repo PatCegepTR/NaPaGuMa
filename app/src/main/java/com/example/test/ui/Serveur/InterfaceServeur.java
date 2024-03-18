@@ -31,5 +31,6 @@ public interface InterfaceServeur {
     @GET("/Connexion.php")
     Call<CompteConnexion> connexion(@Query("utilisateur") String utilisateur, @Query("motDePasse") String motDePasse);
 
-
+    @GET("/getAccesBD.php")
+    Call<Boolean> getAccesBD();
 }
