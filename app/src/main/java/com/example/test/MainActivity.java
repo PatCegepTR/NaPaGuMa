@@ -1,14 +1,20 @@
 package com.example.test;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.test.R;
+import com.example.test.ui.DonneesPerso.AdapterListeDonnee;
 import com.example.test.ui.DonneesPerso.DonneesPersoFragment;
+import com.example.test.ui.DonneesPerso.LesDonnees;
+import com.example.test.ui.Serveur.InterfaceServeur;
+import com.example.test.ui.Serveur.RetrofitInstance;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -23,7 +29,12 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.test.databinding.ActivityMainBinding;
 
+import java.util.List;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -97,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        getAccesBD();
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
@@ -115,6 +127,31 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void getAccesBD(){
+        InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
 
+        Call<Boolean> call = serveur.getAccesBD();
+
+        call.enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                boolean accesBD = response.body();
+
+                SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putBoolean("accesBD", accesBD);
+                editor.commit();
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putBoolean("accesBD", false);
+                editor.commit();
+                Toast.makeText(MainActivity.this,"Aucune connexion à la base de données.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 }

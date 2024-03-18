@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.test.MainActivity;
 import com.example.test.ui.Serveur.InterfaceServeur;
 import com.example.test.R;
 import com.example.test.ui.Serveur.RetrofitInstance;
@@ -140,26 +142,32 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
     // Va chercher les données et les envoit dans une liste.
     public void remplirDonnees()
     {
-        InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext());
 
-        Call<List<LesDonnees>> call = serveur.getDonneesSeptDerniersJours();
-        call.enqueue(new Callback<List<LesDonnees>>() {
-            @Override
-            public void onResponse(Call<List<LesDonnees>> call, Response<List<LesDonnees>> response) {
-                listeDonneesPerso = response.body();
+        boolean accesBD = pref.getBoolean("accesBD", false);
 
-                adapterListeDonnee = new AdapterListeDonnee(listeDonneesPerso, DonneesPersoFragment.this);
-                rvDonneesPerso.setAdapter(adapterListeDonnee);
+        if (accesBD){
+            InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
 
-                createData(listeDonneesPerso);
-                makeGraph();
-            }
+            Call<List<LesDonnees>> call = serveur.getDonneesSeptDerniersJours();
+            call.enqueue(new Callback<List<LesDonnees>>() {
+                @Override
+                public void onResponse(Call<List<LesDonnees>> call, Response<List<LesDonnees>> response) {
+                    listeDonneesPerso = response.body();
 
-            @Override
-            public void onFailure(Call<List<LesDonnees>> call, Throwable t) {
-                Toast.makeText(getContext(),"Une erreur s'est produite", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    adapterListeDonnee = new AdapterListeDonnee(listeDonneesPerso, DonneesPersoFragment.this);
+                    rvDonneesPerso.setAdapter(adapterListeDonnee);
+
+                    createData(listeDonneesPerso);
+                    makeGraph();
+                }
+
+                @Override
+                public void onFailure(Call<List<LesDonnees>> call, Throwable t) {
+                    Toast.makeText(getContext(),"Une erreur s'est produite", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     // Création du graphique et appelle la fonction de modification pour les deux graphiques.
