@@ -29,7 +29,8 @@ public interface InterfaceServeur {
     Call<Profil> getProfil();
 
     @GET("/Connexion.php")
-    Call<CompteConnexion> connexion(@Query("utilisateur") String utilisateur, @Query("motDePasse") String motDePasse);
+    Call<CompteConnexion> connexion(@Query("courriel") String courriel,
+                                    @Query("motDePasse") String motDePasse);
 
     @GET("/getAccesBD.php")
     Call<Boolean> getAccesBD();

@@ -79,16 +79,16 @@ public class fragment_login extends Fragment {
 
         appel.enqueue(new Callback<CompteConnexion>() {
             @Override
-            public void onResponse(retrofit2.Call<CompteConnexion> call, Response<CompteConnexion> response) {
-                if(response.isSuccessful()){
-                    CompteConnexion compteConnexion = response.body();
-                    if(compteConnexion.getConnexion() == 1){
-                        NavController navController = NavHostFragment.findNavController(fragment_login.this);
-                        navController.navigate(R.id.action_login_to_accueil);
-                    }
-                    else {
-                        Toast.makeText(fragment_login.this.getContext(), "Erreur de connexion", Toast.LENGTH_SHORT).show();
-                    }
+            public void onResponse(Call<CompteConnexion> call, Response<CompteConnexion> response) {
+
+                CompteConnexion compteConnexion = response.body();
+
+                if(compteConnexion != null){
+                    NavController navController = NavHostFragment.findNavController(fragment_login.this);
+                    navController.navigate(R.id.action_login_to_accueil);
+                }
+                else {
+                    Toast.makeText(fragment_login.this.getContext(), "Erreur de connexion", Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -3,25 +3,28 @@ package com.example.test.ui.Profil;
 import com.google.gson.annotations.SerializedName;
 
 public class CompteConnexion {
-    @SerializedName("utilisateur")
-    private String utilisateur;
+    @SerializedName("courriel")
+    private String courriel;
     @SerializedName("motDePasse")
     private String motDePasse;
+    @SerializedName("type")
+    private String type;
+    @SerializedName("idLangue")
+    private int idLangue;
 
-    int connection = 0;
-
-    public CompteConnexion(String utilisateur, String motDePasse, int connection) {
-        this.utilisateur = utilisateur;
+    public CompteConnexion(String courriel, String motDePasse, String type, int idLangue) {
+        this.courriel = courriel;
         this.motDePasse = motDePasse;
-        this.connection = connection;
+        this.type = type;
+        this.idLangue = idLangue;
     }
 
-    public String getUtilisateur() {
-        return utilisateur;
+    public String getCourriel() {
+        return courriel;
     }
 
-    public void setUtilisateur(String utilisateur) {
-        this.utilisateur = utilisateur;
+    public void setCourriel(String courriel) {
+        this.courriel = courriel;
     }
 
     public String getMotDePasse() {
@@ -32,11 +35,20 @@ public class CompteConnexion {
         this.motDePasse = motDePasse;
     }
 
-    public int getConnexion() {
-        return connection;
+    public String getType() {
+        return type;
     }
 
-    public void setConnexion(int connection) {
-        this.connection = connection;
+    public void setType(String type) {
+        this.type = type;
     }
+
+    public int getIdLangue() {
+        return idLangue;
+    }
+
+    public void setIdLangue(int idLangue) {
+        this.idLangue = idLangue;
+    }
+
 }
