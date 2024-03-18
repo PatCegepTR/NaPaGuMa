@@ -8,7 +8,11 @@
         android:id="@+id/navigation_profil"
         android:name="com.example.test.ui.Profil.ProfilFragment"
         android:label="@string/profil"
-        tools:layout="@layout/fragment_profil" />
+        tools:layout="@layout/fragment_profil" >
+        <action
+            android:id="@+id/action_profil_to_login"
+            app:destination="@id/fragment_login" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_statistique"
         android:name="com.example.test.ui.Statistique.StatistiquesFragment"

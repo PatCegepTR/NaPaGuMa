@@ -77,9 +77,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.itModifier){
-            Toast.makeText(this, "Modification", Toast.LENGTH_SHORT).show();
-        } else if (item.getItemId() == R.id.itDeconnexion){
+        if (item.getItemId() == R.id.itDeconnexion){
+            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+            navController.navigate(R.id.action_profil_to_login);
             Toast.makeText(this, "Deconnexion", Toast.LENGTH_SHORT).show();
         }
 
