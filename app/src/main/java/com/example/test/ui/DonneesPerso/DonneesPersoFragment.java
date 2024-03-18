@@ -96,6 +96,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
 
         getViews(view);
         remplirDonnees();
+
+        getMode();
     }
 
     @Override
@@ -273,6 +275,24 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         chartHistoriqueSaturationOxygene.setData(barDataSaturationOxygene);
     }
 
+    private void getMode(){
+        SharedPreferences pref = getActivity().getPreferences(MODE_PRIVATE);
+
+        boolean modeGraphique = pref.getBoolean("modeGraphique", true);
+
+        if(modeGraphique)
+            afficherGraphique();
+        else
+            afficherRvDonnees();
+    }
+
+    private void changerModePref(boolean modeGraphique){
+        SharedPreferences pref = getActivity().getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("modeGraphique", modeGraphique);
+        editor.commit();
+    }
+
     // Affichage du fragment en mode Liste.
     public void afficherRvDonnees(){
         chartHistoriqueRythmeCardiaque.setVisibility(View.GONE);
@@ -285,6 +305,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         tvSeptDerniersJours.setVisibility(View.VISIBLE);
         ivListe.setVisibility(View.VISIBLE);
         rvDonneesPerso.setVisibility(View.VISIBLE);
+
+        changerModePref(false);
     }
 
     // Affichage du fragment en mode Graphique.
@@ -299,6 +321,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         tvSeptDerniersJours.setVisibility(View.GONE);
         ivGraphique.setVisibility(View.VISIBLE);
         ivListe.setVisibility(View.GONE);
+
+        changerModePref(true);
     }
 
     // Gestion du zoom sur une journée spécifique.
