@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigation_prise_de_donnee">
+    app:startDestination="@id/fragment_login">
     <fragment
         android:id="@+id/navigation_profil"
         android:name="com.example.test.ui.Profil.ProfilFragment"
@@ -29,4 +29,13 @@
         android:name="com.example.test.ui.DonneesPerso.DonneesPersoFragment"
         android:label="@string/donnee_perso"
         tools:layout="@layout/fragment_donnees_perso" />
+    <fragment
+        android:id="@+id/fragment_login"
+        android:name="com.example.test.ui.Profil.fragment_login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_accueil"
+            app:destination="@id/navigation_prise_de_donnee" />
+    </fragment>
 </navigation>

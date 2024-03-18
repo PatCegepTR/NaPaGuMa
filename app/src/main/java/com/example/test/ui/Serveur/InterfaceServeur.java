@@ -2,6 +2,7 @@ package com.example.test.ui.Serveur;
 
 
 import com.example.test.ui.DonneesPerso.LesDonnees;
+import com.example.test.ui.Profil.CompteConnexion;
 import com.example.test.ui.Profil.Profil;
 
 import java.util.List;
@@ -26,5 +27,9 @@ public interface InterfaceServeur {
     //@GET("/H2024/420616RI/GR01/p_anctil/getProfil.php")
     @GET("/getProfil.php")
     Call<Profil> getProfil();
+
+    @GET("/Connexion.php")
+    Call<CompteConnexion> connexion(@Query("utilisateur") String utilisateur, @Query("motDePasse") String motDePasse);
+
 
 }
