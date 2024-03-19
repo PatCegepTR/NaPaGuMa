@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15sp"
-            android:text="Connexion"
+            android:text="@string/connexion"
             android:textSize="34sp"
             android:textStyle="bold" />
 
@@ -26,7 +26,7 @@
             android:layout_height="64dp"
             android:layout_margin="15sp"
             android:ems="10"
-            android:hint="Nom d'utilisateur"
+            android:hint="@string/hint_courriel"
             android:inputType="text" />
 
         <EditText
@@ -35,7 +35,7 @@
             android:layout_height="64dp"
             android:layout_margin="15sp"
             android:ems="10"
-            android:hint="Mot de passe"
+            android:hint="@string/hint_mdp"
             android:inputType="textPassword" />
 
         <Button
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="15sp"
-            android:text="Se connecter" />
+            android:text="@string/connexion" />
 
     </LinearLayout>
 </FrameLayout>

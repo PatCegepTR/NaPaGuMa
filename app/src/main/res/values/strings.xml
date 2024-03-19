@@ -6,6 +6,14 @@
     <string name="profil">Profil</string>
     <string name="donnee_perso">Mes Données</string>
 
+    <!-- Section connexion -->
+    <string name="connexion">Connexion</string>
+    <string name="hint_courriel">Entrez votre courriel</string>
+    <string name="hint_mdp">Entrez votre mot de passe</string>
+
+    <!-- Section prise de données -->
+    <string name="instructions">Instructions</string>
+
     <!-- Section historique de données -->
     <string name="titre_graphique_rc">Fréquence Cardiaque</string>
     <string name="titre_graphique_so">Saturation d\'Oxygène</string>
@@ -37,6 +45,6 @@
     <string name="lien_card_article2">https://fr.wikipedia.org/wiki/Oxym%C3%A9trie_colorim%C3%A9trique</string>
     <string name="lien_card_article3">https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Que_faire_en_cas_d%27urgence_%3F</string>
 
-    <string name="hello_blank_fragment">Bonjour fragment vide</string>
+    <!-- Section profile -->
 
 </resources>
