@@ -1,34 +1,28 @@
 package com.example.test.ui.Profil;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.test.ui.Serveur.InterfaceServeur;
 import com.example.test.R;
-import com.example.test.ui.Serveur.RetrofitInstance;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
+public class ProfilFragment extends Fragment {
 
-public class ProfilFragment extends Fragment implements InterfaceProfil {
-    TextView tvInfoProfils;
-
+    TextView tvPrenom, tvNom, tvDateNaissance, tvCourriel;
+    SharedPreferences pref;
 
     public ProfilFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
@@ -40,7 +34,6 @@ public class ProfilFragment extends Fragment implements InterfaceProfil {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profil, container, false);
 
     }
@@ -48,32 +41,21 @@ public class ProfilFragment extends Fragment implements InterfaceProfil {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //getProfilById();
-    }
+        pref = PreferenceManager.getDefaultSharedPreferences(getContext());
 
-    public void getProfilById(){
-        InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
-        Call<Profil> appel = serveur.getProfil();
+        tvPrenom = view.findViewById(R.id.tvPrenom);
+        tvNom = view.findViewById(R.id.tvNom);
+        tvDateNaissance = view.findViewById(R.id.tvDateNaissance);
+        tvCourriel = view.findViewById(R.id.tvCourriel);
 
-        appel.enqueue(new Callback<Profil>() {
-            @Override
-            public void onResponse(retrofit2.Call<Profil> call, Response<Profil> response) {
-                Profil profil = response.body();
+        String prenom = pref.getString("prenom", "");
+        String nom = pref.getString("nom", "");
+        String dateNaissance = pref.getString("dateNaissance", "");
+        String courriel = pref.getString("courriel", "");
 
-                tvInfoProfils.setText(profil.getPrenom() + " " + profil.getNom() + "\n"
-                        + profil.getCourriel() + "\n" + profil.getDateNaissance());
-            }
-
-            @Override
-            public void onFailure(retrofit2.Call<Profil> call, Throwable t) {
-                Toast.makeText(getContext(), "Une erreur s'est produite", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-
-    @Override
-    public void gestionClic(Profil profil) {
-
+        tvPrenom.setText(prenom);
+        tvNom.setText(nom);
+        tvDateNaissance.setText(dateNaissance);
+        tvCourriel.setText(courriel);
     }
 }

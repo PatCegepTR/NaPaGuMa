@@ -26,7 +26,7 @@ public interface InterfaceServeur {
 
     //@GET("/H2024/420616RI/GR01/p_anctil/getProfil.php")
     @GET("/getProfil.php")
-    Call<Profil> getProfil();
+    Call<Profil> getProfil(@Query("courriel") String courriel);
 
     @GET("/Connexion.php")
     Call<CompteConnexion> connexion(@Query("courriel") String courriel,

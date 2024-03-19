@@ -3,12 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/itModifier"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="modifier"
-        android:visible="true"
-        app:showAsAction="collapseActionView" />
-    <item
         android:id="@+id/itDeconnexion"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="deconnexion"
