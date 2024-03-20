@@ -1,5 +1,6 @@
 package com.example.test.ui.Profil;
 
+import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -11,6 +12,7 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.test.R;
@@ -19,7 +21,10 @@ import com.example.test.R;
 public class ProfilFragment extends Fragment {
 
     TextView tvPrenom, tvNom, tvDateNaissance, tvCourriel;
+    Button btModifierProfile;
     SharedPreferences pref;
+
+    AlertDialog adModifierProfile;
 
     public ProfilFragment() {
 
@@ -47,6 +52,7 @@ public class ProfilFragment extends Fragment {
         tvNom = view.findViewById(R.id.tvNom);
         tvDateNaissance = view.findViewById(R.id.tvDateNaissance);
         tvCourriel = view.findViewById(R.id.tvCourriel);
+        btModifierProfile = view.findViewById(R.id.btModifierProfile);
 
         String prenom = pref.getString("prenom", "");
         String nom = pref.getString("nom", "");
@@ -57,5 +63,18 @@ public class ProfilFragment extends Fragment {
         tvNom.setText(nom);
         tvDateNaissance.setText(dateNaissance);
         tvCourriel.setText(courriel);
+
+        btModifierProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+                View modifierProfileView = getLayoutInflater().inflate(R.layout.layout_modifier_profile, null);
+                builder.setView(modifierProfileView);
+
+                adModifierProfile = builder.create();
+                adModifierProfile.show();
+            }
+        });
     }
 }

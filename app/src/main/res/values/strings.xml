@@ -8,6 +8,7 @@
 
     <!-- Section connexion -->
     <string name="connexion">Connexion</string>
+    <string name="deconnexion">Déconnexion</string>
     <string name="hint_courriel">Entrez votre courriel</string>
     <string name="hint_mdp">Entrez votre mot de passe</string>
 

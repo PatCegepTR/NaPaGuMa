@@ -145,7 +145,7 @@ public class fragment_login extends Fragment {
         });
     }
 
-    private void navAccueil(){
+    public void navAccueil(){
         NavController navController = NavHostFragment.findNavController(fragment_login.this);
         navController.navigate(R.id.action_login_to_accueil);
     }

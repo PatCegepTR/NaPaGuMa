@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.test.R;
+<<<<<<< Updated upstream
 import com.example.test.databinding.FragmentPriseDeDonneesBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.JsonElement;
@@ -29,16 +30,22 @@ import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
+=======
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+>>>>>>> Stashed changes
 
 
 public class PriseDeDonneesFragment extends Fragment {
 
 
     FloatingActionButton priseDonnee;
+<<<<<<< Updated upstream
     Mqtt5Client client;
     TextView tvOxygene;
     TextView tvRythmeCardiaque;
 
+=======
+>>>>>>> Stashed changes
     public PriseDeDonneesFragment() {
         // Required empty public constructor
     }

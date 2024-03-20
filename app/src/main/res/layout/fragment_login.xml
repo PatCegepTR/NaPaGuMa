@@ -27,7 +27,7 @@
             android:layout_margin="15sp"
             android:ems="10"
             android:hint="@string/hint_courriel"
-            android:inputType="text" />
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/etMDP"
