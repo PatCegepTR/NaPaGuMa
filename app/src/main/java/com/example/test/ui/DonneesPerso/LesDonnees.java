@@ -14,9 +14,9 @@ public class LesDonnees {
     @SerializedName("id")
     int id;
     @SerializedName("rythmeCardiaque")
-    int rythmeCardiaque;
+    double rythmeCardiaque;
     @SerializedName("saturationO2")
-    int saturationO2;
+    double saturationO2;
     @SerializedName("datePrise")
     String date;
     @SerializedName("heurePrise")
@@ -25,7 +25,7 @@ public class LesDonnees {
     int idUtilisateur;
 
     // Constructeur qui contient les données prisent à une certaine date.
-    public LesDonnees(int id, int rythmeCardiaque, int saturationO2, String date, int idUtilisateur) {
+    public LesDonnees(int id, double rythmeCardiaque, double saturationO2, String date, int idUtilisateur) {
         this.id = id;
         this.rythmeCardiaque = rythmeCardiaque;
         this.saturationO2 = saturationO2;
@@ -34,7 +34,7 @@ public class LesDonnees {
     }
 
     // Constructeur qui contient les données prisent par heure selon un journée spécifique.
-    public LesDonnees(int id, int rythmeCardiaque, int saturationO2, String date, int idUtilisateur, String heure) {
+    public LesDonnees(int id, double rythmeCardiaque, double saturationO2, String date, int idUtilisateur, String heure) {
         this.id = id;
         this.rythmeCardiaque = rythmeCardiaque;
         this.saturationO2 = saturationO2;
@@ -48,12 +48,20 @@ public class LesDonnees {
         return id;
     }
 
-    public int getRythmeCardiaque() {
+    public double getRythmeCardiaque() {
         return rythmeCardiaque;
     }
 
-    public int getSaturationO2() {
+    public int getRythmeCardiaqueInt() {
+        return (int)rythmeCardiaque;
+    }
+
+    public double getSaturationO2() {
         return saturationO2;
+    }
+
+    public int getSaturationO2Int() {
+        return (int)saturationO2;
     }
 
     public String getRythmeCardiaqueString(){

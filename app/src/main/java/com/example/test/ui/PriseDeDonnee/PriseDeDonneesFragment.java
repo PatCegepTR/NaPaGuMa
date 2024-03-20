@@ -33,6 +33,9 @@ import org.json.JSONObject;
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+
 
 public class PriseDeDonneesFragment extends Fragment {
 

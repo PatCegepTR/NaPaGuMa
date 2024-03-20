@@ -150,6 +150,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
             InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
 
             Call<List<LesDonnees>> call = serveur.getDonneesSeptDerniersJours();
+
             call.enqueue(new Callback<List<LesDonnees>>() {
                 @Override
                 public void onResponse(Call<List<LesDonnees>> call, Response<List<LesDonnees>> response) {
@@ -198,8 +199,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
 
                // On ajoute les données aux graphiques et on retire la date une fois la liste parcourus.
                if(date.equals(dateDonnee)){
-                   historiqueDonneesRythmeCardiaque.add(new BarEntry(j, listeDonnees.get(i).getRythmeCardiaque()));
-                   historiqueDonneesSaturationOxygene.add(new BarEntry(j, listeDonnees.get(i).getSaturationO2()));
+                   historiqueDonneesRythmeCardiaque.add(new BarEntry(j, listeDonnees.get(i).getRythmeCardiaqueInt()));
+                   historiqueDonneesSaturationOxygene.add(new BarEntry(j, listeDonnees.get(i).getSaturationO2Int()));
                    indexUtilise.add(j);
                }
             }

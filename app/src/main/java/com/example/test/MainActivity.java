@@ -13,6 +13,7 @@ import com.example.test.R;
 import com.example.test.ui.DonneesPerso.AdapterListeDonnee;
 import com.example.test.ui.DonneesPerso.DonneesPersoFragment;
 import com.example.test.ui.DonneesPerso.LesDonnees;
+import com.example.test.ui.Profil.fragment_login;
 import com.example.test.ui.Serveur.InterfaceServeur;
 import com.example.test.ui.Serveur.RetrofitInstance;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -78,6 +79,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.itDeconnexion){
+            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = pref.edit();
+
+            editor.putBoolean("connecte", false);
+            editor.commit();
+
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
             navController.navigate(R.id.action_profil_to_login);
             Toast.makeText(this, "Deconnexion", Toast.LENGTH_SHORT).show();
