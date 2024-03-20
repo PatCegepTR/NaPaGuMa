@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
@@ -35,7 +35,7 @@
 
                 <TextView
                     android:id="@+id/tvRythmeCardiaque"
-                    android:layout_width="77dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15sp"
                     android:background="#12FFFFFF"
@@ -48,7 +48,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
@@ -65,7 +65,7 @@
 
                 <TextView
                     android:id="@+id/tvOxygene"
-                    android:layout_width="77dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15sp"
                     android:gravity="center"

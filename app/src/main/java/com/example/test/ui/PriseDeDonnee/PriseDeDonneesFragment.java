@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 import com.example.test.R;
 import com.example.test.databinding.FragmentPriseDeDonneesBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -95,13 +98,26 @@ public class PriseDeDonneesFragment extends Fragment {
                     JsonElement element = new JsonParser().parse(test);
                     JsonObject jsonObject = element.getAsJsonObject();
 
+
                     String rythme = jsonObject.get("rythmeCardiaque").toString();
                     String oxygene = jsonObject.get("saturationO2").toString();
 
-                    //tvOxygene.setText(oxygene);
-                    //tvRythmeCardiaque.setText(rythme);
+                    double rythmeDecimal = Double.parseDouble(rythme);
+                    double oxygeneDecimal = Double.parseDouble(oxygene);
 
-                    Toast.makeText(getContext(),rythme , Toast.LENGTH_SHORT).show();
+
+                    Handler mainHandler = new Handler(Looper.getMainLooper());
+
+                    // Send a task to the MessageQueue of the main thread
+                    mainHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            tvRythmeCardiaque.setText(String.format("%.2f", rythmeDecimal));
+                            tvOxygene.setText(String.format("%.2f", oxygeneDecimal));                            // Code will be executed on the main thread
+                        }
+                    });
+
+
                 })
                 .send()
                 .whenComplete((subAck, throwable) -> {
