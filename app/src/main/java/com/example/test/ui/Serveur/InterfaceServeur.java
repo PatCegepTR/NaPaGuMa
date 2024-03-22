@@ -19,7 +19,7 @@ public interface InterfaceServeur {
 
     //@GET("/H2024/420616RI/GR01/p_anctil/getDonnees7Jours.php")
     @GET("/getDonnees7Jours.php")
-    Call<List<LesDonnees>> getDonneesSeptDerniersJours();
+    Call<List<LesDonnees>> getDonneesSeptDerniersJours(@Query("idUtilisateur") int idUtilisateur);
 
     @GET("/getDonneesDuJour.php")
     Call<List<LesDonnees>> getDonneesDuJour(@Query("datePrise") String date);

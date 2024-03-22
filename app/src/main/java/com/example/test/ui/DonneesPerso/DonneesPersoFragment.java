@@ -149,7 +149,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         if (accesBD){
             InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
 
-            Call<List<LesDonnees>> call = serveur.getDonneesSeptDerniersJours();
+            Call<List<LesDonnees>> call = serveur.getDonneesSeptDerniersJours(pref.getInt("id", 0));
 
             call.enqueue(new Callback<List<LesDonnees>>() {
                 @Override
