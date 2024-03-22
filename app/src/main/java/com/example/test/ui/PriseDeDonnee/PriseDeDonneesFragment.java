@@ -1,5 +1,6 @@
 package com.example.test.ui.PriseDeDonnee;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -84,7 +85,9 @@ public class PriseDeDonneesFragment extends Fragment {
                             Toast.makeText(getContext(), "C'est ici", Toast.LENGTH_SHORT).show();
                         }
                         else {
+                            priseDonnee.setImageResource(R.drawable.ic_sablier);
                             souscrire();
+
                         }
                     });
             }
@@ -117,8 +120,12 @@ public class PriseDeDonneesFragment extends Fragment {
                         public void run() {
                             tvRythmeCardiaque.setText(String.format("%.2f", rythmeDecimal));
                             tvOxygene.setText(String.format("%.2f", oxygeneDecimal));                            // Code will be executed on the main thread
+                            priseDonnee.setImageResource(R.drawable.ic_commencer);
+                            client.toAsync().disconnect();
                         }
                     });
+
+
 
 
                 })
