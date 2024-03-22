@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.test.R;
@@ -71,6 +72,21 @@ public class ProfilFragment extends Fragment {
 
                 View modifierProfileView = getLayoutInflater().inflate(R.layout.layout_modifier_profile, null);
                 builder.setView(modifierProfileView);
+
+                EditText etModificationMDP = modifierProfileView.findViewById(R.id.etModificationMDP);
+                String nouveauMDP = etModificationMDP.getText().toString();
+
+                boolean valide = true;
+
+                if(etModificationMDP.getText().toString().trim().isEmpty()){
+                    valide = false;
+                    etModificationMDP.setError("Entrez un mot de passe valide.");
+                }
+
+                if(valide)
+                {
+
+                }
 
                 adModifierProfile = builder.create();
                 adModifierProfile.show();

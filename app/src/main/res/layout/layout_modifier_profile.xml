@@ -18,24 +18,16 @@
             android:id="@+id/tvModifierProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Vos Informations"
+            android:text="Modification"
             android:textSize="34sp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etPrenom"
+            android:id="@+id/etModificationMDP"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:ems="10"
-            android:hint="Entrez votre prénom"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/etNom"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:ems="10"
-            android:hint="Entrez votre nom"
+            android:hint="Entrez votre mot de passe"
             android:inputType="text" />
 
         <Button
