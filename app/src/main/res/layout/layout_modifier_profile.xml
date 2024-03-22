@@ -38,14 +38,6 @@
             android:hint="Entrez votre nom"
             android:inputType="text" />
 
-        <EditText
-            android:id="@+id/etModifierMDP"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:ems="10"
-            android:hint="Entrez votre mot de passe"
-            android:inputType="textPassword" />
-
         <Button
             android:id="@+id/btSauvegarder"
             android:layout_width="wrap_content"
