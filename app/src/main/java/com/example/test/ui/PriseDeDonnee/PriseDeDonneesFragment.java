@@ -54,7 +54,7 @@ public class PriseDeDonneesFragment extends Fragment {
         super.onCreate(savedInstanceState);
         client = Mqtt5Client.builder()
                 .identifier(UUID.randomUUID().toString())
-                .serverHost("172.16.208.52")
+                .serverHost("172.16.87.71")
                 .serverPort(1883)
                 .build();
     }

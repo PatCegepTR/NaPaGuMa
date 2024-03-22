@@ -338,6 +338,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
     @Override
     public void gestionClicZoom(int position, LesDonnees donnee) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         View zoomDonneesPersoView = getLayoutInflater().inflate(R.layout.layout_zoom_donnees_perso, null);
         builder.setView(zoomDonneesPersoView);
@@ -350,7 +351,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
 
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
 
-        Call<List<LesDonnees>> call = serveur.getDonneesDuJour(donnee.getDate());
+        Call<List<LesDonnees>> call = serveur.getDonneesDuJour(donnee.getDate(), pref.getInt("id", 0));
 
         call.enqueue(new Callback<List<LesDonnees>>() {
             @Override
