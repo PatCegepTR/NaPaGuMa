@@ -104,14 +104,15 @@ public class fragment_login extends Fragment {
                     navAccueil();
                 }
                 else {
-                    setupPreferences(false);
                     Toast.makeText(fragment_login.this.getContext(), "Erreur de connexion", Toast.LENGTH_SHORT).show();
+                    setupPreferences(false);
                 }
             }
 
             @Override
             public void onFailure(retrofit2.Call<CompteConnexion> call, Throwable t) {
-
+                Toast.makeText(fragment_login.this.getContext(), "Le courriel ou le mot de passe est incorrect", Toast.LENGTH_SHORT).show();
+                setupPreferences(false);
             }
         });
     }
