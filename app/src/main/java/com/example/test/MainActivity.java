@@ -2,6 +2,7 @@ package com.example.test;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.monmenu, menu);
         return true;
@@ -54,6 +56,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         NavController navaController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+
+        if (Objects.requireNonNull(navaController.getCurrentDestination()).getId() == R.id.fragment_login){
+            navView.setVisibility(BottomNavigationView.GONE);
+        }
+        else{
+            navView.setVisibility(BottomNavigationView.VISIBLE);
+        }
+
 
         if (Objects.requireNonNull(navaController.getCurrentDestination()).getId() == R.id.navigation_profil){
             menu.clear();
@@ -115,7 +125,10 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         getAccesBD();
+
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
@@ -130,6 +143,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
                 invalidateOptionsMenu();
+                if(navDestination.getId() == R.id.fragment_login){
+
+                }
             }
         });
     }
