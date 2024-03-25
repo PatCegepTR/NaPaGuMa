@@ -1,5 +1,6 @@
 package com.example.test.ui.PriseDeDonnee;
 
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,8 @@ import android.widget.Toast;
 
 import com.example.test.R;
 import com.example.test.databinding.FragmentPriseDeDonneesBinding;
+import com.example.test.ui.Serveur.InterfaceServeur;
+import com.example.test.ui.Serveur.RetrofitInstance;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -36,6 +40,9 @@ import java.util.UUID;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class PriseDeDonneesFragment extends Fragment {
@@ -118,6 +125,9 @@ public class PriseDeDonneesFragment extends Fragment {
                     mainHandler.post(new Runnable() {
                         @Override
                         public void run() {
+                            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext());
+                            int idUtilisateur = pref.getInt("id", 0);
+                            ajouterDonnee(rythmeDecimal, oxygeneDecimal, idUtilisateur);
                             tvRythmeCardiaque.setText(String.format("%.2f", rythmeDecimal));
                             tvOxygene.setText(String.format("%.2f", oxygeneDecimal));                            // Code will be executed on the main thread
                             priseDonnee.setImageResource(R.drawable.ic_commencer);
@@ -137,6 +147,31 @@ public class PriseDeDonneesFragment extends Fragment {
                         Toast.makeText(getContext(), "Souscription réussie", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void ajouterDonnee(double rythmeCardiaque, double saturationO2, int idUtilisateur){
+        InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
+        Call<Boolean> call = serveur.ajouterDonnee(rythmeCardiaque, saturationO2, idUtilisateur);
+        try {
+            call.enqueue(new Callback<Boolean>() {
+                @Override
+                public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                    boolean modifier = response.body();
+
+                    if (modifier)
+                        Toast.makeText(getContext(),"Ajout réussi", Toast.LENGTH_LONG).show();
+                    else
+                        Toast.makeText(getContext(),"Erreur lors de l'ajout.", Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onFailure(Call<Boolean> call, Throwable t) {
+                    Toast.makeText(getContext(),"Erreur de connexion.", Toast.LENGTH_LONG).show();
+                }
+            });
+        }catch (Exception e){
+            Toast.makeText(getContext(),"Un erreur est survenue.", Toast.LENGTH_LONG).show();
+        }
     }
 
 }

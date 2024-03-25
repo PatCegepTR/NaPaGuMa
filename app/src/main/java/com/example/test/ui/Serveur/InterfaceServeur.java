@@ -48,4 +48,9 @@ public interface InterfaceServeur {
 
     @GET("/supprimerDonnee.php")
     Call<Boolean> supprimerDonnee(@Query("idDonnee") int id);
+
+    @GET("/addDonnees.php")
+    Call<Boolean> ajouterDonnee(@Query("rythmeCardiaque") double rythmeCardiaque,
+                                @Query("saturationO2") double saturationO2,
+                                @Query("idUtilisateur") int idUtilisateur);
 }
