@@ -9,8 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.test.R;
+import com.example.test.ui.Serveur.InterfaceServeur;
+import com.example.test.ui.Serveur.RetrofitInstance;
 
 import java.util.List;
+
+import retrofit2.Call;
 
 public class AdapterZoomDonneesPerso extends RecyclerView.Adapter {
     // Variables.
