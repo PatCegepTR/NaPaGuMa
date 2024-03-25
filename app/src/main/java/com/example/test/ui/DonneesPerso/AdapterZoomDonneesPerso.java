@@ -64,6 +64,7 @@ public class AdapterZoomDonneesPerso extends RecyclerView.Adapter {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                boolean supprimer = response.body();
+
             }
 
             @Override

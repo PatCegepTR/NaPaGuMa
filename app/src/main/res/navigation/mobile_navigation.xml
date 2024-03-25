@@ -32,7 +32,11 @@
         android:id="@+id/navigation_donnee_perso"
         android:name="com.example.test.ui.DonneesPerso.DonneesPersoFragment"
         android:label="@string/donnee_perso"
-        tools:layout="@layout/fragment_donnees_perso" />
+        tools:layout="@layout/fragment_donnees_perso" >
+        <action
+            android:id="@+id/action_zoom_to_list"
+            app:destination="@id/navigation_donnee_perso" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_login"
         android:name="com.example.test.ui.Profil.fragment_login"
