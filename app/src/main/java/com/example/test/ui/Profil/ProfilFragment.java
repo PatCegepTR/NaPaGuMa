@@ -80,20 +80,26 @@ public class ProfilFragment extends Fragment {
                 builder.setView(modifierProfileView);
 
                 EditText etModificationMDP = modifierProfileView.findViewById(R.id.etModificationMDP);
-                String nouveauMDP = etModificationMDP.getText().toString();
+                Button btSauvegarder = modifierProfileView.findViewById(R.id.btSauvegarder);
 
-                boolean valide = true;
+                btSauvegarder.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String nouveauMDP = etModificationMDP.getText().toString();
+                        boolean valide = true;
 
-                if(nouveauMDP.trim().isEmpty()){
-                    valide = false;
-                    etModificationMDP.setError("Entrez un mot de passe valide.");
-                }
+                        if(nouveauMDP.trim().isEmpty()){
+                            valide = false;
+                            etModificationMDP.setError("Entrez un mot de passe valide.");
+                        }
 
-                if(valide)
-                {
-                    modifierProfil(nouveauMDP);
-                    adModifierProfile.dismiss();
-                }
+                        if(valide)
+                        {
+                            modifierProfil(nouveauMDP);
+                            adModifierProfile.dismiss();
+                        }
+                    }
+                });
 
                 adModifierProfile = builder.create();
                 adModifierProfile.show();
