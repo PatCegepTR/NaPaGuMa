@@ -1,6 +1,8 @@
 package com.example.test.ui.Serveur;
 
 
+import androidx.annotation.Nullable;
+
 import com.example.test.ui.DonneesPerso.LesDonnees;
 import com.example.test.ui.Profil.CompteConnexion;
 import com.example.test.ui.Profil.Profil;
@@ -39,9 +41,11 @@ public interface InterfaceServeur {
     @GET("/getAccesBD.php")
     Call<Boolean> getAccesBD();
 
-    @POST("/modifProfil.php")
-    @FormUrlEncoded
-    Call<Boolean> modifierProfil(@Field("courriel") String courriel,
-                                 @Field("motDePasse") String motDePasse);
+    @GET("/modifProfil.php")
+    Call<Boolean> modifierProfil(@Query("courriel") String courriel,
+                                  @Query("ancienMotDePasse") String motDePasse,
+                                  @Query("nouveauMotDePasse") String nouveauMotDePasse);
 
+    @GET("/supprimerDonnee.php")
+    Call<Boolean> supprimerDonnee(@Query("idDonnee") int id);
 }

@@ -4,20 +4,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.test.MainActivity;
 import com.example.test.R;
+import com.example.test.ui.Profil.Profil;
+import com.example.test.ui.Profil.ProfilFragment;
 import com.example.test.ui.Serveur.InterfaceServeur;
 import com.example.test.ui.Serveur.RetrofitInstance;
 
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AdapterZoomDonneesPerso extends RecyclerView.Adapter {
     // Variables.
+
+
     List<LesDonnees> listeDonneesJour;
 
     // Constructeur de l'adaptateur des données selon une journée spécifique.
@@ -49,6 +57,20 @@ public class AdapterZoomDonneesPerso extends RecyclerView.Adapter {
 
     // Supprime une donnée spécifique d'un jour.
     public void supprimerDonnee(int position){
+        InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
+        Call<Boolean> call = serveur.supprimerDonnee(listeDonneesJour.get(position).getId());
+
+        call.enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+               boolean supprimer = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+
+            }
+        });
         listeDonneesJour.remove(listeDonneesJour.get(position));
         notifyItemRemoved(position);
     }

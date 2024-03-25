@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.test.R;
 import com.example.test.ui.Serveur.InterfaceServeur;
@@ -79,12 +80,14 @@ public class ProfilFragment extends Fragment {
                 View modifierProfileView = getLayoutInflater().inflate(R.layout.layout_modifier_profile, null);
                 builder.setView(modifierProfileView);
 
+                EditText etMotDePasseActuel = modifierProfileView.findViewById(R.id.etMotDePasseActuel);
                 EditText etModificationMDP = modifierProfileView.findViewById(R.id.etModificationMDP);
                 Button btSauvegarder = modifierProfileView.findViewById(R.id.btSauvegarder);
 
                 btSauvegarder.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        String mDPActuel = etMotDePasseActuel.getText().toString();
                         String nouveauMDP = etModificationMDP.getText().toString();
                         boolean valide = true;
 
@@ -93,9 +96,14 @@ public class ProfilFragment extends Fragment {
                             etModificationMDP.setError("Entrez un mot de passe valide.");
                         }
 
+                        if(mDPActuel.trim().isEmpty()){
+                            valide = false;
+                            etMotDePasseActuel.setError("Entrez votre mot de passe actuel.");
+                        }
+
                         if(valide)
                         {
-                            modifierProfil(nouveauMDP);
+                            modifierProfil(mDPActuel, nouveauMDP);
                             adModifierProfile.dismiss();
                         }
                     }
@@ -107,20 +115,28 @@ public class ProfilFragment extends Fragment {
         });
     }
 
-    private void modifierProfil(String nouveauMotDePasse){
+    private void modifierProfil(String motDePasse, String nouveauMotDePasse){
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
-        Call<Boolean> call = serveur.modifierProfil(pref.getString("courriel", ""), nouveauMotDePasse);
+        Call<Boolean> call = serveur.modifierProfil(pref.getString("courriel", ""), motDePasse, nouveauMotDePasse);
+        try {
+            call.enqueue(new Callback<Boolean>() {
+                @Override
+                public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                    boolean modifier = response.body();
 
-        call.enqueue(new Callback<Boolean>() {
-            @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                boolean modifier = response.body();
-            }
+                    if (modifier)
+                        Toast.makeText(getContext(),"Modification réussi", Toast.LENGTH_LONG).show();
+                    else
+                        Toast.makeText(getContext(),"Erreur de modification.", Toast.LENGTH_LONG).show();
+                }
 
-            @Override
-            public void onFailure(Call<Boolean> call, Throwable t) {
-
-            }
-        });
+                @Override
+                public void onFailure(Call<Boolean> call, Throwable t) {
+                    Toast.makeText(getContext(),"Erreur de connexion.", Toast.LENGTH_LONG).show();
+                }
+            });
+        }catch (Exception e){
+            Toast.makeText(getContext(),"Un erreur est survenu.", Toast.LENGTH_LONG).show();
+        }
     }
 }
