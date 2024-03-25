@@ -5,6 +5,7 @@ import static android.content.Context.MODE_PRIVATE;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -21,10 +22,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.test.MainActivity;
+import com.example.test.ui.Profil.fragment_login;
 import com.example.test.ui.Serveur.InterfaceServeur;
 import com.example.test.R;
 import com.example.test.ui.Serveur.RetrofitInstance;
@@ -372,6 +376,14 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
 
         adZoomJourneeDonneesPerso = builder.create();
         adZoomJourneeDonneesPerso.show();
+
+        adZoomJourneeDonneesPerso.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                NavController navController = NavHostFragment.findNavController(DonneesPersoFragment.this);
+                navController.navigate(R.id.action_zoom_to_list);
+            }
+        });
     }
 
     // Gestion du mode d'affichage.
