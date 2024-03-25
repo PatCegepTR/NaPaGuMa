@@ -42,6 +42,6 @@ public interface InterfaceServeur {
     @POST("/modifProfil.php")
     @FormUrlEncoded
     Call<Boolean> modifierProfil(@Field("courriel") String courriel,
-                                   @Field("motDePasse") String motDePasse);
+                                 @Field("motDePasse") String motDePasse);
 
 }

@@ -17,6 +17,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.test.R;
+import com.example.test.ui.Serveur.InterfaceServeur;
+import com.example.test.ui.Serveur.RetrofitInstance;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ProfilFragment extends Fragment {
@@ -78,18 +84,36 @@ public class ProfilFragment extends Fragment {
 
                 boolean valide = true;
 
-                if(etModificationMDP.getText().toString().trim().isEmpty()){
+                if(nouveauMDP.trim().isEmpty()){
                     valide = false;
                     etModificationMDP.setError("Entrez un mot de passe valide.");
                 }
 
                 if(valide)
                 {
-
+                    modifierProfil(nouveauMDP);
+                    adModifierProfile.dismiss();
                 }
 
                 adModifierProfile = builder.create();
                 adModifierProfile.show();
+            }
+        });
+    }
+
+    private void modifierProfil(String nouveauMotDePasse){
+        InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
+        Call<Boolean> call = serveur.modifierProfil(pref.getString("courriel", ""), nouveauMotDePasse);
+
+        call.enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                boolean modifier = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+
             }
         });
     }
