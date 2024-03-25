@@ -8,7 +8,10 @@ import com.example.test.ui.Profil.Profil;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface InterfaceServeur {
@@ -35,4 +38,10 @@ public interface InterfaceServeur {
 
     @GET("/getAccesBD.php")
     Call<Boolean> getAccesBD();
+
+    @POST("/modifProfil.php")
+    @FormUrlEncoded
+    Call<Boolean> modifierProfil(@Field("courriel") String courriel,
+                                   @Field("motDePasse") String motDePasse);
+
 }
