@@ -78,6 +78,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
     BarData barDataSaturationOxygene;
 
     AlertDialog adZoomJourneeDonneesPerso;
+    SharedPreferences pref;
+    SharedPreferences prefActivity;
 
     // Constructeur du fragment de notre section Données Personnelles. (Il doit être vide)
     public DonneesPersoFragment() {
@@ -141,13 +143,14 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         rvDonneesPerso = view.findViewById(R.id.rvDonnesPerso);
         rvDonneesPerso.setHasFixedSize(true);
         rvDonneesPerso.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        pref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        prefActivity = getActivity().getPreferences(MODE_PRIVATE);
     }
 
     // Va chercher les données et les envoit dans une liste.
     public void remplirDonnees()
     {
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext());
-
         boolean accesBD = pref.getBoolean("accesBD", false);
 
         if (accesBD){
@@ -169,7 +172,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
 
                 @Override
                 public void onFailure(Call<List<LesDonnees>> call, Throwable t) {
-                    Toast.makeText(getContext(),"Une erreur s'est produite", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),R.string.erreur, Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -247,11 +250,10 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         dataSet.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
-
-                if (value == 0)
-                    return "";
-                else
-                    return super.getFormattedValue(value);
+            if (value == 0)
+                return "";
+            else
+                return super.getFormattedValue(value);
             }
         });
     }
@@ -289,9 +291,8 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
         chartHistoriqueSaturationOxygene.setData(barDataSaturationOxygene);
     }
 
+    // Va chercher le mode d'affichage par préférence.
     private void getMode(){
-        SharedPreferences pref = getActivity().getPreferences(MODE_PRIVATE);
-
         boolean modeGraphique = pref.getBoolean("modeGraphique", true);
 
         if(modeGraphique)
@@ -300,11 +301,25 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
             afficherRvDonnees();
     }
 
+    // On enregistre le mode d'affichage par préférence.
     private void changerModePref(boolean modeGraphique){
-        SharedPreferences pref = getActivity().getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
+        SharedPreferences.Editor editor = prefActivity.edit();
         editor.putBoolean("modeGraphique", modeGraphique);
         editor.commit();
+    }
+
+    // Gestion du mode d'affichage.
+    public class ModeAffichageReceiver extends BroadcastReceiver
+    {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String mode = intent.getStringExtra("modeAffichage");
+
+            if (mode.equals("listeDonnee"))
+                afficherRvDonnees();
+            else if (mode.equals("graphDonnee"))
+                afficherGraphique();
+        }
     }
 
     // Affichage du fragment en mode Liste.
@@ -342,18 +357,20 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
     // Gestion du zoom sur une journée spécifique.
     @Override
     public void gestionClicZoom(int position, LesDonnees donnee) {
+        // On part une boite de dialogue.
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         View zoomDonneesPersoView = getLayoutInflater().inflate(R.layout.layout_zoom_donnees_perso, null);
         builder.setView(zoomDonneesPersoView);
 
+        // On va chercher les éléments de cette boite.
         RecyclerView rvZoomDonneesPerso = zoomDonneesPersoView.findViewById(R.id.rvZoomDonneesPerso);
         rvZoomDonneesPerso.setHasFixedSize(true);
         rvZoomDonneesPerso.setLayoutManager(new LinearLayoutManager(getContext()));
 
         TextView tvDateJour = zoomDonneesPersoView.findViewById(R.id.tvZoomJourneeTitre);
 
+        // On fait l'appel au serveur vers la base de données.
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
 
         Call<List<LesDonnees>> call = serveur.getDonneesDuJour(donnee.getDate(), pref.getInt("id", 0));
@@ -371,13 +388,15 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
 
             @Override
             public void onFailure(Call<List<LesDonnees>> call, Throwable t) {
-                Toast.makeText(getContext(),"Une erreur s'est produite", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),R.string.erreur, Toast.LENGTH_SHORT).show();
             }
         });
 
+        // On construit la boite de dialogue.
         adZoomJourneeDonneesPerso = builder.create();
         adZoomJourneeDonneesPerso.show();
 
+        // On met à jour le fragment lorsqu'on détruit la boite de dialogue.
         adZoomJourneeDonneesPerso.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
@@ -385,19 +404,5 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
                 navController.navigate(R.id.action_zoom_to_list);
             }
         });
-    }
-
-    // Gestion du mode d'affichage.
-    public class ModeAffichageReceiver extends BroadcastReceiver
-    {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String mode = intent.getStringExtra("modeAffichage");
-
-            if (mode.equals("listeDonnee"))
-                afficherRvDonnees();
-            else if (mode.equals("graphDonnee"))
-                afficherGraphique();
-        }
     }
 }

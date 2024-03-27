@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">oxycardio</string>
+    <string name="app_name" translatable="false">OxyCardio</string>
     <string name="info">Informations</string>
     <string name="prise">Prise de données</string>
     <string name="statistique">Statistiques Globales</string>
@@ -59,4 +59,12 @@
     <string name="hint_mdp_actuel">Mot de passe actuel</string>
     <string name="hint_mdp_nouveau">Nouveau mot de passe</string>
     <string name="sauvegarder">Sauvegarder</string>
+
+    <!-- Section toasts -->
+    <string name="erreur">Une erreur s'est produite.</string>
+    <string name="erreur_conn">Erreur de connexion.</string>
+    <string name="validation_form">Veuillez remplir tous les champs.</string>
+    <string name="mauvaise_info">Informations invalides.</string>
+    <string name="mdp_actuel_vide">Entrez votre mot de passe actuel.</string>
+    <string name="mdp_nouveau_vide">Entrez un nouveau mot de passe.</string>
 </resources>

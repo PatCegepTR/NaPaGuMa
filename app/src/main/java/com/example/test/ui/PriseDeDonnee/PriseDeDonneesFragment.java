@@ -53,17 +53,14 @@ import retrofit2.Response;
 
 
 public class PriseDeDonneesFragment extends Fragment {
-
-
+    // Variables.
     FloatingActionButton priseDonnee;
     Mqtt5Client client;
     TextView tvOxygene;
     TextView tvRythmeCardiaque;
 
-
-
+    // Constructeur du fragment de notre section Prise de Données. (Il doit être vide)
     public PriseDeDonneesFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -76,11 +73,9 @@ public class PriseDeDonneesFragment extends Fragment {
                 .build();
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_prise_de_donnees, container, false);
     }
 
@@ -88,24 +83,22 @@ public class PriseDeDonneesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // On va chercher les éléments de la View.
         priseDonnee = view.findViewById(R.id.fbCommencerPrise);
         tvRythmeCardiaque = view.findViewById(R.id.tvRythmeCardiaque);
         tvOxygene = view.findViewById(R.id.tvOxygene);
 
-
-
+        // Gestion du clique de la prise de données.
         priseDonnee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 client.toAsync().connect()
                         .whenComplete((connAck, throwable) -> {
                         if (throwable != null) {
-                            Toast.makeText(getContext(), "C'est ici", Toast.LENGTH_SHORT).show();
+
                         }
                         else {
                             priseDonnee.setImageResource(R.drawable.ic_sablier);
-
-
                             souscrire();
                         }
                     });
@@ -113,7 +106,7 @@ public class PriseDeDonneesFragment extends Fragment {
         });
     }
 
-
+    // On souscrit au topic MQTT.
     public void souscrire(){
         client.toAsync().subscribeWith()
                 .topicFilter("CapteurCardiaque")
@@ -158,13 +151,14 @@ public class PriseDeDonneesFragment extends Fragment {
                 .send()
                 .whenComplete((subAck, throwable) -> {
                     if (throwable != null) {
-                        Toast.makeText(getContext(), "Il y a erreur!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), R.string.erreur, Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getContext(), "Souscription réussie", Toast.LENGTH_SHORT).show();
+
                     }
                 });
     }
 
+    // Appel serveur sur l'ajout des données.
     private void ajouterDonnee(double rythmeCardiaque, double saturationO2, int idUtilisateur){
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
         Call<Boolean> call = serveur.ajouterDonnee(rythmeCardiaque, saturationO2, idUtilisateur);
@@ -172,24 +166,20 @@ public class PriseDeDonneesFragment extends Fragment {
             call.enqueue(new Callback<Boolean>() {
                 @Override
                 public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                    boolean modifier = response.body();
+                    boolean ajouter = response.body();
 
-                    if (modifier)
-                        Toast.makeText(getContext(),"Ajout réussi", Toast.LENGTH_LONG).show();
-                    else
-                        Toast.makeText(getContext(),"Erreur lors de l'ajout.", Toast.LENGTH_LONG).show();
+                    if (!ajouter)
+                        Toast.makeText(getContext(),R.string.erreur, Toast.LENGTH_LONG).show();
                 }
 
                 @Override
                 public void onFailure(Call<Boolean> call, Throwable t) {
-                    Toast.makeText(getContext(),"Erreur de connexion.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), R.string.erreur_conn, Toast.LENGTH_LONG).show();
                 }
             });
         }catch (Exception e){
-            Toast.makeText(getContext(),"Un erreur est survenue.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(),R.string.erreur, Toast.LENGTH_LONG).show();
         }
     }
-
-
 
 }

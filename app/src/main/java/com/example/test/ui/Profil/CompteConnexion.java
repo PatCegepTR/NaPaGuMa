@@ -3,6 +3,7 @@ package com.example.test.ui.Profil;
 import com.google.gson.annotations.SerializedName;
 
 public class CompteConnexion {
+    // Variables.
     @SerializedName("courriel")
     private String courriel;
     @SerializedName("motDePasse")
@@ -12,6 +13,7 @@ public class CompteConnexion {
     @SerializedName("idLangue")
     private int idLangue;
 
+    // Constructeur du compte de connexion.
     public CompteConnexion(String courriel, String motDePasse, String type, int idLangue) {
         this.courriel = courriel;
         this.motDePasse = motDePasse;
@@ -19,6 +21,7 @@ public class CompteConnexion {
         this.idLangue = idLangue;
     }
 
+    // Getters et Setters.
     public String getCourriel() {
         return courriel;
     }

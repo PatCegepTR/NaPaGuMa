@@ -27,13 +27,14 @@ import retrofit2.Response;
 
 
 public class ProfilFragment extends Fragment {
-
+    // Variables.
     TextView tvPrenom, tvNom, tvDateNaissance, tvCourriel;
     Button btModifierProfile;
     SharedPreferences pref;
 
     AlertDialog adModifierProfile;
 
+    // Constructeur du fragment de notre section Profil. (Il doit être vide)
     public ProfilFragment() {
 
     }
@@ -56,6 +57,7 @@ public class ProfilFragment extends Fragment {
 
         pref = PreferenceManager.getDefaultSharedPreferences(getContext());
 
+        // On va chercher les éléments de la View.
         tvPrenom = view.findViewById(R.id.tvPrenom);
         tvNom = view.findViewById(R.id.tvNom);
         tvDateNaissance = view.findViewById(R.id.tvDateNaissance);
@@ -72,18 +74,22 @@ public class ProfilFragment extends Fragment {
         tvDateNaissance.setText(dateNaissance);
         tvCourriel.setText(courriel);
 
+        // Gestion du clique de modification de mot de passe.
         btModifierProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // On crée une boite de dialogue.
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
                 View modifierProfileView = getLayoutInflater().inflate(R.layout.layout_modifier_profile, null);
                 builder.setView(modifierProfileView);
 
+                // On va chercher les éléments de la boite.
                 EditText etMotDePasseActuel = modifierProfileView.findViewById(R.id.etMotDePasseActuel);
                 EditText etModificationMDP = modifierProfileView.findViewById(R.id.etModificationMDP);
                 Button btSauvegarder = modifierProfileView.findViewById(R.id.btSauvegarder);
 
+                // Gestion du bouton de sauvegarde.
                 btSauvegarder.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -91,14 +97,15 @@ public class ProfilFragment extends Fragment {
                         String nouveauMDP = etModificationMDP.getText().toString();
                         boolean valide = true;
 
+                        // Validation des champs.
                         if(nouveauMDP.trim().isEmpty()){
                             valide = false;
-                            etModificationMDP.setError("Entrez un mot de passe valide.");
+                            etModificationMDP.setError(getText(R.string.mdp_nouveau_vide));
                         }
 
                         if(mDPActuel.trim().isEmpty()){
                             valide = false;
-                            etMotDePasseActuel.setError("Entrez votre mot de passe actuel.");
+                            etMotDePasseActuel.setError(getText(R.string.mdp_actuel_vide));
                         }
 
                         if(valide)
@@ -109,12 +116,14 @@ public class ProfilFragment extends Fragment {
                     }
                 });
 
+                // On construit la boite de dialogue.
                 adModifierProfile = builder.create();
                 adModifierProfile.show();
             }
         });
     }
 
+    // Appel serveur qui va mettre à jour le mot de passe dans la base de données.
     private void modifierProfil(String motDePasse, String nouveauMotDePasse){
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
         Call<Boolean> call = serveur.modifierProfil(pref.getString("courriel", ""), motDePasse, nouveauMotDePasse);
@@ -124,19 +133,17 @@ public class ProfilFragment extends Fragment {
                 public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                     boolean modifier = response.body();
 
-                    if (modifier)
-                        Toast.makeText(getContext(),"Modification réussi", Toast.LENGTH_LONG).show();
-                    else
-                        Toast.makeText(getContext(),"Erreur de modification.", Toast.LENGTH_LONG).show();
+                    if (!modifier)
+                        Toast.makeText(getContext(), R.string.erreur, Toast.LENGTH_LONG).show();
                 }
 
                 @Override
                 public void onFailure(Call<Boolean> call, Throwable t) {
-                    Toast.makeText(getContext(),"Erreur de connexion.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),R.string.erreur_conn, Toast.LENGTH_LONG).show();
                 }
             });
         }catch (Exception e){
-            Toast.makeText(getContext(),"Un erreur est survenu.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(),R.string.erreur, Toast.LENGTH_LONG).show();
         }
     }
 }

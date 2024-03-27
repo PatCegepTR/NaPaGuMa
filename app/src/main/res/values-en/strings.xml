@@ -44,4 +44,10 @@
     <string name="max_stats">Max (BPM)</string>
     <string name="so_stats_cible">Target: 95-99%</string>
     <string name="bpm">*BPM = Beats Per Minute</string>
+    <string name="erreur">An error has occured.</string>
+    <string name="erreur_conn">Connexion error.</string>
+    <string name="validation_form">Fields must not be empty.</string>
+    <string name="mauvaise_info">Invalid informations</string>
+    <string name="mdp_actuel_vide">Enter your password.</string>
+    <string name="mdp_nouveau_vide">Enter a new password.</string>
 </resources>

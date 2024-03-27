@@ -25,7 +25,6 @@ import retrofit2.Response;
 public class AdapterZoomDonneesPerso extends RecyclerView.Adapter {
     // Variables.
 
-
     List<LesDonnees> listeDonneesJour;
 
     // Constructeur de l'adaptateur des données selon une journée spécifique.
@@ -64,12 +63,10 @@ public class AdapterZoomDonneesPerso extends RecyclerView.Adapter {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                boolean supprimer = response.body();
-
             }
 
             @Override
             public void onFailure(Call<Boolean> call, Throwable t) {
-
             }
         });
         listeDonneesJour.remove(listeDonneesJour.get(position));

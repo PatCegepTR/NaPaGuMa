@@ -18,11 +18,9 @@ import retrofit2.http.Query;
 
 public interface InterfaceServeur {
 
-    //@GET("/H2024/420616RI/GR01/p_anctil/getDonnees2.php")
     @GET("/getDonnees2.php")
     Call<List<LesDonnees>> getDonnees2(@Query("idUtilisateur") int idUtilisateur);
 
-    //@GET("/H2024/420616RI/GR01/p_anctil/getDonnees7Jours.php")
     @GET("/getDonnees7Jours.php")
     Call<List<LesDonnees>> getDonneesSeptDerniersJours(@Query("idUtilisateur") int idUtilisateur);
 
@@ -30,7 +28,6 @@ public interface InterfaceServeur {
     Call<List<LesDonnees>> getDonneesDuJour(@Query("datePrise") String date,
                                             @Query("idUtilisateur") int idUtilisateur);
 
-    //@GET("/H2024/420616RI/GR01/p_anctil/getProfil.php")
     @GET("/getProfil.php")
     Call<Profil> getProfil(@Query("courriel") String courriel);
 

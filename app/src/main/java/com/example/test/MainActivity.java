@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
             navController.navigate(R.id.action_profil_to_login);
-            Toast.makeText(this, "Deconnexion", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.deconnexion, Toast.LENGTH_SHORT).show();
         }
 
         if (item.getItemId() == R.id.itListeDonnee){
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putBoolean("accesBD", false);
                 editor.commit();
-                Toast.makeText(MainActivity.this,"Aucune connexion à la base de données.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,R.string.erreur_conn, Toast.LENGTH_SHORT).show();
             }
         });
     }

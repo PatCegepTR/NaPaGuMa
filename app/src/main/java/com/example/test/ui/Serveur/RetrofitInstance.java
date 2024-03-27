@@ -14,8 +14,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInstance {
-
-    //public static final String Base_URL = "http://cours.cegep3r.info";
     public static final String Base_URL = "http://172.16.87.71";
 
     private static Retrofit retrofit;
@@ -35,7 +33,6 @@ public class RetrofitInstance {
 
     public static OkHttpClient.Builder getUnsafeOkHttpClient() {
         try {
-// Create a trust manager that does not validate certificate chains
             final TrustManager[] trustAllCerts = new TrustManager[]{
                     new X509TrustManager() {
 
@@ -58,11 +55,9 @@ public class RetrofitInstance {
                     }
 
             };
-// Install the all-trusting trust manager
             final SSLContext sslContext = SSLContext.getInstance("SSL");
 
             sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
-// Create an ssl socket factory with our all-trusting manager
             final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
 
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -74,16 +69,11 @@ public class RetrofitInstance {
                 @Override
                 public boolean verify(String hostname, SSLSession session) {
                     return true;
-
                 }
-
             });
             return builder;
-
         } catch (Exception e) {
             throw new RuntimeException(e);
-
         }
-
     }
 }

@@ -28,14 +28,15 @@ import retrofit2.Response;
 
 
 public class fragment_login extends Fragment {
-
-    Button buttonConnexion;
+    // Variables.
+    Button btConnexion;
     EditText etUtilisateur;
     EditText etPasswd;
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
 
+    // Constructeur du fragment de notre section Connexion. (Il doit être vide)
     public fragment_login() {
 
     }
@@ -60,35 +61,38 @@ public class fragment_login extends Fragment {
 
         boolean connecte = pref.getBoolean("connecte", false);
 
+        // On vérifie selon les préférences locales, si la personne est déjà connectée.
         if(connecte)
             navAccueil();
 
-        buttonConnexion = view.findViewById(R.id.btConnexion);
+        // On va chercher les éléments du fragments.
+        btConnexion = view.findViewById(R.id.btConnexion);
         etUtilisateur = view.findViewById(R.id.etNomUtilisateur);
         etPasswd = view.findViewById(R.id.etMDP);
 
-        buttonConnexion.setOnClickListener(new View.OnClickListener() {
+        // Vérification de la connexion.
+        btConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String utilisateur = etUtilisateur.getText().toString();
                 String passwd = etPasswd.getText().toString();
 
+                // Vérification des champps.
                 if(utilisateur.isEmpty() || passwd.isEmpty()){
-                    Toast.makeText(fragment_login.this.getContext(), "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(fragment_login.this.getContext(), R.string.validation_form, Toast.LENGTH_SHORT).show();
                 }
                 else {
                     boolean accesBD = pref.getBoolean("accesBD", false);
                     if(accesBD)
                         getConnexion();
                     else
-                        Toast.makeText(fragment_login.this.getContext(), "Assurez-vous d'avoir une bonne connexion à l'Internet.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(fragment_login.this.getContext(), R.string.erreur_conn, Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
-
-
+    // Appel au serveur selon les champs entrés.
     public void getConnexion(){
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
         Call<CompteConnexion> call = serveur.connexion(etUtilisateur.getText().toString(), etPasswd.getText().toString());
@@ -105,25 +109,27 @@ public class fragment_login extends Fragment {
                     navAccueil();
                 }
                 else {
-                    Toast.makeText(fragment_login.this.getContext(), "Erreur de connexion", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(fragment_login.this.getContext(), R.string.erreur_conn, Toast.LENGTH_SHORT).show();
                     setupPreferences(false);
                 }
             }
 
             @Override
             public void onFailure(retrofit2.Call<CompteConnexion> call, Throwable t) {
-                Toast.makeText(fragment_login.this.getContext(), "Le courriel ou le mot de passe est incorrect", Toast.LENGTH_SHORT).show();
+                Toast.makeText(fragment_login.this.getContext(), R.string.mauvaise_info, Toast.LENGTH_SHORT).show();
                 setupPreferences(false);
             }
         });
     }
 
+    // On entre en préférence que la personne est connecté.
     public void setupPreferences(boolean connecte){
         editor = pref.edit();
         editor.putBoolean("connecte", true);
         editor.commit();
     }
 
+    // Appel au serveur pour retrouver les données du profil et on les enregistre en préférences.
     private void getProfile(){
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
         Call<Profil> call = serveur.getProfil(etUtilisateur.getText().toString());
@@ -142,11 +148,12 @@ public class fragment_login extends Fragment {
 
             @Override
             public void onFailure(Call<Profil> call, Throwable t) {
-                Toast.makeText(fragment_login.this.getContext(), "Erreur de connexion", Toast.LENGTH_SHORT).show();
+                Toast.makeText(fragment_login.this.getContext(), R.string.erreur_conn, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+    // Navigation vers l'accueil.
     public void navAccueil(){
         NavController navController = NavHostFragment.findNavController(fragment_login.this);
         navController.navigate(R.id.action_login_to_accueil);

@@ -15,7 +15,7 @@ import com.example.test.R;
 
 public class StatistiquesFragment extends Fragment {
 
-    // Constructeur vide sur notre Fragment des Statistiques Globales.
+    // Constructeur du fragment de notre section Statistiques Globales. (Il doit être vide)
     public StatistiquesFragment() {
 
     }

@@ -3,7 +3,7 @@ package com.example.test.ui.Profil;
 import com.google.gson.annotations.SerializedName;
 
 public class Profil {
-
+    // Variables.
     @SerializedName("id")
     int id;
 
@@ -19,7 +19,7 @@ public class Profil {
     @SerializedName("courriel")
     String courriel;
 
-
+    // Constructeur du profil.
     public Profil(int id, String nom, String prenom, String dateNaissance, String courriel) {
         this.id = id;
         this.nom = nom;
@@ -28,6 +28,7 @@ public class Profil {
         this.courriel = courriel;
     }
 
+    // Getters et Setters.
     public int getId() {
         return id;
     }
