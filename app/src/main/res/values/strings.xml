@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">oxycardio</string>
     <string name="info">Informations</string>
-    <string name="prise">Prise de donnée</string>
+    <string name="prise">Prise de données</string>
     <string name="statistique">Statistiques Globales</string>
     <string name="profil">Profil</string>
     <string name="donnee_perso">Mes Données</string>
@@ -25,8 +25,8 @@
     <string name="titre_graphique_rc">Fréquence Cardiaque</string>
     <string name="titre_graphique_so">Saturation d\'Oxygène</string>
     <string name="graphique_temps">7 derniers jours</string>
-    <string name="menu_donnees_graphique">Mode Graphique</string>
-    <string name="menu_donnees_liste">Mode Liste</string>
+    <string name="menu_donnees_graphique">Graphique</string>
+    <string name="menu_donnees_liste">Liste</string>
 
     <!-- Section statistiques globales -->
     <string name="derniere_modification">Mise à jour le 08 mars 2024</string>
@@ -34,8 +34,8 @@
     <string name="cible_stats">Cible (BPM)</string>
     <string name="max_stats">Max (BPM)</string>
     <string name="so_stats_cible">Cible: 95-99%</string>
-    <string name="bpm">*BPM = Battement Par Minute</string>
-    <string name="description_stats">Vous retrouverez plus bas les mesures cibles en fonction de votre âge. Prendre en considération que la saturation d\'oxygène dans le sang est pour toutes les tranches d\'âge.</string>
+    <string name="bpm">*BPM = Battements Par Minute</string>
+    <string name="description_stats">Vous retrouverez plus bas les mesures cibles en fonction de votre âge. Prendre en considération que la saturation d\'oxygène dans le sang est pour toutes les tranches d\'âges.</string>
 
     <!-- Section info-santé -->
     <string name="titre_info_sante">Que voulez-vous savoir?</string>
@@ -59,5 +59,4 @@
     <string name="hint_mdp_actuel">Mot de passe actuel</string>
     <string name="hint_mdp_nouveau">Nouveau mot de passe</string>
     <string name="sauvegarder">Sauvegarder</string>
-    <string name="hello_blank_fragment">Bonjour fragment vide</string>
 </resources>
