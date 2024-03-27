@@ -1,5 +1,6 @@
 package com.example.test;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -57,8 +58,11 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         NavController navaController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
 
+
+
         if (Objects.requireNonNull(navaController.getCurrentDestination()).getId() == R.id.fragment_login){
             navView.setVisibility(BottomNavigationView.GONE);
+
         }
         else{
             navView.setVisibility(BottomNavigationView.VISIBLE);
@@ -144,7 +148,10 @@ public class MainActivity extends AppCompatActivity {
             public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
                 invalidateOptionsMenu();
                 if(navDestination.getId() == R.id.fragment_login){
-
+                    getSupportActionBar().hide();
+                }
+                else {
+                    getSupportActionBar().show();
                 }
             }
         });

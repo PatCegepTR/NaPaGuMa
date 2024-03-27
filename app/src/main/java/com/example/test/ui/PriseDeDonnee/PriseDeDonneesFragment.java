@@ -18,10 +18,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.test.MainActivity;
 import com.example.test.R;
+import com.example.test.databinding.ActivityMainBinding;
 import com.example.test.databinding.FragmentPriseDeDonneesBinding;
 import com.example.test.ui.Serveur.InterfaceServeur;
 import com.example.test.ui.Serveur.RetrofitInstance;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -93,6 +96,7 @@ public class PriseDeDonneesFragment extends Fragment {
                         }
                         else {
                             priseDonnee.setImageResource(R.drawable.ic_sablier);
+
                             souscrire();
 
                         }

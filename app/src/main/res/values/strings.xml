@@ -16,7 +16,7 @@
 
     <!-- Section prise de données -->
     <string name="instructions" translatable="false">Instructions</string>
-    <string name="etape1">1. Assurez-vous que l'appareil de mesure est connecté.</string>
+    <string name="etape1">1. Assurez-vous que l\'appareil de mesure est connecté.</string>
     <string name="etape2">2. Cliquez sur le bouton plus bas.</string>
     <string name="etape3">3. Mettre le doigt sur la puce.</string>
     <string name="etape4">4. Attendre les résultats.</string>
