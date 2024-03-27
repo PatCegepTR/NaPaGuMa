@@ -15,6 +15,7 @@ import com.example.test.R;
 import com.example.test.ui.DonneesPerso.AdapterListeDonnee;
 import com.example.test.ui.DonneesPerso.DonneesPersoFragment;
 import com.example.test.ui.DonneesPerso.LesDonnees;
+import com.example.test.ui.PriseDeDonnee.PriseDeDonneesFragment;
 import com.example.test.ui.Profil.fragment_login;
 import com.example.test.ui.Serveur.InterfaceServeur;
 import com.example.test.ui.Serveur.RetrofitInstance;
@@ -24,6 +25,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuProvider;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -125,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        PriseDeDonneesFragment fragment = new PriseDeDonneesFragment();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -153,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     getSupportActionBar().show();
                 }
+
             }
         });
     }

@@ -7,6 +7,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -39,6 +42,7 @@ import com.hivemq.client.mqtt.mqtt5.Mqtt5Client;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 import java.util.UUID;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -55,6 +59,8 @@ public class PriseDeDonneesFragment extends Fragment {
     Mqtt5Client client;
     TextView tvOxygene;
     TextView tvRythmeCardiaque;
+
+
 
     public PriseDeDonneesFragment() {
         // Required empty public constructor
@@ -86,6 +92,8 @@ public class PriseDeDonneesFragment extends Fragment {
         tvRythmeCardiaque = view.findViewById(R.id.tvRythmeCardiaque);
         tvOxygene = view.findViewById(R.id.tvOxygene);
 
+
+
         priseDonnee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,8 +105,8 @@ public class PriseDeDonneesFragment extends Fragment {
                         else {
                             priseDonnee.setImageResource(R.drawable.ic_sablier);
 
-                            souscrire();
 
+                            souscrire();
                         }
                     });
             }
@@ -129,17 +137,21 @@ public class PriseDeDonneesFragment extends Fragment {
                     mainHandler.post(new Runnable() {
                         @Override
                         public void run() {
-                            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext());
-                            int idUtilisateur = pref.getInt("id", 0);
-                            ajouterDonnee(rythmeDecimal, oxygeneDecimal, idUtilisateur);
-                            tvRythmeCardiaque.setText(String.format("%.2f", rythmeDecimal));
-                            tvOxygene.setText(String.format("%.2f", oxygeneDecimal));                            // Code will be executed on the main thread
-                            priseDonnee.setImageResource(R.drawable.ic_commencer);
-                            client.toAsync().disconnect();
+                            try {
+                                SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext());
+                                int idUtilisateur = pref.getInt("id", 0);
+                                ajouterDonnee(rythmeDecimal, oxygeneDecimal, idUtilisateur);
+                                tvRythmeCardiaque.setText(String.format("%.2f", rythmeDecimal));
+                                tvOxygene.setText(String.format("%.2f", oxygeneDecimal));                            // Code will be executed on the main thread
+                                priseDonnee.setImageResource(R.drawable.ic_commencer);
+                                client.toAsync().disconnect();
+                            }
+                            catch (Exception e){
+                                client.toAsync().disconnect();
+                            }
+
                         }
                     });
-
-
 
 
                 })
@@ -177,5 +189,7 @@ public class PriseDeDonneesFragment extends Fragment {
             Toast.makeText(getContext(),"Un erreur est survenue.", Toast.LENGTH_LONG).show();
         }
     }
+
+
 
 }
