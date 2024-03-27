@@ -24,7 +24,7 @@
             android:layout_gravity="center"
             android:background="#A92121"
             android:padding="10sp"
-            android:text="Informations personnels"
+            android:text="@string/profile_info"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
@@ -102,7 +102,7 @@
             android:layout_gravity="center"
             android:layout_margin="25sp"
             android:onClick="gestionClicModifier"
-            android:text="Modifier" />
+            android:text="@string/profile_modif" />
 
     </LinearLayout>
 

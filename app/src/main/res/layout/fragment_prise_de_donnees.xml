@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:background="#FDF6F6"
-            android:text="1. Assurez-vous que l'appareil de mesure est connecté."
+            android:text="@string/etape1"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:background="#FDF6F6"
-            android:text="2. Place votre doigt sur l'appareil de mesure."
+            android:text="@string/etape2"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -114,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:background="#FDF6F6"
-            android:text="3. Veuillez attendre quelques secondes."
+            android:text="@string/etape3"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:background="#FDF6F6"
-            android:text="4. Cliquez sur le bouton plus bas."
+            android:text="@string/etape4"
             android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>

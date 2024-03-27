@@ -18,7 +18,7 @@
             android:id="@+id/tvModifierProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Modification"
+            android:text="@string/modif"
             android:textSize="34sp"
             android:textStyle="bold" />
 
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:ems="10"
-            android:hint="Entrez votre mot de passe actuel"
+            android:hint="@string/hint_mdp_actuel"
             android:inputType="textPassword" />
 
         <EditText
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:ems="10"
-            android:hint="Entrez votre mot de passe"
+            android:hint="@string/hint_mdp_nouveau"
             android:inputType="text" />
 
         <Button
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="20sp"
-            android:text="Sauvegarder" />
+            android:text="@string/sauvegarder" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

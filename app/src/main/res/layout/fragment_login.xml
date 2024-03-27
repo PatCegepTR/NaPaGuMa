@@ -27,7 +27,7 @@
                 android:shadowDx="2"
                 android:shadowDy="4"
                 android:shadowRadius="8"
-                android:text="Oxy"
+                android:text="@string/oxy"
                 android:textColor="#0ac5eb"
                 android:textSize="60sp"
                 android:textStyle="bold" />
@@ -41,7 +41,7 @@
                 android:shadowDx="4"
                 android:shadowDy="4"
                 android:shadowRadius="8"
-                android:text="Cardio"
+                android:text="@string/cardio"
                 android:textColor="#A92121"
                 android:textSize="60sp"
                 android:textStyle="bold" />

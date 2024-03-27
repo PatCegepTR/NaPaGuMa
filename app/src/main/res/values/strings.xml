@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">test</string>
+    <string name="app_name" translatable="false">oxycardio</string>
     <string name="info">Informations</string>
     <string name="prise">Prise de donnée</string>
     <string name="statistique">Statistiques Globales</string>
@@ -11,9 +11,15 @@
     <string name="deconnexion">Déconnexion</string>
     <string name="hint_courriel">Entrez votre courriel</string>
     <string name="hint_mdp">Entrez votre mot de passe</string>
+    <string name="oxy" translatable="false">Oxy</string>
+    <string name="cardio" translatable="false">Cardio</string>
 
     <!-- Section prise de données -->
-    <string name="instructions">Instructions</string>
+    <string name="instructions" translatable="false">Instructions</string>
+    <string name="etape1">1. Assurez-vous que l'appareil de mesure est connecté.</string>
+    <string name="etape2">2. Cliquez sur le bouton plus bas.</string>
+    <string name="etape3">3. Mettre le doigt sur la puce.</string>
+    <string name="etape4">4. Attendre les résultats.</string>
 
     <!-- Section historique de données -->
     <string name="titre_graphique_rc">Fréquence Cardiaque</string>
@@ -47,5 +53,11 @@
     <string name="lien_card_article3">https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Que_faire_en_cas_d%27urgence_%3F</string>
 
     <!-- Section profile -->
-
+    <string name="profile_info">Informations personnels</string>
+    <string name="profile_modif">Modifier votre mot de passe</string>
+    <string name="modif">Modification</string>
+    <string name="hint_mdp_actuel">Mot de passe actuel</string>
+    <string name="hint_mdp_nouveau">Nouveau mot de passe</string>
+    <string name="sauvegarder">Sauvegarder</string>
+    <string name="hello_blank_fragment">Bonjour fragment vide</string>
 </resources>
