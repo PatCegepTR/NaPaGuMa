@@ -280,6 +280,7 @@ public class DonneesPersoFragment extends Fragment implements InterfaceDonneesPe
 
         XAxis xAxis = chart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(datesDonnees));
+        xAxis.setLabelRotationAngle(-90);
     }
 
     // On insère les Bar de données dans leurs graphiques associés.
