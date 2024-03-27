@@ -39,7 +39,7 @@
 
     <!-- Section info-santé -->
     <string name="titre_info_sante">Que voulez-vous savoir?</string>
-    <string name="titre_card_article1">Que représente le poul?</string>
+    <string name="titre_card_article1">Que représente le pouls?</string>
     <string name="titre_card_article2">Que représente la saturation d\'oxygène?</string>
     <string name="titre_card_article3">Que faire en cas d\'urgence?</string>
     <string name="date_card_article1">21 février 2024</string>
